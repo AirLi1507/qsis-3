@@ -1,0 +1,48 @@
+// import React from "react"
+
+type Props = {
+  children?: React.ReactNode
+  ref?: React.Ref<HTMLFormElement>
+}
+
+const wh_full = `
+    w-full
+    h-full`
+
+const bg = `
+    bg-[url('/images/bg_portrait.jpg')]
+    lg:bg-[url('/images/bg.jpg')]
+    bg-no-repeat
+    bg-cover`
+
+const FormWrapper = ({children, ref}: Props) => {
+  return (
+    <>
+      <div className={`w-svw h-svh` + bg}>
+          <div className={`backdrop-blur-xl backdrop-brightness-[1.05] p-2` + wh_full} >
+              <div className={`rounded-lg shadow-[0_0_8px_inset_rgba(0,0,0,.15)] flex justify-center items-center` + wh_full + bg}>
+                  <form ref={ref} className={`
+                      w-[300px]
+                      bg-sky-300/20
+                      border-2
+                      border-sky-50/50
+                      backdrop-blur-md
+                      rounded-xl
+                      shadow-[2px_2px_8px_rgba(0,0,0,.25)]
+                      flex
+                      flex-col
+                      justify-start
+                      items-center
+                      p-4
+                      pt-12
+                  `}>
+                    {children}
+                  </form>
+              </div>
+          </div>
+      </div>
+    </>
+  )
+}
+
+export default FormWrapper
