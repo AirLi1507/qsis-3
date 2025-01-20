@@ -22,6 +22,8 @@ const FormWrapper = ({children, ref}: Props) => {
           <div className={`backdrop-blur-xl backdrop-brightness-[1.05] p-2` + wh_full} >
               <div className={`rounded-lg shadow-[0_0_8px_inset_rgba(0,0,0,.15)] flex justify-center items-center` + wh_full + bg}>
                   <form ref={ref} className={`
+                      scale-[.9]
+                      md:scale-100
                       w-[300px]
                       bg-sky-300/20
                       border-2

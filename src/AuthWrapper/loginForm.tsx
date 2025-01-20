@@ -17,7 +17,7 @@ const LoginForm = () => {
 
     return (
         <>
-            <FormWrapper ref={formRef}>
+            <FormWrapper>
                 <Logo logoSize={40} />
                 <span className={`text-blue-800 text-[2.5rem] font-bold mt-5`}>QSIS 3</span>
                 <div className={divClass}>
@@ -35,7 +35,7 @@ const LoginForm = () => {
                         {passwordHidden ? <IconEye stroke={1.75} /> : <IconEyeOff stroke={1.75} />}
                     </span>
                 </div>
-                <input type="submit" value="Login" onClick={()=>{}} className={`
+                <input type="submit" value="Login" onClick={()=>{console.log(formRef)}} className={`
                     text-sky-800
                     hover:text-teal-50
                     text-lg
