@@ -1,9 +1,9 @@
 // import React from "react"
-import { forwardRef, ReactNode } from 'react';
+import { FormEvent, forwardRef, ReactNode } from 'react';
 
 type Props = {
   children: ReactNode;
-  func: ()=>void;
+  func: (e: FormEvent<HTMLFormElement>)=>void;
 }
 
 const wh_full = `

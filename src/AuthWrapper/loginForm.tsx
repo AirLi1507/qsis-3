@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import Logo from "../Branding/logo.tsx"
 import FormWrapper from "./formWrapper.tsx"
 import { IconEye, IconEyeOff, IconKey, IconUser } from '@tabler/icons-react';
@@ -16,11 +16,14 @@ const LoginForm = () => {
  
     const iconClass = `mx-1 px-1 border-r-2 border-r-sky-700`
  
-    function login() {console.log('login idk lol')}
+    function login(e: FormEvent<HTMLFormElement>) {
+        e.preventDefault()
+        console.log('login idk lol')
+    }
 
     return (
         <>
-            <FormWrapper func={()=>{login()}} ref={formRef}>
+            <FormWrapper func={(e)=>{login(e)}} ref={formRef}>
                 <Logo logoSize={40} className="mt-8" />
                 <span className={`text-blue-800 text-[2.5rem] font-bold mt-5`}>QSIS 3</span>
                 <div className={divClass}>
@@ -33,14 +36,12 @@ const LoginForm = () => {
                     <span className={iconClass}>
                         <IconKey stroke={1.75} />
                     </span>
-                    <input type={passwordHidden ? "password" : "text"} minLength="8" name="password" placeholder="Password" required className={inputClass} />
+                    <input type={passwordHidden ? "password" : "text"} minLength={8} name="password" placeholder="Password" required className={inputClass} />
                     <span onClick={(e)=>{e.preventDefault(); setHidden(passwordHidden ? false : true)}} className={`mr-2 cursor-pointer`}>
                         {passwordHidden ? <IconEye stroke={1.75} /> : <IconEyeOff stroke={1.75} />}
                     </span>
                 </div>
-                <input type="button" value="Login" onClick={()=>{
-                  setSubmit(true);
-                }} className={`
+                <input type="submit" value="Login" onClick={()=>{setSubmit(true)}} className={`
                     text-sky-800
                     hover:text-teal-50
                     text-lg
