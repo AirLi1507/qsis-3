@@ -2,7 +2,8 @@
 import { forwardRef, ReactNode } from 'react';
 
 type Props = {
-  children: ReactNode
+  children: ReactNode;
+  func: ()=>void;
 }
 
 const wh_full = `
@@ -17,10 +18,10 @@ const bg = `
 
     const FormWrapper = forwardRef<HTMLFormElement, Props>((props, ref) => (
     <>
-      <div className={`w-svw h-svh` + bg}>
-          <div className={`backdrop-blur-xl backdrop-brightness-[1.05] p-2` + wh_full} >
-              <div className={`rounded-lg shadow-[0_0_8px_inset_rgba(0,0,0,.15)] flex justify-center items-center overflow-scroll` + wh_full + bg}>
-                  <form method="post" className={`
+      <div className={`w-svw h-svh ${bg}`}>
+          <div className={`backdrop-blur-xl backdrop-brightness-[1.05] p-2 ${wh_full}`} >
+              <div className={`rounded-lg shadow-[0_0_8px_inset_rgba(0,0,0,.15)] flex justify-center items-center overflow-scroll ${wh_full} ${bg}`}>
+                  <form className={`
                       w-[300px]
                     bg-sky-300/20
                       border-2
@@ -35,7 +36,7 @@ const bg = `
                       p-4
                       duration-200
                       transform-gpu
-                  `} ref={ref}>
+                  `} onSubmit={props.func} ref={ref}>
                     {props.children}
                   </form>
               </div>
