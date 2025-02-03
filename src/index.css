@@ -1,4 +1,7 @@
 @import "tailwindcss";
+/* @plugin "@tailwindcss/typography"; */
+
+@source "./AuthWrapper/";
 
 @font-face {
   font-family: 'Noto Sans';

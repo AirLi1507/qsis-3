@@ -12,13 +12,15 @@ const LoginForm = () => {
 
     const divClass = `text-sky-800 text-lg w-full mt-4 bg-teal-50/40 hover:bg-teal-50/55 focus-within:bg-teal-50/55 border-[2px] border-sky-50/50 ${isSubmitted ? `has-[:invalid]:border-red-600/50` : ""} rounded-md shadow-[0_0_4px_inset_rgba(0,0,127,.25)] flex justify-start items-center duration-200`
  
-    const inputClass = `text-lg w-full bg-transparent border-none p-2 pl-0.5 outline-none`
+    const inputClass = `placeholder:text-slate-400 text-lg w-full bg-transparent border-none p-2 pl-0.5 outline-none`
  
     const iconClass = `mx-1 px-1 border-r-2 border-r-sky-700`
  
     function login(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        e.currentTarget.remove()
+        // e.currentTarget.after()
+        // e.currentTarget.remove()
+        alert('login idk lol')
         console.log('login idk lol')
     }
 
