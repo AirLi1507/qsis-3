@@ -18,6 +18,7 @@ const LoginForm = () => {
  
     function login(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
+        e.currentTarget.remove()
         console.log('login idk lol')
     }
 
