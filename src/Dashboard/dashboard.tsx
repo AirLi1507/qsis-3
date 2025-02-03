@@ -1,6 +1,6 @@
-import { Box, Button, Card, Code, Flex, TabNav, Text, Theme } from "@radix-ui/themes";
+import { Box, Button, Card, Flex, TabNav, Text, Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
-import Logo from "../Branding/logo";
+// import Logo from "../Branding/logo";
 
 const Dashboard = () => {
   return (
@@ -15,7 +15,7 @@ const Dashboard = () => {
             border-r-zinc-200
           `}>
             <Flex direction={'column'} pt={'8'} align={'center'}>
-              <Logo logoSize={36}/>
+              {/* <Logo logoSize={36}/> */}
               <Text className="text-blue-800" mt={'5'} weight={'bold'} size={'8'}>QSIS 3</Text>
               <TabNav.Root>
                 <TabNav.Link>e</TabNav.Link>
