@@ -18,7 +18,7 @@ const bg = `
 const FormWrapper = forwardRef<HTMLFormElement, Props>((props, ref) => (
   <>
     <div className={`w-svw h-svh ${bg}`}>
-      <div className={`backdrop-blur-xl backdrop-brightness-[1.05] p-2 ${wh_full}`} >
+      <div className={`backdrop-blur-xl backdrop-brightness-[1.125] p-2 ${wh_full}`} >
         <div className={`rounded-lg shadow-[0_0_8px_inset_rgba(0,0,0,.15)] flex justify-center items-center overflow-scroll ${wh_full} ${bg}`}>
           <form className="
               w-[300px]
