@@ -10,8 +10,8 @@ const wh_full = `
   h-full`
 
 const bg = `
-  bg-[url('/images/bg_portrait.jpg')]
-  lg:bg-[url('/images/bg.jpg')]
+  bg-[url('/images/bg_portrait.webp')]
+  lg:bg-[url('/images/bg.webp')]
   bg-no-repeat
   bg-cover`
 

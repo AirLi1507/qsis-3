@@ -1,7 +1,8 @@
 import { FormEvent, useRef, useState } from "react";
 import Logo from "../Branding/logo.tsx"
 import FormWrapper from "./formWrapper.tsx"
-import { IconEye, IconEyeOff, IconKey, IconLockQuestion, IconQuestionMark, IconUser } from '@tabler/icons-react';
+import { IconEye, IconEyeOff, IconKey, IconLockQuestion, IconUser } from '@tabler/icons-react';
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
     const formRef = useRef<HTMLFormElement>(null)
@@ -9,6 +10,8 @@ const LoginForm = () => {
     const [passwordHidden,setHidden] = useState(true)
 
     const [isSubmitted, setSubmit] = useState(false)
+
+    const navigate = useNavigate()
 
     const divClass = `text-sky-800 text-lg w-full mt-4 bg-teal-50/40 hover:bg-teal-50/55 focus-within:bg-teal-50/55 border-2 border-sky-50/50 ${isSubmitted ? `has-[:invalid]:border-red-600/50` : ""} rounded-md shadow-[0_0_4px_inset_rgba(0,0,127,.25)] flex justify-start items-center duration-200`
  
@@ -18,8 +21,6 @@ const LoginForm = () => {
  
     function login(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        // e.currentTarget.after()
-        // e.currentTarget.remove()
         alert('login idk lol')
         console.log('login idk lol')
     }
@@ -45,7 +46,7 @@ const LoginForm = () => {
                     </span>
                 </div>
                 <div className="w-full mt-2.5">
-                    <a href="" className={`
+                    <a onClick={()=>{navigate('/dashboard')}} className={`
                         text-sky-800
                         hover:text-sky-50
                         font-semibold
@@ -53,6 +54,7 @@ const LoginForm = () => {
                         flex
                         hover:drop-shadow-[0_1px_1px_rgba(0,89,138,.5)]
                         duration-200
+                        cursor-pointer
                         select-none
                     `}>
                         <IconLockQuestion stroke={1.75} className="mr-1" />

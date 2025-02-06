@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-100 -100 200 200" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g transform="rotate(45)">
+    <rect x="-75" y="-75" width="75" height="75" fill="yellow" />
+    <rect x="0" y="-75" width="75" height="75" fill="brown" />
+    <rect x="-75" y="0" width="75" height="75" fill="blue" />
+    <rect x="0" y="0" width="75" height="75" fill="red" />
+  </g>
+</svg>

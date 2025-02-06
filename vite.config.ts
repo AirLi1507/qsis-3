@@ -17,6 +17,9 @@ export default defineConfig({
   server: {
     allowedHosts: [
       "test-1.hypernix.dev"
-    ]
+    ],
+    // hmr: {
+    //   protocol: "wss",
+    // }
   }
 })
