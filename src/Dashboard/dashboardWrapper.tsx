@@ -4,7 +4,7 @@ import Logo from "../Branding/logo";
 import { Path, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import bg from "../AuthWrapper/formWrapper"
-import { IconAddressBook, IconDoorExit, IconFilePencil, IconHome } from "@tabler/icons-react";
+import { IconAddressBook, IconBallBasketball, IconBook2, IconBooks, IconDoorExit, IconFilePencil, IconHome } from "@tabler/icons-react";
 
 type NavItemProps = {
   tab: String
@@ -69,29 +69,6 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
   return (
     <>
       <Theme accentColor="blue">
-        {/* <Flex direction={"row"}>
-          <nav className={`
-            w-[300px]
-            h-svh
-            bg-sky-50
-            border-r-1
-            border-r-zinc-200
-          `}>
-            <div className="pt-16 flex flex-col items-center">
-              <Logo logoSize={36}/>
-                <span className="text-blue-800 text-4xl font-bold mt-6 mb-8">QSIS 3</span>
-              <div className="flex flex-col h-svh">
-                <NavItem tab="home">Home</NavItem>
-                <NavItem tab="profile">Student Profile</NavItem>
-              </div>
-              <NavItem tab="logout">Logout</NavItem>
-            </div>
-          </nav>
-          <main className="">
-            {children}
-          </main>
-        </Flex> */}
-
         <div className="w-svw h-screen flex">
           <nav className="
             w-[300px]
@@ -104,7 +81,7 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
             py-4
             overflow-scroll
           ">
-            <div className="my-8 flex flex-col gap-8">
+            <div className="my-12 flex flex-col gap-8">
               <Logo logoSize={36} />
               <span className="text-blue-800 text-4xl font-bold">QSIS 3</span>
             </div>
@@ -120,6 +97,14 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
               <NavItem tab="homework">
                 <IconFilePencil stroke={1.5} />
                 Homework
+              </NavItem>
+              <NavItem tab="ec">
+                <IconBallBasketball stroke={1.5} />
+                Extension Curriculum
+              </NavItem>
+              <NavItem tab="reading">
+                <IconBooks stroke={1.5} />
+                Reading
               </NavItem>
             </div>
             <NavItem tab="logout">

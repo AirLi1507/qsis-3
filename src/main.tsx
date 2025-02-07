@@ -15,6 +15,8 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/dashboard/home' element=<Dashboard>home</Dashboard> />
         <Route path='/dashboard/profile' element=<Dashboard>profile</Dashboard> />
         <Route path='/dashboard/homework' element=<Dashboard>homework</Dashboard> />
+        <Route path='/dashboard/ec' element=<Dashboard>ec</Dashboard> />
+        <Route path='/dashboard/reading' element=<Dashboard>reading</Dashboard> />
         <Route path='/404' element=<NotFound /> />
         <Route path='/*' element=<Navigate to='/404'/>/>
       </Routes>
