@@ -137,7 +137,7 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
             }} />
           </div>
         </nav>
-        <main className="">
+        <main className="p-4">
           <span className={`h-full ${navVisibility ? "hidden" : "flex"} flex-col justify-center absolute`}>
             <IconChevronCompactRight stroke={1.5} className={`cursor-pointer ${navVisibility ? "hidden" : ""}`} onClick={()=>{
               setNavVisibility(true)
