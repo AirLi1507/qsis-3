@@ -17,8 +17,11 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/dashboard/homework' element=<Dashboard>homework</Dashboard> />
         <Route path='/dashboard/ec' element=<Dashboard>ec</Dashboard> />
         <Route path='/dashboard/reading' element=<Dashboard>reading</Dashboard> />
+        <Route path='/dashboard/ss' element=<Dashboard>ss</Dashboard> />
+        <Route path='/dashboard/support' element=<Dashboard>support</Dashboard> />
+        <Route path='/dashboard/album' element=<Dashboard>album</Dashboard> />
         <Route path='/404' element=<NotFound /> />
-        <Route path='/*' element=<Navigate to='/404'/>/>
+        {/* <Route path='/*' element=<Navigate to='/404'/>/> */}
       </Routes>
     </BrowserRouter> 
   </>

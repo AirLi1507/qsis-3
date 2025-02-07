@@ -1,10 +1,9 @@
-import { Box, Button, Card, Flex, TabNav, Text, Theme } from "@radix-ui/themes";
+import { Theme } from "@radix-ui/themes";
 import "@radix-ui/themes/styles.css";
 import Logo from "../Branding/logo";
-import { Path, useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
-import bg from "../AuthWrapper/formWrapper"
-import { IconAddressBook, IconBallBasketball, IconBook2, IconBooks, IconDoorExit, IconFilePencil, IconHome } from "@tabler/icons-react";
+import { useNavigate } from "react-router-dom";
+import { useRef, useState } from "react";
+import { IconAddressBook, IconBallBasketball, IconBooks, IconCheckbox, IconChevronCompactLeft, IconChevronCompactRight, IconDoorExit, IconFilePencil, IconHome, IconPhoto, IconProgressHelp, IconSettings, IconShield, IconUserCircle } from "@tabler/icons-react";
 
 type NavItemProps = {
   tab: String
@@ -13,24 +12,13 @@ type NavItemProps = {
 
 const NavItem = ({tab, children}: NavItemProps) => {
   
-  // const [tabSelected, tabSelect] = useState("")
   const currentTab = window.location.pathname.split('/')[2]
-  const navRef = useRef<HTMLAnchorElement>(null)
+  const navItemRef = useRef<HTMLAnchorElement>(null)
   const navigate = useNavigate()
 
   let isTab
 
   if (currentTab === tab) {isTab = true}
-
-  // function stateCSS() {
-  //   if (currentTab === tab) {
-  //     navRef.current?.classList.add("bg-blue-200")
-  //     navRef.current?.classList.remove("hover:bg-blue-200/50")
-  //   } else {
-  //     navRef.current?.classList.remove("bg-blue-200")
-  //     navRef.current?.classList.add("hover:bg-blue-200/50")
-  //   }
-  // }
 
   return (
     <>
@@ -39,10 +27,6 @@ const NavItem = ({tab, children}: NavItemProps) => {
           if (tab !== "logout") {
             navigate(`/dashboard/${tab}`)
           } else {navigate('/login')}
-          
-          // document.querySelectorAll('a').forEach((e)=>{e.classList.remove("bg-blue-200")})
-          // tabSelect(tabSelected ? false : true)
-          // tabSelect(true)
         }}
         className={`
           w-[260px]
@@ -57,62 +41,110 @@ const NavItem = ({tab, children}: NavItemProps) => {
           cursor-pointer
           select-none
         `}
-        ref={navRef}
-      >
-        <span className="flex flex-row gap-1 justify-start items-center">{children}</span>
+        ref={navItemRef}>
+        <span className="
+          flex
+          flex-row
+          gap-2
+          justify-start
+          items-center
+        ">
+          {children}
+        </span>
       </a>
     </>
   )
 }
 
 const Dashboard = ({children}: {children: React.ReactNode}) => {
+
+  const [navVisibility, setNavVisibility] = useState(true)
+  const navRef = useRef<HTMLElement>(null)
+
   return (
     <>
       <Theme accentColor="blue">
         <div className="w-svw h-screen flex">
-          <nav className="
-            w-[300px]
+          <nav className={`
             bg-sky-50
             border-r-1
             border-r-zinc-200
-            flex
-            flex-col
-            items-center
-            py-4
-            overflow-scroll
-          ">
-            <div className="my-12 flex flex-col gap-8">
-              <Logo logoSize={36} />
-              <span className="text-blue-800 text-4xl font-bold">QSIS 3</span>
+            ${navVisibility ? "flex" : "hidden"}
+            flex-row
+            pl-2
+          `} ref={navRef}>
+            <div className="flex flex-col pt-8">
+              <div className="my-8 flex flex-col items-center gap-8">
+                <Logo logoSize={36} />
+                <span className="text-blue-800 text-4xl font-bold">QSIS 3</span>
+              </div>
+              <div className="h-full">
+                <NavItem tab="home">
+                  <IconHome stroke={1.5}/>
+                  Home
+                </NavItem>
+                <NavItem tab="profile">
+                  <IconAddressBook stroke={1.5} />
+                  Student Profile
+                </NavItem>
+                <NavItem tab="homework">
+                  <IconFilePencil stroke={1.5} />
+                  Homework
+                </NavItem>
+                <NavItem tab="ec">
+                  <IconBallBasketball stroke={1.5} />
+                  Extension Curriculum
+                </NavItem>
+                <NavItem tab="reading">
+                  <IconBooks stroke={1.5} />
+                  Reading
+                </NavItem>
+                <NavItem tab="ss">
+                  <IconCheckbox stroke={1.5} />
+                  Subject Selection
+                </NavItem>
+                <NavItem tab="support">
+                  <IconProgressHelp stroke={1.5} />
+                  Student Support
+                </NavItem>
+                <NavItem tab="album">
+                  <IconPhoto stroke={1.5} />
+                  Album
+                </NavItem>
+              </div>
+              <div className="pb-3">
+                <NavItem tab="admin">
+                  <IconShield stroke={1.5} />
+                  Administration
+                </NavItem>
+                <NavItem tab="settings">
+                  <IconSettings stroke={1.5} />
+                  Settings
+                </NavItem>
+                <NavItem tab="logout">
+                  <IconDoorExit stroke={1.5} />
+                  Logout
+                </NavItem>
+                <NavItem tab="profile">
+                  <IconUserCircle stroke={1.5} />
+                  3A-22 Li Hiu Fung
+                </NavItem>
+              </div>
             </div>
-            <div className="h-full">
-              <NavItem tab="home">
-                <IconHome stroke={1.5}/>
-                Home
-              </NavItem>
-              <NavItem tab="profile">
-                <IconAddressBook stroke={1.5} />
-                Student Profile
-              </NavItem>
-              <NavItem tab="homework">
-                <IconFilePencil stroke={1.5} />
-                Homework
-              </NavItem>
-              <NavItem tab="ec">
-                <IconBallBasketball stroke={1.5} />
-                Extension Curriculum
-              </NavItem>
-              <NavItem tab="reading">
-                <IconBooks stroke={1.5} />
-                Reading
-              </NavItem>
+            <div className="h-svh flex flex-col justify-center">
+              <IconChevronCompactLeft stroke={1.5} className="
+                cursor-pointer
+              " onClick={()=>{
+                setNavVisibility(false)
+              }} />
             </div>
-            <NavItem tab="logout">
-              <IconDoorExit stroke={1.5} />
-              Logout
-            </NavItem>
           </nav>
-          <main>
+          <main className="flex flex-row">
+            <span className={`h-full ${navVisibility ? "hidden" : "flex"} flex-col justify-center`}>
+              <IconChevronCompactRight stroke={1.5} className={`cursor-pointer ${navVisibility ? "hidden" : ""}`} onClick={()=>{
+                setNavVisibility(true)
+              }} />
+            </span>
             {children}
           </main>
         </div>
