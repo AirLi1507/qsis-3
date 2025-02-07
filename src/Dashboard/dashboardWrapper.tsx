@@ -124,7 +124,7 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
               </NavItem>
               <NavItem tab="profile">
                 <IconUserCircle stroke={1.5} />
-                3A-22 Li Hiu Fung
+                3A-34 I don't know
               </NavItem>
             </div>
           </div>
