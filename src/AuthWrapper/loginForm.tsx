@@ -63,6 +63,7 @@ const LoginForm = () => {
             <input type="submit" value="Login" onClick={()=>{setSubmit(true)}} className={`
                 text-sky-800
                 hover:text-teal-50
+                active:text-teal-50
                 text-lg
                 font-bold
                 w-full

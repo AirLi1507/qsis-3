@@ -62,7 +62,7 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
 
   return (
     <Theme accentColor="blue">
-      <div className="w-svw h-screen flex">
+      <div className="w-svw h-svh flex">
         <nav className={`
           bg-sky-50
           border-r-1
@@ -71,8 +71,8 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
           flex-row
           pl-2
         `} ref={navRef}>
-          <div className="flex flex-col pt-8">
-            <div className="my-8 flex flex-col gap-8 items-center">
+          <div className="h-full flex flex-col pt-8 overflow-scroll">
+            <div className="mt-2 md:mt-6 mb-4 border-b-2 border-b-sky-700 flex flex-col gap-8 items-center pb-4">
               <Logo logoSize={36} />
               <span className="text-blue-800 text-4xl font-bold">QSIS 3</span>
             </div>
@@ -137,13 +137,23 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
             }} />
           </div>
         </nav>
-        <main className="p-4">
-          <span className={`h-full ${navVisibility ? "hidden" : "flex"} flex-col justify-center absolute`}>
+        <main className="w-full h-full bg-blue-50 p-3 md:p-5">
+          <span className={`h-full ${navVisibility ? "hidden" : "flex"} flex-col justify-center absolute top-0`}>
             <IconChevronCompactRight stroke={1.5} className={`cursor-pointer ${navVisibility ? "hidden" : ""}`} onClick={()=>{
               setNavVisibility(true)
             }} />
           </span>
-          {children}
+          <div className={`
+            w-full
+            h-full
+            border-2
+            border-sky-600
+            rounded-lg
+            shadow-[inset_0_0_6px_rgba(0,0,0,.25)]
+            ${navVisibility ? "blur-sm sm:blur-none" : ""}
+          `}>
+            {children}
+          </div>
         </main>
       </div>
     </Theme>
