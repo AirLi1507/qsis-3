@@ -29,7 +29,7 @@ const LoginForm = () => {
         <>
             <FormWrapper func={(e)=>{login(e)}} ref={formRef}>
                 <Logo logoSize={40} className="mt-8" />
-                <span className={`text-blue-800 text-[2.5rem] font-bold mt-5`}>QSIS 3</span>
+                <span className="text-blue-800 text-[2.5rem] font-bold mt-5">QSIS 3</span>
                 <div className={divClass}>
                     <span className={iconClass}>
                         <IconUser stroke={1.75} />
