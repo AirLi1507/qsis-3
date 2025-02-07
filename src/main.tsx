@@ -20,8 +20,10 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/dashboard/ss' element=<Dashboard>ss</Dashboard> />
         <Route path='/dashboard/support' element=<Dashboard>support</Dashboard> />
         <Route path='/dashboard/album' element=<Dashboard>album</Dashboard> />
+        <Route path='/dashboard/admin' element=<Dashboard>admin</Dashboard> />
+        <Route path='/dashboard/settings' element=<Dashboard>settings</Dashboard> />
         <Route path='/404' element=<NotFound /> />
-        {/* <Route path='/*' element=<Navigate to='/404'/>/> */}
+        <Route path='/*' element=<Navigate to='/404'/>/>
       </Routes>
     </BrowserRouter> 
   </>

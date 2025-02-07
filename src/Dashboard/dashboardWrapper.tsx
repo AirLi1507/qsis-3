@@ -28,9 +28,10 @@ const NavItem = ({tab, children}: NavItemProps) => {
         } else {navigate('/login')}
       }}
       className={`
+        ${isTab ? "text-zinc-50" : ""}
         w-[260px]
         mt-[1px]
-        ${isTab ? "bg-blue-200" : "hover:bg-blue-200/50"}
+        ${isTab ? "bg-sky-700/60" : "hover:bg-blue-200/50"}
         rounded-full
         py-3
         px-3
@@ -128,7 +129,7 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
               </NavItem>
             </div>
           </div>
-          <div className="h-svh flex flex-col justify-center">
+          <div className="h-full flex flex-col justify-center">
             <IconChevronCompactLeft stroke={1.5} className="
               cursor-pointer
             " onClick={()=>{
