@@ -73,44 +73,43 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
         pl-2
       `} ref={navRef}>
         <div className="h-full flex flex-col pt-8 overflow-scroll">
-          <div className="mt-2 md:mt-6 mb-4 border-b-2 border-b-sky-700 flex flex-col gap-8 items-center pb-4">
+          <div className="mt-2 md:mt-6 mb-4 border-b-sky-700 flex flex-col gap-8 items-center pb-4">
             <Logo logoSize={36} />
             <span className="text-blue-800 text-4xl font-bold">QSIS 3</span>
           </div>
-          <div className="h-full">
-            <NavItem tab="home">
-              <IconHome stroke={1.5}/>
-              Home
-            </NavItem>
-            <NavItem tab="profile">
-              <IconAddressBook stroke={1.5} />
-              Student Profile
-            </NavItem>
-            <NavItem tab="homework">
-              <IconFilePencil stroke={1.5} />
-              Homework
-            </NavItem>
-            <NavItem tab="ec">
-              <IconBallBasketball stroke={1.5} />
-              Extension Curriculum
-            </NavItem>
-            <NavItem tab="reading">
-              <IconBooks stroke={1.5} />
-              Reading
-            </NavItem>
-            <NavItem tab="ss">
-              <IconCheckbox stroke={1.5} />
-              Subject Selection
-            </NavItem>
-            <NavItem tab="support">
-              <IconProgressHelp stroke={1.5} />
-              Student Support
-            </NavItem>
-            <NavItem tab="album">
-              <IconPhoto stroke={1.5} />
-              Album
-            </NavItem>
-          </div>
+          <NavItem tab="home">
+            <IconHome stroke={1.5}/>
+            Home
+          </NavItem>
+          <NavItem tab="profile">
+            <IconAddressBook stroke={1.5} />
+            Student Profile
+          </NavItem>
+          <NavItem tab="homework">
+            <IconFilePencil stroke={1.5} />
+            Homework
+          </NavItem>
+          <NavItem tab="ec">
+            <IconBallBasketball stroke={1.5} />
+            Extension Curriculum
+          </NavItem>
+          <NavItem tab="reading">
+            <IconBooks stroke={1.5} />
+            Reading
+          </NavItem>
+          <NavItem tab="ss">
+            <IconCheckbox stroke={1.5} />
+            Subject Selection
+          </NavItem>
+          <NavItem tab="support">
+            <IconProgressHelp stroke={1.5} />
+            Student Support
+          </NavItem>
+          <NavItem tab="album">
+            <IconPhoto stroke={1.5} />
+            Album
+          </NavItem>
+          <hr class="my-3 rounded-full border-2 border-sky-700/60"/>
           <div className="pb-3">
             <NavItem tab="admin">
               <IconShield stroke={1.5} />
