@@ -4,6 +4,7 @@ import LoginForm from './AuthWrapper/loginForm.tsx';
 import NotFound from './AuthWrapper/notfound.tsx';
 import Dashboard from './Dashboard/dashboardWrapper.tsx';
 import './index.css';
+import Home from './Dashboard/home.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <>
@@ -11,8 +12,12 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path='/' element=<Navigate to='/login' /> />
         <Route path='/login' element=<LoginForm /> />
-        <Route path='/dashboard' element=<Dashboard>dashboard</Dashboard> />
-        <Route path='/dashboard/home' element=<Dashboard>home</Dashboard> />
+        <Route path='/dashboard' element=<Navigate to='/dashboard/home' /> />
+        <Route path='/dashboard/home' element={
+          <Dashboard>
+            <Home />
+          </Dashboard>
+        } />
         <Route path='/dashboard/profile' element=<Dashboard>profile</Dashboard> />
         <Route path='/dashboard/homework' element=<Dashboard>homework</Dashboard> />
         <Route path='/dashboard/ec' element=<Dashboard>ec</Dashboard> />
@@ -23,7 +28,7 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/dashboard/admin' element=<Dashboard>admin</Dashboard> />
         <Route path='/dashboard/settings' element=<Dashboard>settings</Dashboard> />
         <Route path='/404' element=<NotFound /> />
-        <Route path='/*' element=<Navigate to='/404'/>/>
+        <Route path='/*' element=<Navigate to='/404' /> />
       </Routes>
     </BrowserRouter> 
   </>
