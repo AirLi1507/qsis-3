@@ -146,13 +146,15 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
         <div className={`
           w-full
           h-full
-          border-2
-          border-sky-600
+          border-3
+          border-sky-700/60
           rounded-lg
           shadow-[inset_0_0_6px_rgba(0,0,0,.25)]
           ${navVisibility ? "blur-sm sm:blur-none" : ""}
         `}>
-          {children}
+          <div className="w-full h-full">
+            {children}
+          </div>
         </div>
       </main>
     </div>
