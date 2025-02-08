@@ -73,7 +73,7 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
         pl-2
       `} ref={navRef}>
         <div className="h-full flex flex-col pt-8 overflow-scroll">
-          <div className="mt-2 md:mt-6 mb-4 border-b-2 border-b-sky-700 flex flex-col gap-8 items-center pb-4">
+          <div className="mt-2 md:mt-6 mb-4 flex flex-col gap-8 items-center pb-4">
             <Logo logoSize={36} />
             <span className="text-blue-800 text-4xl font-bold">QSIS 3</span>
           </div>
@@ -111,7 +111,7 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
               Album
             </NavItem>
           </div>
-          <div className="pb-3">
+          <div className="border-t-3 border-t-sky-700/60 pt-2 pb-3">
             <NavItem tab="admin">
               <IconShield stroke={1.5} />
               Administration
@@ -147,13 +147,15 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
         <div className={`
           w-full
           h-full
-          border-2
-          border-sky-600
+          border-3
+          border-sky-700/60
           rounded-lg
           shadow-[inset_0_0_6px_rgba(0,0,0,.25)]
           ${navVisibility ? "blur-sm sm:blur-none" : ""}
         `}>
-          {children}
+          <div className="w-full h-full">
+            {children}
+          </div>
         </div>
       </main>
     </div>
