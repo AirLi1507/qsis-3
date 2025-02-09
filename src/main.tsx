@@ -5,6 +5,62 @@ import NotFound from './AuthWrapper/notfound.tsx';
 import Dashboard from './Dashboard/dashboardWrapper.tsx';
 import './index.css';
 import Home from './Dashboard/home.tsx';
+import Profile from './Dashboard/profile.tsx';
+import ExtensionCurriculum from './Dashboard/ec.tsx';
+import Reading from './Dashboard/reading.tsx';
+import SubjectSelection from './Dashboard/ss.tsx';
+import Support from './Dashboard/support.tsx';
+import Album from './Dashboard/album.tsx';
+import Administration from './Dashboard/admin.tsx';
+import Settings from './Dashboard/settings.tsx';
+import Homework from './Dashboard/homework.tsx';
+
+const studentInfoSample = {
+  role: 'Student',
+}
+
+const dashboardTabs = [
+  {
+    element: Home,
+    path: 'home'
+  },
+  {
+    element: Profile,
+    path: 'profile'
+  },
+  {
+    element: Homework,
+    path: 'homework'
+  },
+  {
+    element: ExtensionCurriculum,
+    path: 'ec'
+  },
+  {
+    element: Reading,
+    path: 'reading'
+  },
+  {
+    element: SubjectSelection,
+    path: 'ss'
+  },
+  {
+    element: Support,
+    path: 'support'
+  },
+  {
+    element: Album,
+    path: 'album'
+  },
+  {
+    element: Administration,
+    path: 'admin'
+  },
+  {
+    element: Settings,
+    path: 'settings'
+  },
+]
 
 createRoot(document.getElementById('root')!).render(
   <>
@@ -13,20 +69,13 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/' element=<Navigate to='/login' /> />
         <Route path='/login' element=<LoginForm /> />
         <Route path='/dashboard' element=<Navigate to='/dashboard/home' /> />
-        <Route path='/dashboard/home' element={
-          <Dashboard>
-            <Home />
-          </Dashboard>
-        } />
-        <Route path='/dashboard/profile' element=<Dashboard>profile</Dashboard> />
-        <Route path='/dashboard/homework' element=<Dashboard>homework</Dashboard> />
-        <Route path='/dashboard/ec' element=<Dashboard>ec</Dashboard> />
-        <Route path='/dashboard/reading' element=<Dashboard>reading</Dashboard> />
-        <Route path='/dashboard/ss' element=<Dashboard>ss</Dashboard> />
-        <Route path='/dashboard/support' element=<Dashboard>support</Dashboard> />
-        <Route path='/dashboard/album' element=<Dashboard>album</Dashboard> />
-        <Route path='/dashboard/admin' element=<Dashboard>admin</Dashboard> />
-        <Route path='/dashboard/settings' element=<Dashboard>settings</Dashboard> />
+        {dashboardTabs.map(function (item) {return (
+          <Route path={`/dashboard/${item.path}`} element={
+            <Dashboard userInfo={studentInfoSample}>
+              {item.element()}
+            </Dashboard>
+          } />
+        )})}
         <Route path='/404' element=<NotFound /> />
         <Route path='/*' element=<Navigate to='/404' /> />
       </Routes>

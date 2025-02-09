@@ -3,6 +3,13 @@ import { useRef, useState } from "react";
 import { IconAddressBook, IconBallBasketball, IconBooks, IconCheckbox, IconChevronCompactLeft, IconChevronCompactRight, IconDoorExit, IconFilePencil, IconHome, IconPhoto, IconProgressHelp, IconSettings, IconShield, IconUserCircle } from "@tabler/icons-react";
 import Logo from "../Branding/logo";
 
+type DashboardProps = {
+  userInfo?: {
+    role: string
+  }
+  children: React.ReactNode
+}
+
 type NavItemProps = {
   tab: String
   children: React.ReactNode
@@ -55,7 +62,7 @@ const NavItem = ({tab, children}: NavItemProps) => {
   )
 }
 
-const Dashboard = ({children}: {children: React.ReactNode}) => {
+const Dashboard = ({userInfo, children}: DashboardProps) => {
 
   const [navVisibility, setNavVisibility] = useState(true)
   const navRef = useRef<HTMLElement>(null)
@@ -73,7 +80,7 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
         <div className="h-full flex flex-col pt-8 overflow-scroll">
           <div className="mt-2 md:mt-6 mb-4 border-b-sky-700 flex flex-col gap-8 items-center pb-4">
             <Logo logoSize={36} />
-            <span className="text-blue-800 text-4xl font-bold">QSIS 3</span>
+            <span className="text-blue-800 text-4xl font-bold select-none">QSIS 3</span>
           </div>
           <div className="lg:h-full flex flex-col">
             <NavItem tab="home">
@@ -82,7 +89,7 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
             </NavItem>
             <NavItem tab="profile">
               <IconAddressBook stroke={1.5} />
-              Student Profile
+              {userInfo?.role} Profile
             </NavItem>
             <NavItem tab="homework">
               <IconFilePencil stroke={1.5} />
@@ -138,7 +145,7 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
         </div>
       </nav>
       <main className="w-full h-full bg-blue-50 p-3 md:p-5">
-        <span className={`text-sky-700/60 h-full ${navVisibility ? "hidden" : "flex"} flex-col justify-center absolute top-0`}>
+        <span className={`text-sky-700/60 h-full ${navVisibility ? "hidden" : "flex"} flex-col justify-center absolute top-0 -left-1.5`}>
           <IconChevronCompactRight stroke={2} className="cursor-pointer" onClick={()=>{
             setNavVisibility(true)
           }} />
@@ -150,9 +157,10 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
           border-sky-700/60
           rounded-lg
           shadow-[inset_0_0_6px_rgba(0,0,0,.25)]
-          ${navVisibility ? "blur-xl sm:blur-none" : ""}
+          ${navVisibility ? "blur-xl sm:blur-none pointer-events-none sm:pointer-events-auto" : ""}
+          
         `}>
-          <div className="w-full h-full">
+          <div className="w-full h-full overflow-scroll">
             {children}
           </div>
         </div>

@@ -14,10 +14,11 @@ const QuickTabs = ({url, color, children}: tabProps) => {
     <a 
       onClick={()=>{navigate(`/dashboard/${url}`)}}
       className={`
+        text-2xl
         text-white
         w-full
         h-[400px]
-        bg-${color}
+        ${color}
         rounded-2xl
         p-2
         cursor-pointer
@@ -53,9 +54,13 @@ const Home = () => {
           border-t-transparent
         " />
         <div className="grid grid-cols-2 gap-3 pt-3 box-border">
-          <QuickTabs color="sky-500" url="profile">Profile</QuickTabs>
-          <QuickTabs color="amber-400" url="homework">Homework</QuickTabs>
-          <QuickTabs color="" url="ec">Extension Curriculum</QuickTabs>
+          <QuickTabs color="bg-emerald-600" url="profile">Profile</QuickTabs>
+          <QuickTabs color="bg-amber-400" url="homework">Homework</QuickTabs>
+          <QuickTabs color="bg-red-400" url="ec">Extension Curriculum</QuickTabs>
+          <QuickTabs color="bg-green-300" url="reading">Reading</QuickTabs>
+          <QuickTabs color="bg-blue-500" url="ss">Subject Selection</QuickTabs>
+          <QuickTabs color="bg-yellow-300" url="support">Student Support</QuickTabs>
+          <QuickTabs color="bg-sky-300" url="album">Album</QuickTabs>
         </div>
       </div>  
     </>
