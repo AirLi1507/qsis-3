@@ -1,9 +1,7 @@
-import { Theme } from "@radix-ui/themes";
-import "@radix-ui/themes/styles.css";
-import Logo from "../Branding/logo";
 import { useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import { IconAddressBook, IconBallBasketball, IconBooks, IconCheckbox, IconChevronCompactLeft, IconChevronCompactRight, IconDoorExit, IconFilePencil, IconHome, IconPhoto, IconProgressHelp, IconSettings, IconShield, IconUserCircle } from "@tabler/icons-react";
+import Logo from "../Branding/logo";
 
 type NavItemProps = {
   tab: String
@@ -77,39 +75,41 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
             <Logo logoSize={36} />
             <span className="text-blue-800 text-4xl font-bold">QSIS 3</span>
           </div>
-          <NavItem tab="home">
-            <IconHome stroke={1.5}/>
-            Home
-          </NavItem>
-          <NavItem tab="profile">
-            <IconAddressBook stroke={1.5} />
-            Student Profile
-          </NavItem>
-          <NavItem tab="homework">
-            <IconFilePencil stroke={1.5} />
-            Homework
-          </NavItem>
-          <NavItem tab="ec">
-            <IconBallBasketball stroke={1.5} />
-            Extension Curriculum
-          </NavItem>
-          <NavItem tab="reading">
-            <IconBooks stroke={1.5} />
-            Reading
-          </NavItem>
-          <NavItem tab="ss">
-            <IconCheckbox stroke={1.5} />
-            Subject Selection
-          </NavItem>
-          <NavItem tab="support">
-            <IconProgressHelp stroke={1.5} />
-            Student Support
-          </NavItem>
-          <NavItem tab="album">
-            <IconPhoto stroke={1.5} />
-            Album
-          </NavItem>
-          <hr class="my-3 rounded-full border-2 border-sky-700/60"/>
+          <div className="lg:h-full flex flex-col">
+            <NavItem tab="home">
+              <IconHome stroke={1.5}/>
+              Home
+            </NavItem>
+            <NavItem tab="profile">
+              <IconAddressBook stroke={1.5} />
+              Student Profile
+            </NavItem>
+            <NavItem tab="homework">
+              <IconFilePencil stroke={1.5} />
+              Homework
+            </NavItem>
+            <NavItem tab="ec">
+              <IconBallBasketball stroke={1.5} />
+              Extension Curriculum
+            </NavItem>
+            <NavItem tab="reading">
+              <IconBooks stroke={1.5} />
+              Reading
+            </NavItem>
+            <NavItem tab="ss">
+              <IconCheckbox stroke={1.5} />
+              Subject Selection
+            </NavItem>
+            <NavItem tab="support">
+              <IconProgressHelp stroke={1.5} />
+              Student Support
+            </NavItem>
+            <NavItem tab="album">
+              <IconPhoto stroke={1.5} />
+              Album
+            </NavItem>
+          </div>
+          <hr className="my-3 rounded-full border-2 border-sky-700/60"/>
           <div className="pb-3">
             <NavItem tab="admin">
               <IconShield stroke={1.5} />
@@ -138,8 +138,8 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
         </div>
       </nav>
       <main className="w-full h-full bg-blue-50 p-3 md:p-5">
-        <span className={`h-full ${navVisibility ? "hidden" : "flex"} flex-col justify-center absolute top-0`}>
-          <IconChevronCompactRight stroke={1.5} className={`cursor-pointer ${navVisibility ? "hidden" : ""}`} onClick={()=>{
+        <span className={`text-sky-700/60 h-full ${navVisibility ? "hidden" : "flex"} flex-col justify-center absolute top-0`}>
+          <IconChevronCompactRight stroke={2} className="cursor-pointer" onClick={()=>{
             setNavVisibility(true)
           }} />
         </span>
@@ -150,7 +150,7 @@ const Dashboard = ({children}: {children: React.ReactNode}) => {
           border-sky-700/60
           rounded-lg
           shadow-[inset_0_0_6px_rgba(0,0,0,.25)]
-          ${navVisibility ? "blur-sm sm:blur-none" : ""}
+          ${navVisibility ? "blur-xl sm:blur-none" : ""}
         `}>
           <div className="w-full h-full">
             {children}
