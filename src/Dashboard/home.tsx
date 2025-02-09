@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom"
+import UserData from "../Data/types"
 
 type tabProps = {
   url: String
@@ -28,7 +29,7 @@ const QuickTabs = ({url, color, children}: tabProps) => {
   )
 }
 
-const Home = () => {
+const Home = (data: UserData) => {
 
   return (
     <>
@@ -54,7 +55,9 @@ const Home = () => {
           border-t-transparent
         " />
         <div className="grid grid-cols-2 gap-3 pt-3 box-border">
-          <QuickTabs color="bg-emerald-600" url="profile">Profile</QuickTabs>
+          <QuickTabs color="bg-emerald-600" url="profile">
+            {data.role} Profile
+          </QuickTabs>
           <QuickTabs color="bg-amber-400" url="homework">Homework</QuickTabs>
           <QuickTabs color="bg-red-400" url="ec">Extension Curriculum</QuickTabs>
           <QuickTabs color="bg-green-300" url="reading">Reading</QuickTabs>

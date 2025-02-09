@@ -19,6 +19,10 @@ const studentInfoSample = {
   role: 'Student',
 }
 
+const TeacherInfoSample = {
+  role: 'Teacher',
+}
+
 const dashboardTabs = [
   {
     element: Home,
@@ -71,8 +75,8 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/dashboard' element=<Navigate to='/dashboard/home' /> />
         {dashboardTabs.map(function (item) {return (
           <Route path={`/dashboard/${item.path}`} element={
-            <Dashboard userInfo={studentInfoSample}>
-              {item.element()}
+            <Dashboard userInfo={TeacherInfoSample}>
+              {item.element(TeacherInfoSample)}
             </Dashboard>
           } />
         )})}
