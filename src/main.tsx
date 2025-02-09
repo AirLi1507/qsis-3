@@ -6,6 +6,7 @@ import Dashboard from './Dashboard/dashboardWrapper.tsx';
 import './index.css';
 import Home from './Dashboard/home.tsx';
 import Profile from './Dashboard/profile.tsx';
+import Homework from './Dashboard/homework.tsx';
 import ExtensionCurriculum from './Dashboard/ec.tsx';
 import Reading from './Dashboard/reading.tsx';
 import SubjectSelection from './Dashboard/ss.tsx';
@@ -13,14 +14,17 @@ import Support from './Dashboard/support.tsx';
 import Album from './Dashboard/album.tsx';
 import Administration from './Dashboard/admin.tsx';
 import Settings from './Dashboard/settings.tsx';
-import Homework from './Dashboard/homework.tsx';
 
 const studentInfoSample = {
   role: 'Student',
+  fullname: 'This Is ElonMusk',
+  class: '3A',
+  classNo: 34
 }
 
-const TeacherInfoSample = {
+const teacherInfoSample = {
   role: 'Teacher',
+  fullname: 'IShowSpeed'
 }
 
 const dashboardTabs = [
@@ -75,8 +79,8 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/dashboard' element=<Navigate to='/dashboard/home' /> />
         {dashboardTabs.map(function (item) {return (
           <Route path={`/dashboard/${item.path}`} element={
-            <Dashboard userInfo={TeacherInfoSample}>
-              {item.element(TeacherInfoSample)}
+            <Dashboard userInfo={studentInfoSample}>
+              {item.element(studentInfoSample)}
             </Dashboard>
           } />
         )})}

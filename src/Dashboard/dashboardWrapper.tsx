@@ -2,11 +2,10 @@ import { useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import { IconAddressBook, IconBallBasketball, IconBooks, IconCheckbox, IconChevronCompactLeft, IconChevronCompactRight, IconDoorExit, IconFilePencil, IconHome, IconPhoto, IconProgressHelp, IconSettings, IconShield, IconUserCircle } from "@tabler/icons-react";
 import Logo from "../Branding/logo";
+import UserData from "../Data/types";
 
 type DashboardProps = {
-  userInfo?: {
-    role: string
-  }
+  userInfo?: UserData
   children: React.ReactNode
 }
 
@@ -67,6 +66,26 @@ const Dashboard = ({userInfo, children}: DashboardProps) => {
   const [navVisibility, setNavVisibility] = useState(true)
   const navRef = useRef<HTMLElement>(null)
 
+  const tabsUpper = [
+    {name: "Home", url: "home", icon: IconHome},
+    {name: `${userInfo?.role} Profile`, url: "profile", icon: IconAddressBook},
+    {name: "Homework", url: "homework", icon: IconFilePencil},
+    {name: "Extension Curriculum", url: "ec", icon: IconBallBasketball},
+    {name: "Reading", url: "reading", icon: IconBooks},
+    {name: "Subject Selection", url: "ss", icon: IconCheckbox},
+    {name: "Student Support", url: "support", icon: IconProgressHelp},
+    {name: "Album", url: "album", icon: IconPhoto},
+  ]
+
+  const tabsLower = [
+    {name: "Administration", url: "admin", icon: IconShield},
+    {name: "Settings", url: "settings", icon: IconSettings},
+    {name: "Logout", url: "logout", icon: IconDoorExit},
+    {name: `${
+      userInfo?.class ? `${userInfo?.class}-${userInfo?.classNo}` : ``
+    } ${userInfo?.fullname}`, url: "profile", icon: IconUserCircle},
+  ]
+
   return (
     <div className="w-svw h-svh flex">
       <nav className={`
@@ -83,57 +102,25 @@ const Dashboard = ({userInfo, children}: DashboardProps) => {
             <span className="text-blue-800 text-4xl font-bold select-none">QSIS 3</span>
           </div>
           <div className="lg:h-full flex flex-col">
-            <NavItem tab="home">
-              <IconHome stroke={1.5}/>
-              Home
-            </NavItem>
-            <NavItem tab="profile">
-              <IconAddressBook stroke={1.5} />
-              {userInfo?.role} Profile
-            </NavItem>
-            <NavItem tab="homework">
-              <IconFilePencil stroke={1.5} />
-              Homework
-            </NavItem>
-            <NavItem tab="ec">
-              <IconBallBasketball stroke={1.5} />
-              Extension Curriculum
-            </NavItem>
-            <NavItem tab="reading">
-              <IconBooks stroke={1.5} />
-              Reading
-            </NavItem>
-            <NavItem tab="ss">
-              <IconCheckbox stroke={1.5} />
-              Subject Selection
-            </NavItem>
-            <NavItem tab="support">
-              <IconProgressHelp stroke={1.5} />
-              Student Support
-            </NavItem>
-            <NavItem tab="album">
-              <IconPhoto stroke={1.5} />
-              Album
-            </NavItem>
+            {tabsUpper.map((item)=>{
+              return (
+                <NavItem tab={item.url}>
+                  {<item.icon stroke={1.5} />}
+                  {item.name}
+                </NavItem>
+              )
+            })}
           </div>
           <hr className="my-3 rounded-full border-2 border-sky-700/60"/>
           <div className="pb-3">
-            <NavItem tab="admin">
-              <IconShield stroke={1.5} />
-              Administration
-            </NavItem>
-            <NavItem tab="settings">
-              <IconSettings stroke={1.5} />
-              Settings
-            </NavItem>
-            <NavItem tab="logout">
-              <IconDoorExit stroke={1.5} />
-              Logout
-            </NavItem>
-            <NavItem tab="profile">
-              <IconUserCircle stroke={1.5} />
-              3A-34 I don't know
-            </NavItem>
+            {tabsLower.map((item)=>{
+                return (
+                  <NavItem tab={item.url}>
+                    {<item.icon stroke={1.5} />}
+                    {item.name}
+                  </NavItem>
+                )
+              })}
           </div>
         </div>
         <div className="h-full flex flex-col justify-center">
