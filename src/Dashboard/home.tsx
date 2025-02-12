@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom"
-import UserData from "../Data/types"
+import UserData from "../Data/types.ts"
 
 type tabProps = {
   url: String
-  color: String
+  bg: String
   children: React.ReactNode
 }
 
-const QuickTabs = ({url, color, children}: tabProps) => {
+const QuickTabs = ({url, bg, children}: tabProps) => {
 
   const navigate = useNavigate()
 
@@ -18,8 +18,10 @@ const QuickTabs = ({url, color, children}: tabProps) => {
         text-2xl
         text-white
         w-full
-        h-[400px]
-        ${color}
+        h-[250px]
+        ${bg}
+        bg-cover
+        bg-no-repeat
         rounded-2xl
         p-2
         cursor-pointer
@@ -55,15 +57,15 @@ const Home = (data: UserData) => {
           border-t-transparent
         " />
         <div className="grid grid-cols-2 gap-3 pt-3 box-border">
-          <QuickTabs color="bg-emerald-600" url="profile">
+          <QuickTabs bg="bg-blue-200" url="profile">
             {data.role} Profile
           </QuickTabs>
-          <QuickTabs color="bg-amber-400" url="homework">Homework</QuickTabs>
-          <QuickTabs color="bg-red-400" url="ec">Extension Curriculum</QuickTabs>
-          <QuickTabs color="bg-green-300" url="reading">Reading</QuickTabs>
-          <QuickTabs color="bg-blue-500" url="ss">Subject Selection</QuickTabs>
-          <QuickTabs color="bg-yellow-300" url="support">Student Support</QuickTabs>
-          <QuickTabs color="bg-sky-300" url="album">Album</QuickTabs>
+          <QuickTabs bg="bg-amber-400" url="homework">Homework</QuickTabs>
+          <QuickTabs bg="bg-red-400" url="ec">Extension Curriculum</QuickTabs>
+          <QuickTabs bg="bg-green-300" url="reading">Reading</QuickTabs>
+          <QuickTabs bg="bg-blue-500" url="ss">Subject Selection</QuickTabs>
+          <QuickTabs bg="bg-yellow-300" url="support">Student Support</QuickTabs>
+          <QuickTabs bg="bg-sky-300" url="album">Album</QuickTabs>
         </div>
       </div>  
     </>

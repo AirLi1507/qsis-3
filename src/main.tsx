@@ -17,8 +17,10 @@ import Settings from './Dashboard/settings.tsx';
 
 const studentInfoSample = {
   role: 'Student',
+  id: 20221234,
   fullname: 'This Is ElonMusk',
-  class: '3A',
+  form: 3,
+  class: "A",
   classNo: 34
 }
 

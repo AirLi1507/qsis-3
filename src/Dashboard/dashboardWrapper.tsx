@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useRef, useState } from "react";
 import { IconAddressBook, IconBallBasketball, IconBooks, IconCheckbox, IconChevronCompactLeft, IconChevronCompactRight, IconDoorExit, IconFilePencil, IconHome, IconPhoto, IconProgressHelp, IconSettings, IconShield, IconUserCircle } from "@tabler/icons-react";
-import Logo from "../Branding/logo";
-import UserData from "../Data/types";
+import Logo from "../Branding/logo.tsx";
+import UserData from "../Data/types.ts";
 
 type DashboardProps = {
   userInfo?: UserData
@@ -73,18 +73,28 @@ const Dashboard = ({userInfo, children}: DashboardProps) => {
     {name: "Extension Curriculum", url: "ec", icon: IconBallBasketball},
     {name: "Reading", url: "reading", icon: IconBooks},
     {name: "Subject Selection", url: "ss", icon: IconCheckbox},
-    {name: "Student Support", url: "support", icon: IconProgressHelp},
-    {name: "Album", url: "album", icon: IconPhoto},
+   // {name: "Student Support", url: "support", icon: IconProgressHelp},
+   // {name: "Album", url: "album", icon: IconPhoto},
   ]
 
   const tabsLower = [
-    {name: "Administration", url: "admin", icon: IconShield},
+    // {name: "Administration", url: "admin", icon: IconShield},
     {name: "Settings", url: "settings", icon: IconSettings},
     {name: "Logout", url: "logout", icon: IconDoorExit},
     {name: `${
-      userInfo?.class ? `${userInfo?.class}-${userInfo?.classNo}` : ``
+      userInfo?.class ? `${userInfo?.form}${userInfo?.class}-${userInfo?.classNo}` : ``
     } ${userInfo?.fullname}`, url: "profile", icon: IconUserCircle},
   ]
+  
+  if (userInfo?.role === 'Teacher') {
+    tabsUpper.push(
+      {name: "Student Support", url: "support", icon: IconProgressHelp},
+      {name: "Album", url: "album", icon: IconPhoto}
+    )
+    tabsLower.unshift(
+      {name: "Administration", url: "admin", icon: IconShield}
+    )
+  }
 
   return (
     <div className="w-svw h-svh flex">
