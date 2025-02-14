@@ -73,12 +73,9 @@ const Dashboard = ({userInfo, children}: DashboardProps) => {
     {name: "Extension Curriculum", url: "ec", icon: IconBallBasketball},
     {name: "Reading", url: "reading", icon: IconBooks},
     {name: "Subject Selection", url: "ss", icon: IconCheckbox},
-   // {name: "Student Support", url: "support", icon: IconProgressHelp},
-   // {name: "Album", url: "album", icon: IconPhoto},
   ]
 
   const tabsLower = [
-    // {name: "Administration", url: "admin", icon: IconShield},
     {name: "Settings", url: "settings", icon: IconSettings},
     {name: "Logout", url: "logout", icon: IconDoorExit},
     {name: `${
@@ -123,10 +120,10 @@ const Dashboard = ({userInfo, children}: DashboardProps) => {
           </div>
           <hr className="my-3 rounded-full border-2 border-sky-700/60"/>
           <div className="pb-3">
-            {tabsLower.map((item)=>{
+            {tabsLower.map((item, i)=>{
                 return (
-                  <NavItem tab={item.url}>
-                    {<item.icon stroke={1.5} />}
+                  <NavItem tab={item.url} key={i}>
+                    {<item.icon stroke={1.5} key={i} />}
                     {item.name}
                   </NavItem>
                 )
@@ -155,7 +152,6 @@ const Dashboard = ({userInfo, children}: DashboardProps) => {
           rounded-lg
           shadow-[inset_0_0_6px_rgba(0,0,0,.25)]
           ${navVisibility ? "blur-xl sm:blur-none pointer-events-none sm:pointer-events-auto" : ""}
-          
         `}>
           <div className="w-full h-full overflow-scroll">
             {children}
