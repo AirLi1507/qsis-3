@@ -4,16 +4,16 @@ import LoginForm from './AuthWrapper/loginForm.tsx';
 import NotFound from './AuthWrapper/notfound.tsx';
 import Dashboard from './Dashboard/dashboardWrapper.tsx';
 import './index.css';
-import Home from './Dashboard/home.tsx';
-import Profile from './Dashboard/profile.tsx';
-import Homework from './Dashboard/homework.tsx';
-import ExtensionCurriculum from './Dashboard/ec.tsx';
-import Reading from './Dashboard/reading.tsx';
-import SubjectSelection from './Dashboard/ss.tsx';
-import Support from './Dashboard/support.tsx';
-import Album from './Dashboard/album.tsx';
-import Administration from './Dashboard/admin.tsx';
-import Settings from './Dashboard/settings.tsx';
+import Home from './Dashboard/Tabs/home.tsx';
+import Profile from './Dashboard/Tabs/profile.tsx';
+import Homework from './Dashboard/Tabs/homework.tsx';
+import ExtensionCurriculum from './Dashboard/Tabs/ec.tsx';
+import Reading from './Dashboard/Tabs/reading.tsx';
+import SubjectSelection from './Dashboard/Tabs/ss.tsx';
+import Support from './Dashboard/Tabs/support.tsx';
+import Album from './Dashboard/Tabs/album.tsx';
+import Administration from './Dashboard/Tabs/admin.tsx';
+import Settings from './Dashboard/Tabs/settings.tsx';
 
 const studentInfoSample = {
   role: 'Student',
@@ -51,8 +51,8 @@ createRoot(document.getElementById('root')!).render(
         <Route path='/login' element=<LoginForm /> />
         <Route path='/dashboard' element=<Navigate to='/dashboard/home' /> />
         {dashboardTabs.map(function (item, i) {return (
-          <Route path={`/dashboard/${item.path}`} element={
-            <Dashboard userInfo={studentInfoSample} key={i}>
+          <Route key={item.path || i} path={`/dashboard/${item.path}`} element={
+            <Dashboard userInfo={studentInfoSample}>
               {item.element(studentInfoSample)}
             </Dashboard>
           } />
