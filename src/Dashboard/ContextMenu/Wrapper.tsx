@@ -9,19 +9,33 @@ type WrapperProps = {
 const CnMenuWrapper = ({children}: WrapperProps) =>{
 
   return (
-    <ContextMenu.Root>
+    <ContextMenu.Root modal={false}>
       <ContextMenu.Trigger>
         {children}
       </ContextMenu.Trigger>
       <ContextMenu.Portal>
         <ContextMenu.Content className="contextMenuContent">
-          {cnMenuDefaultUpper.map((item, i) => (
-            <CnMenuItem menuItem={item} key={i} />
-          ))}
-          <hr className="my-1 border-t-2 border-t-zinc-200" />
-          {cnMenuDefaultLower.map((item, i) => (
-            <CnMenuItem menuItem={item} key={i} />
-          ))}
+          {
+            getSelection.toString() ? 
+            
+            (
+              <>
+                {cnMenuDefaultUpper.map((item, i) => (
+                  <CnMenuItem menuItem={item} key={i} />
+                ))}
+                <hr className="my-1 border-t-2 border-t-zinc-200" />
+                {cnMenuDefaultLower.map((item, i) => (
+                  <CnMenuItem menuItem={item} key={i} />
+                ))}
+              </>
+            )
+            :
+            (
+              <>
+                Copy
+              </>
+            )
+          }
         </ContextMenu.Content>
       </ContextMenu.Portal>
     </ContextMenu.Root>

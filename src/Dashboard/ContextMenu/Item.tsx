@@ -12,7 +12,7 @@ type cnMenuItemProps = {
 
 const CnMenuItem = ({menuItem}: cnMenuItemProps) => {
   return (
-    <ContextMenu.Item onClick={()=>{menuItem?.func()}} className={`contextMenuItem ${menuItem?.bgOverride? menuItem.bgOverride: "hover:bg-sky-700/60"}`}>
+    <ContextMenu.Item onSelect={()=>{menuItem?.func()}} className={`contextMenuItem ${menuItem?.bgOverride? menuItem.bgOverride: "hover:bg-sky-700/60"}`}>
       <span className="w-full">
         {menuItem?.text}
       </span>

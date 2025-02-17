@@ -24,11 +24,11 @@ const studentInfoSample = {
   classNo: 34
 }
 
-const teacherInfoSample = {
-  role: 'Teacher',
-  id: 'sus',
-  fullname: 'IShowSpeed'
-}
+// const teacherInfoSample = {
+//   role: 'Teacher',
+//   id: 'sus',
+//   fullname: 'IShowSpeed'
+// }
 
 const dashboardTabs = [
   {element: Home, path: 'home'},

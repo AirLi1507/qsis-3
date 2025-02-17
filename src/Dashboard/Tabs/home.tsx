@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom"
-import UserData from "../Data/types.ts"
+import UserData from "../../Data/types.ts"
 
 type tabProps = {
   url: String
