@@ -1,5 +1,6 @@
 import { IconProps, Icon, IconEye, IconEyeOff } from "@tabler/icons-react"
 import { forwardRef, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 interface TextFieldProps {
   textType: "text" | "email" | "password"
@@ -7,6 +8,12 @@ interface TextFieldProps {
   icon: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<Icon>>
   hidden?: boolean
   submitted?: boolean
+}
+
+interface HyperlinkProps {
+  url?: string
+  text: string
+  icon?: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<Icon>>
 }
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
@@ -68,7 +75,8 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
         placeholder:text-slate-400
         text-lg
         w-full
-        bg-transparent
+        bg-[transparent]
+        autofill:bg-transparent
         border-none
         p-2
         pl-0.5
@@ -84,4 +92,28 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
 }
 )
 
-export { TextField }
+const Hyperlink = (prop: HyperlinkProps) => {
+
+  const navigate = useNavigate()
+
+  return (
+    <div className="w-full mt-2.5">
+      <a onClick={()=>{navigate(`${prop.url}`)}} className={`
+          text-sky-800
+          hover:text-sky-50
+          font-semibold
+          w-fit
+          flex
+          hover:drop-shadow-[0_1px_1px_rgba(0,89,138,.5)]
+          duration-200
+          cursor-pointer
+          select-none
+      `}>
+          {prop.icon? <prop.icon stroke={1.75} className="mr-1" /> : <></>}
+          <span>{prop.text}</span>
+      </a>
+    </div>
+  )
+}
+
+export { TextField, Hyperlink }

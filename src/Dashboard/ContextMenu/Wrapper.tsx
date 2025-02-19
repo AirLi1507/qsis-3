@@ -1,6 +1,6 @@
 import { ContextMenu } from "radix-ui";
 import CnMenuItem from "./Item";
-import { cnMenuDefaultUpper, cnMenuDefaultLower } from "./Menu";
+import { Menus } from "./Menu";
 
 type WrapperProps = {
   children: React.ReactNode
@@ -20,11 +20,11 @@ const CnMenuWrapper = ({children}: WrapperProps) =>{
             
             (
               <>
-                {cnMenuDefaultUpper.map((item, i) => (
+                {Menus()[0].map((item, i) => (
                   <CnMenuItem menuItem={item} key={i} />
                 ))}
                 <hr className="my-1 border-t-2 border-t-zinc-200" />
-                {cnMenuDefaultLower.map((item, i) => (
+                {Menus()[1].map((item, i) => (
                   <CnMenuItem menuItem={item} key={i} />
                 ))}
               </>

@@ -36,7 +36,6 @@ const NavItem = ({tab, children}: NavItemProps) => {
         ${isTab ? "text-zinc-50" : ""}
         w-[240px]
         md:w-[260px]
-        mt-[1px]
         ${isTab ? "bg-sky-700/60" : "hover:bg-sky-700/15 active:bg-sky-700/30"}
         rounded-full
         py-3

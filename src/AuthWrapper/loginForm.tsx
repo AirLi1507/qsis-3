@@ -2,44 +2,34 @@ import { FormEvent, useRef, useState } from "react";
 import Logo from "../Branding/logo.tsx"
 import FormWrapper from "./formWrapper.tsx"
 import { IconKey, IconLockQuestion, IconUser } from '@tabler/icons-react';
+import { Hyperlink, TextField } from "./components.tsx";
 import { useNavigate } from "react-router-dom";
-import { TextField } from "./components.tsx";
 
 const LoginForm = () => {
+
+    const navigate = useNavigate()
+
     const formRef = useRef<HTMLFormElement>(null)
+
+    const usernameRef = useRef<HTMLInputElement>(null)
+    const passwordRef = useRef<HTMLInputElement>(null)
 
     const [isSubmitted, setSubmit] = useState(false)
 
-    const navigate = useNavigate()
- 
     function login(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        alert('login idk lol')
-        console.log('login idk lol')
+        if (usernameRef?.current?.value === "user@local" && passwordRef?.current?.value === "password") {
+            navigate('/dashboard')
+        }
     }
 
     return (
         <FormWrapper func={(e)=>{login(e)}} ref={formRef}>
             <Logo logoSize={40} className="mt-8" />
             <span className="text-blue-800 text-[2.5rem] font-bold mt-5">QSIS 3</span>
-            <TextField textType="email" icon={IconUser} placeholder="Username" submitted={isSubmitted} />
-            <TextField textType="password" icon={IconKey} placeholder="Password" submitted={isSubmitted} />
-            <div className="w-full mt-2.5">
-                <a onClick={()=>{navigate('/dashboard')}} className={`
-                    text-sky-800
-                    hover:text-sky-50
-                    font-semibold
-                    w-fit
-                    flex
-                    hover:drop-shadow-[0_1px_1px_rgba(0,89,138,.5)]
-                    duration-200
-                    cursor-pointer
-                    select-none
-                `}>
-                    <IconLockQuestion stroke={1.75} className="mr-1" />
-                    <span>Forget password?</span>
-                </a>
-            </div>
+            <TextField textType="email" icon={IconUser} placeholder="Username" submitted={isSubmitted} ref={usernameRef}/>
+            <TextField textType="password" icon={IconKey} placeholder="Password" submitted={isSubmitted} ref={passwordRef} />
+            <Hyperlink text="Forget password?" url="/login" icon={IconLockQuestion} />
             <input type="submit" value="Login" onClick={()=>{setSubmit(true)}} className={`
                 text-sky-800
                 hover:text-teal-50
