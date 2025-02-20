@@ -40,7 +40,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
       ${
         props.submitted
         ? 
-        `has-[:invalid]:border-red-600/50`
+        `has-[:invalid]:border-rose-400`
         :
         ``
       }
@@ -68,6 +68,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
           :
           `${props.textType}`
         }
+        autoCapitalize="none"
         name={props.textType.toString()}
         placeholder={props.placeholder}
         minLength={isPassword ? 8 : undefined}
@@ -75,9 +76,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
         placeholder:text-slate-400
         text-lg
         w-full
-        bg-[transparent]
-        autofill:bg-transparent
-        border-none
+        bg-transparent
         p-2
         pl-0.5
         outline-none
@@ -105,7 +104,7 @@ const Hyperlink = (prop: HyperlinkProps) => {
           w-fit
           flex
           hover:drop-shadow-[0_1px_1px_rgba(0,89,138,.5)]
-          duration-200
+          duration-150
           cursor-pointer
           select-none
       `}>
