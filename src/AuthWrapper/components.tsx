@@ -8,6 +8,7 @@ interface TextFieldProps {
   icon: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<Icon>>
   hidden?: boolean
   submitted?: boolean
+  isCorr?: boolean
 }
 
 interface HyperlinkProps {
@@ -36,13 +37,19 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
       hover:bg-teal-50/55
       focus-within:bg-teal-50/55
       border-2
-      border-sky-50/50
       ${
         props.submitted
         ? 
         `has-[:invalid]:border-rose-400`
         :
         ``
+      }
+      ${
+        props.isCorr
+        ?
+        `border-sky-50/50`
+        :
+        `border-rose-400`
       }
       rounded-md
       shadow-[0_0_4px_inset_rgba(0,0,127,.25)]

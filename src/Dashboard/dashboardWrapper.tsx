@@ -137,7 +137,7 @@ const Dashboard = ({userInfo, children}: DashboardProps) => {
           </div>
         </nav>
         <main className="w-full h-full bg-blue-50 p-3 md:p-5">
-          <span className={`text-sky-700/60 h-full ${navVisibility ? "hidden" : "flex"} flex-col justify-center absolute top-0 -left-1.5`}>
+          <span className={`text-sky-700/60 h-full ${navVisibility ? "hidden" : "flex"} flex-col justify-center absolute top-0 `}>
             <IconChevronCompactRight stroke={2} className="cursor-pointer" onClick={()=>{
               setNavVisibility(true)
             }} />

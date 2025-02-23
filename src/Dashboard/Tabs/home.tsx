@@ -19,12 +19,19 @@ const QuickTabs = ({url, bg, children}: tabProps) => {
         text-white
         w-full
         h-[250px]
+        mt-1
+        //mb-1
         ${bg}
         bg-cover
         bg-no-repeat
+        border-3
+        border-sky-100/72.5
         rounded-2xl
+        shadow-[inset_0_0_8px_rgba(0,0,0,.25)]
         p-2
         cursor-pointer
+        hover:translate-y-[-4.5px]
+        duration-200
     `}>
       {children}
     </a>
@@ -32,6 +39,10 @@ const QuickTabs = ({url, bg, children}: tabProps) => {
 }
 
 const Home = (data: UserData) => {
+
+  const tabArray = [
+    {}
+  ]
 
   return (
     <>
@@ -56,7 +67,7 @@ const Home = (data: UserData) => {
           border-t-3
           border-t-transparent
         " />
-        <div className="grid grid-cols-2 gap-3 pt-3 box-border">
+        <div className="grid grid-cols-2 gap-3 pt-5 pb-3 box-border">
           <QuickTabs bg="bg-blue-200" url="profile">
             {data.role} Profile
           </QuickTabs>

@@ -16,19 +16,21 @@ const LoginForm = () => {
 
     const [isSubmitted, setSubmit] = useState(false)
 
+    const [isCorr, setCorr] = useState(false)
+
     function login(e: FormEvent<HTMLFormElement>) {
-        e.preventDefault()
-        if (usernameRef?.current?.value === "user@local" && passwordRef?.current?.value === "password") {
-            navigate('/dashboard')
-        }
+      e.preventDefault()
+      if (usernameRef?.current?.value === "user@local" && passwordRef?.current?.value === "password") {
+        navigate('/dashboard')
+      } else {setCorr(false); console.log('not corr')}
     }
 
     return (
         <FormWrapper func={(e)=>{login(e)}} ref={formRef}>
             <Logo logoSize={40} className="mt-8" />
             <span className="text-blue-800 text-[2.5rem] font-bold mt-5">QSIS 3</span>
-            <TextField textType="email" icon={IconUser} placeholder="Username" submitted={isSubmitted} ref={usernameRef}/>
-            <TextField textType="password" icon={IconKey} placeholder="Password" submitted={isSubmitted} ref={passwordRef} />
+            <TextField textType="email" icon={IconUser} placeholder="Username" submitted={isSubmitted} isCorr={isSubmitted ? isCorr : true} ref={usernameRef}/>
+            <TextField textType="password" icon={IconKey} placeholder="Password" submitted={isSubmitted} isCorr={isSubmitted ? isCorr : true} ref={passwordRef} />
             <Hyperlink text="Forget password?" url="/login" icon={IconLockQuestion} />
             <input type="submit" value="Login" onClick={()=>{setSubmit(true)}} className={`
                 text-sky-800
