@@ -1,10 +1,16 @@
-const Album = () => {
+import { useNavigate } from "react-router-dom"
+import UserData from "../../Data/types.ts"
 
-  return (
-    <>
-
-    </>
-  )
+const Album = (data: UserData) => {
+  if (data.role !== "Teacher") {
+    navigate('/')
+  } else {
+    return (
+      <div>
+        <span>idk</span>
+      </div>
+    )
+  }
 }
 
 export default Album

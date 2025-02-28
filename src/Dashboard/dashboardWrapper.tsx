@@ -7,7 +7,7 @@ import CnMenuWrapper from "./ContextMenu/Wrapper.tsx";
 
 type DashboardProps = {
   userInfo?: UserData
-  children: React.ReactNode
+  children: ()=>void
 }
 
 type NavItemProps = {
@@ -16,7 +16,7 @@ type NavItemProps = {
 }
 
 const NavItem = ({tab, children}: NavItemProps) => {
-  
+
   const currentTab = window.location.pathname.split('/')[2]
   const navigate = useNavigate()
 
@@ -89,6 +89,7 @@ const Dashboard = ({userInfo, children}: DashboardProps) => {
       {name: "Administration", url: "admin", icon: IconShield}
     )
   }
+
 
   return (
     <CnMenuWrapper>
