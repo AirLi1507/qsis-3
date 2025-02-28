@@ -7,7 +7,7 @@ import CnMenuWrapper from "./ContextMenu/Wrapper.tsx";
 
 type DashboardProps = {
   userInfo?: UserData
-  children: ()=>void
+  children: React.ReactNode
 }
 
 type NavItemProps = {
