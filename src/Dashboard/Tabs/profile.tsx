@@ -1,4 +1,3 @@
-import { Avatar } from "@radix-ui/themes"
 import UserData from "../../Data/types.ts"
 
 const Profile = (data: UserData) => {
@@ -12,7 +11,8 @@ const Profile = (data: UserData) => {
           w-full
           h-[400px]
           mb-2
-          bg-red-400
+          bg-blue-100/50
+          border-b-cyan-300
           rounded-md
           flex
           flex-col
@@ -25,13 +25,29 @@ const Profile = (data: UserData) => {
           lg:px-6
           sm:mr-2
         `}>
-          <Avatar
-            size={"8"}
-            radius="full"
-            fallback="A"
+          <img
+            src=""
+            alt="Student Photo"
+            className="
+              bg-white
+              w-[240px]
+              h-[240px]
+              rounded-lg
+            " 
           />
-          <span>
-            {data.fullname}
+          <span className="
+            text-2xl
+            text-center
+            mt-4
+          ">
+            {data.fullname}<br/>
+            {
+              (data.form && data.class && data.classNo)
+              ?
+              `${data.form.toString() + data.class.toString()}-${data.classNo.toString()}`
+              :
+              ``
+            }
           </span>
         </div>
         <div className={`w-full h-full flex flex-col`}>

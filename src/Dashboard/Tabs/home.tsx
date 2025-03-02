@@ -16,13 +16,13 @@ const QuickTabs = ({url, bg, children}: tabProps) => {
       onClick={()=>{navigate(`/dashboard/${url}`)}}
       className={`
         text-4xl
+        tracking-tight
         text-black
         text-center
         font-bold
         w-full
         h-[250px]
         mt-1
-        //mb-1
         ${bg}
         bg-cover
         bg-no-repeat
@@ -46,11 +46,11 @@ const QuickTabs = ({url, bg, children}: tabProps) => {
 const Home = (data: UserData) => {
 
   const tabArray = [
-    {bg: 'bg-blue-200', url: 'profile', text: `${data.role} Profile`},
     {bg: 'bg-amber-400', url: 'homework', text: "Homework"},
     {bg: 'bg-red-400', url: 'ec', text: "Extension Curriculum"},
-    {bg: 'bg-green-300', url: 'reading', text: "Reading"},
     {bg: 'bg-blue-500', url: 'ss', text: "Subject Selection"},
+    {bg: 'bg-green-300', url: 'reading', text: "Reading"},
+    {bg: 'bg-blue-200', url: 'profile', text: `${data.role} Profile`},
   ]
 
   if (data.role !== "Student") {
