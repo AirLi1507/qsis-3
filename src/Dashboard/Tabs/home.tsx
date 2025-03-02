@@ -15,8 +15,10 @@ const QuickTabs = ({url, bg, children}: tabProps) => {
     <a 
       onClick={()=>{navigate(`/dashboard/${url}`)}}
       className={`
-        text-2xl
-        text-white
+        text-4xl
+        text-black
+        text-center
+        font-bold
         w-full
         h-[250px]
         mt-1
@@ -28,6 +30,9 @@ const QuickTabs = ({url, bg, children}: tabProps) => {
         border-sky-100/72.5
         rounded-2xl
         shadow-[inset_0_0_8px_rgba(0,0,0,.25)]
+        flex
+        justify-center
+        items-center
         p-2
         cursor-pointer
         hover:translate-y-[-4.5px]
@@ -41,8 +46,19 @@ const QuickTabs = ({url, bg, children}: tabProps) => {
 const Home = (data: UserData) => {
 
   const tabArray = [
-    {}
+    {bg: 'bg-blue-200', url: 'profile', text: `${data.role} Profile`},
+    {bg: 'bg-amber-400', url: 'homework', text: "Homework"},
+    {bg: 'bg-red-400', url: 'ec', text: "Extension Curriculum"},
+    {bg: 'bg-green-300', url: 'reading', text: "Reading"},
+    {bg: 'bg-blue-500', url: 'ss', text: "Subject Selection"},
   ]
+
+  if (data.role !== "Student") {
+    tabArray.push(
+      {bg: 'bg-yellow-300', url: 'support', text: "Student Support"},
+      {bg: 'bg-sky-300', url: 'album', text: "Album"}
+    )
+  }
 
   return (
     <>
@@ -68,15 +84,11 @@ const Home = (data: UserData) => {
           border-t-transparent
         " />
         <div className="grid grid-cols-2 gap-3 pt-5 pb-3 box-border">
-          <QuickTabs bg="bg-blue-200" url="profile">
-            {data.role} Profile
-          </QuickTabs>
-          <QuickTabs bg="bg-amber-400" url="homework">Homework</QuickTabs>
-          <QuickTabs bg="bg-red-400" url="ec">Extension Curriculum</QuickTabs>
-          <QuickTabs bg="bg-green-300" url="reading">Reading</QuickTabs>
-          <QuickTabs bg="bg-blue-500" url="ss">Subject Selection</QuickTabs>
-          <QuickTabs bg="bg-yellow-300" url="support">Student Support</QuickTabs>
-          <QuickTabs bg="bg-sky-300" url="album">Album</QuickTabs>
+          {tabArray.map((i,key)=>{
+            return (
+              <QuickTabs bg={i.bg} url={i.url} key={key}>{i.text}</QuickTabs>
+            )
+          })}
         </div>
       </div>  
     </>

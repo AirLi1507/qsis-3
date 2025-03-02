@@ -14,21 +14,22 @@ import Support from './Dashboard/Tabs/support.tsx';
 import Album from './Dashboard/Tabs/album.tsx';
 import Administration from './Dashboard/Tabs/admin.tsx';
 import Settings from './Dashboard/Tabs/settings.tsx';
+import ResetForm from './AuthWrapper/resetForm.tsx';
 
-//const studentInfoSample = {
-//  role: 'Student',
-//  id: 20221234,
-//  fullname: 'This Is ElonMusk',
-//  form: 3,
-//  class: 'A',
- // classNo: 34
-//}
-
-const teacherInfoSample = {
-  role: 'Teacher',
-  id: 'sus',
-  fullname: 'IShowSpeed'
+const studentInfoSample = {
+ role: 'Student',
+ id: 20221234,
+ fullname: 'This Is ElonMusk',
+ form: 3,
+ class: 'A',
+ classNo: 34
 }
+
+// const teacherInfoSample = {
+//   role: 'Teacher',
+//   id: 'sus',
+//   fullname: 'IShowSpeed'
+// }
 
 const dashboardTabs = [
   {element: Home, path: 'home'},
@@ -49,11 +50,12 @@ createRoot(document.getElementById('root')!).render(
       <Routes>
         <Route path='/' element=<Navigate to='/login' /> />
         <Route path='/login' element=<LoginForm /> />
+        <Route path='/reset' element=<ResetForm /> />
         <Route path='/dashboard' element=<Navigate to='/dashboard/home' /> />
         {dashboardTabs.map(function (item, i) {return (
           <Route key={item.path || i} path={`/dashboard/${item.path}`} element={
-            <Dashboard userInfo={teacherInfoSample}>
-              {item.element(teacherInfoSample)}
+            <Dashboard userInfo={studentInfoSample}>
+              {item.element(studentInfoSample)}
             </Dashboard>
           } />
         )})}

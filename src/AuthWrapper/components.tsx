@@ -17,6 +17,11 @@ interface HyperlinkProps {
   icon?: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<Icon>>
 }
 
+type ButtonProps = {
+  func: ()=>void
+  text: string
+}
+
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
 
   let isPassword
@@ -32,7 +37,6 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
       text-sky-800
       text-lg
       w-full
-      mt-4
       bg-teal-50/40
       hover:bg-teal-50/55
       focus-within:bg-teal-50/55
@@ -40,7 +44,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
       ${
         props.submitted
         ? 
-        `has-[:invalid]:border-rose-400`
+        `has-[:invalid]:border-amber-400`
         :
         ``
       }
@@ -103,7 +107,7 @@ const Hyperlink = (prop: HyperlinkProps) => {
   const navigate = useNavigate()
 
   return (
-    <div className="w-full mt-2.5">
+    <div className="w-full">
       <a onClick={()=>{navigate(`${prop.url}`)}} className={`
           text-sky-800
           hover:text-sky-50
@@ -122,4 +126,28 @@ const Hyperlink = (prop: HyperlinkProps) => {
   )
 }
 
-export { TextField, Hyperlink }
+const Button = ({func, text}: ButtonProps) => {
+  return (
+    <input type="submit" value={text} onClick={func} className={`
+      text-sky-800
+      hover:text-teal-50
+      active:text-teal-50
+      text-lg
+      font-bold
+      w-full
+      bg-teal-50/70
+      hover:bg-sky-800/60
+      active:bg-sky-800/60
+      border-2
+      border-sky-50/50
+      hover:border-sky-50/85
+      rounded-md
+      shadow-[0_0_4px_inset_rgba(0,0,127,.25)]
+      p-2
+      duration-300
+      cursor-pointer
+    `} />
+  )
+}
+
+export { TextField, Hyperlink, Button }

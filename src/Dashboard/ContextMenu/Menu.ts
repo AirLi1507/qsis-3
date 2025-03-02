@@ -15,7 +15,7 @@ const Menus = () => {
   
   let cnMenuDefaultLower: Array<any> = [
     {text: 'Page Source', icon: IconCode, bgOverride: 'hover:bg-green-500/75', func: ()=>{window.open("https://github.com/AirLi1507/qsis-3")}},
-    {text: 'Inspect', icon: IconZoomCode, bgOverride: 'hover:bg-amber-500/80', func: ()=>{alert('Press F12 to enable Inspector')}},
+    {text: 'Inspect', icon: IconZoomCode, bgOverride: 'hover:bg-amber-500/85', func: ()=>{alert('Press F12 to enable Inspector')}},
     {text: 'Logout', icon: IconDoorExit, bgOverride: 'hover:bg-rose-400', func: ()=>{navigate('/login')}},
   ]
   

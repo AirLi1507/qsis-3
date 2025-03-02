@@ -80,7 +80,7 @@ const Dashboard = ({userInfo, children}: DashboardProps) => {
     } ${userInfo?.fullname}`, url: "profile", icon: IconUserCircle},
   ]
   
-  if (userInfo?.role === 'Teacher') {
+  if (userInfo?.role !== 'Student') {
     tabsUpper.push(
       {name: "Student Support", url: "support", icon: IconProgressHelp},
       {name: "Album", url: "album", icon: IconPhoto}
@@ -130,18 +130,38 @@ const Dashboard = ({userInfo, children}: DashboardProps) => {
             </div>
           </div>
           <div className="h-full flex flex-col justify-center">
-            <IconChevronCompactLeft stroke={1.5} className="
+            <span className="
+              hover:bg-zinc-400/25
+              rounded-sm
+              py-1
+              mr-1
+              duration-100
               cursor-pointer
             " onClick={()=>{
               setNavVisibility(false)
-            }} />
+            }}>
+              <IconChevronCompactLeft stroke={1.5} />
+            </span>
           </div>
         </nav>
         <main className="w-full h-full bg-blue-50 p-3 md:p-5">
-          <span className={`text-sky-700/60 h-full ${navVisibility ? "hidden" : "flex"} flex-col justify-center absolute top-0 `}>
-            <IconChevronCompactRight stroke={2} className="cursor-pointer" onClick={()=>{
-              setNavVisibility(true)
-            }} />
+          <span className={`
+            h-full
+            ${navVisibility ? "hidden" : "flex"}
+            flex-col
+            justify-center
+            absolute
+            top-0
+            -left-[1.5px]
+            md:left-[3px]`}>
+            <span className="
+              hover:bg-zinc-400/25
+              rounded-md
+              duration-100
+              cursor-pointer
+            " onClick={()=>{setNavVisibility(true)}}>
+              <IconChevronCompactRight stroke={1.5} className="-mx-[5px] my-0.5" />
+            </span>
           </span>
           <div className={`
             w-full

@@ -1,16 +1,18 @@
-import { useNavigate } from "react-router-dom"
+import { Navigate } from "react-router-dom"
 import UserData from "../../Data/types.ts"
 
 const Album = (data: UserData) => {
-  if (data.role !== "Teacher") {
-    navigate('/')
-  } else {
-    return (
-      <div>
-        <span>idk</span>
-      </div>
-    )
-  }
+  const noPerm = data.role == "Student"
+
+  return (
+    noPerm
+    ?
+    <Navigate to='/dashboard' />
+    :
+    <div>
+      <span>idk</span>
+    </div> 
+  )
 }
 
 export default Album
