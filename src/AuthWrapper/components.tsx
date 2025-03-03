@@ -64,13 +64,6 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
       </span>
       <input
         required
-        //type={
-        //  isPassword
-        //  ?
-        //  `${hidden ? "password" : "text"}`
-        //  :
-        //  `${props.textType}`
-        //}
         type={props.textType}
         autoCapitalize="none"
         name={props.textType.toString()}
