@@ -1,9 +1,9 @@
 import { IconProps, Icon, IconEye, IconEyeOff } from "@tabler/icons-react"
-import { forwardRef, useState } from "react"
+import { forwardRef, HTMLInputTypeAttribute, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 interface TextFieldProps {
-  textType: "text" | "email" | "password"
+  textType: HTMLInputTypeAttribute
   placeholder: string
   icon: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<Icon>>
   hidden?: boolean
@@ -18,17 +18,11 @@ interface HyperlinkProps {
 }
 
 type ButtonProps = {
-  func: ()=>void
+  func: () => void
   text: string
 }
 
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
-
-  let isPassword
-
-  if (props.textType.toString() === 'password') {
-    isPassword = true
-  }
 
   const [hidden, setHidden] = useState(true)
 
@@ -41,15 +35,13 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
       hover:bg-teal-50/55
       focus-within:bg-teal-50/55
       border-2
-      ${
-        props.submitted
-        ? 
+      ${props.submitted
+        ?
         `has-[:invalid]:border-amber-400`
         :
         ``
       }
-      ${
-        props.isCorr
+      ${props.isCorr
         ?
         `border-sky-50/50`
         :
@@ -68,21 +60,22 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
         border-r-sky-700  
         px-1
       `}>
-          {<props.icon stroke={1.75} />}
+        {<props.icon stroke={1.75} />}
       </span>
       <input
         required
-        type={
-          isPassword
-          ?
-          `${hidden ? "password" : "text"}`
-          :
-          `${props.textType}`
-        }
+        //type={
+        //  isPassword
+        //  ?
+        //  `${hidden ? "password" : "text"}`
+        //  :
+        //  `${props.textType}`
+        //}
+        type={props.textType}
         autoCapitalize="none"
         name={props.textType.toString()}
         placeholder={props.placeholder}
-        minLength={isPassword ? 8 : undefined}
+        minLength={props.textType === 'password' ? 8 : undefined}
         className={`
         placeholder:text-slate-400
         text-lg
@@ -92,8 +85,8 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
         pl-0.5
         outline-none
       `} ref={ref} />
-      {isPassword ? (
-        <span onClick={(e)=>{e.preventDefault(); setHidden(hidden ? false : true)}} className={`mr-2 cursor-pointer`}>
+      {props.textType === 'password' ? (
+        <span onClick={(e) => { e.preventDefault(); setHidden(hidden ? false : true) }} className={`mr-2 cursor-pointer`}>
           {hidden ? <IconEye stroke={1.75} /> : <IconEyeOff stroke={1.75} />}
         </span>
       ) : ""}
@@ -108,7 +101,7 @@ const Hyperlink = (prop: HyperlinkProps) => {
 
   return (
     <div className="w-full">
-      <a onClick={()=>{navigate(`${prop.url}`)}} className={`
+      <a onClick={() => { navigate(`${prop.url}`) }} className={`
           text-sky-800
           hover:text-sky-50
           font-semibold
@@ -119,14 +112,14 @@ const Hyperlink = (prop: HyperlinkProps) => {
           cursor-pointer
           select-none
       `}>
-          {prop.icon? <prop.icon stroke={1.75} className="mr-1" /> : <></>}
-          <span>{prop.text}</span>
+        {prop.icon ? <prop.icon stroke={1.75} className="mr-1" /> : <></>}
+        <span>{prop.text}</span>
       </a>
     </div>
   )
 }
 
-const Button = ({func, text}: ButtonProps) => {
+const Button = ({ func, text }: ButtonProps) => {
   return (
     <input type="submit" value={text} onClick={func} className={`
       text-sky-800
