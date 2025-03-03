@@ -37,6 +37,7 @@ const QuickTabs = ({url, bg, children}: tabProps) => {
         cursor-pointer
         hover:translate-y-[-4.5px]
         duration-200
+        overflow-hidden
     `}>
       {children}
     </a>
