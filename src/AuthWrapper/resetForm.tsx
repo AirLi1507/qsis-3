@@ -15,12 +15,12 @@ const ResetForm = () => {
   }
 
   return (
-    <FormWrapper func={(e)=>{resetCredentials(e)}} ref={formRef}>
+    <FormWrapper func={(e) => { resetCredentials(e) }} ref={formRef}>
       <Logo logoSize={40} className="mt-8" />
       <span className="text-blue-800 text-[2.5rem] font-bold mt-5">QSIS 3</span>
-      <div className="mt-4 flex flex-col gap-3">
+      <div className="w-full mt-4 flex flex-col gap-3">
         <TextField textType="email" icon={IconMail} placeholder="Email" submitted={isSubmitted} isCorr={true} />
-        <Button func={()=>{setSubmit(true)}} text="Reset" />
+        <Button func={() => setSubmit(true)} text="Reset" />
         <Hyperlink text="Go Back" url="/login" icon={IconSignLeft} />
       </div>
     </FormWrapper>

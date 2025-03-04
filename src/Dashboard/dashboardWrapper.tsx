@@ -15,21 +15,21 @@ type NavItemProps = {
   children: React.ReactNode
 }
 
-const NavItem = ({tab, children}: NavItemProps) => {
+const NavItem = ({ tab, children }: NavItemProps) => {
 
   const currentTab = window.location.pathname.split('/')[2]
   const navigate = useNavigate()
 
   let isTab
 
-  if (currentTab === tab) {isTab = true}
+  if (currentTab === tab) { isTab = true }
 
   return (
     <a
-      onClick={()=>{
+      onClick={() => {
         if (tab !== "logout") {
           navigate(`/dashboard/${tab}`)
-        } else {navigate('/login')}
+        } else { navigate('/login') }
       }}
       className={`
         text-md
@@ -59,34 +59,35 @@ const NavItem = ({tab, children}: NavItemProps) => {
   )
 }
 
-const Dashboard = ({userInfo, children}: DashboardProps) => {
+const Dashboard = ({ userInfo, children }: DashboardProps) => {
 
   const [navVisibility, setNavVisibility] = useState(true)
 
   const tabsUpper = [
-    {name: "Home", url: "home", icon: IconHome},
-    {name: `${userInfo?.role} Profile`, url: "profile", icon: IconAddressBook},
-    {name: "Homework", url: "homework", icon: IconFilePencil},
-    {name: "Extension Curriculum", url: "ec", icon: IconBallBasketball},
-    {name: "Reading", url: "reading", icon: IconBooks},
-    {name: "Subject Selection", url: "ss", icon: IconCheckbox},
+    { name: "Home", url: "home", icon: IconHome },
+    { name: `${userInfo?.role} Profile`, url: "profile", icon: IconAddressBook },
+    { name: "Homework", url: "homework", icon: IconFilePencil },
+    { name: "Extension Curriculum", url: "ec", icon: IconBallBasketball },
+    { name: "Reading", url: "reading", icon: IconBooks },
+    { name: "Subject Selection", url: "ss", icon: IconCheckbox },
   ]
 
   const tabsLower = [
-    {name: "Settings", url: "settings", icon: IconSettings},
-    {name: "Logout", url: "logout", icon: IconDoorExit},
-    {name: `${
-      userInfo?.class ? `${userInfo?.form}${userInfo?.class}-${userInfo?.classNo}` : ``
-    } ${userInfo?.fullname}`, url: "profile", icon: IconUserCircle},
+    { name: "Settings", url: "settings", icon: IconSettings },
+    { name: "Logout", url: "logout", icon: IconDoorExit },
+    {
+      name: `${userInfo?.class ? `${userInfo?.form}${userInfo?.class}-${userInfo?.classNo}` : ``
+        } ${userInfo?.fullname}`, url: "profile", icon: IconUserCircle
+    },
   ]
-  
+
   if (userInfo?.role !== 'Student') {
     tabsUpper.push(
-      {name: "Student Support", url: "support", icon: IconProgressHelp},
-      {name: "Album", url: "album", icon: IconPhoto}
+      { name: "Student Support", url: "support", icon: IconProgressHelp },
+      { name: "Album", url: "album", icon: IconPhoto }
     )
     tabsLower.unshift(
-      {name: "Administration", url: "admin", icon: IconShield}
+      { name: "Administration", url: "admin", icon: IconShield }
     )
   }
 
@@ -108,7 +109,7 @@ const Dashboard = ({userInfo, children}: DashboardProps) => {
               <span className="text-blue-800 text-4xl font-bold select-none">QSIS 3</span>
             </div>
             <div className="lg:h-full flex flex-col">
-              {tabsUpper.map((item, i)=>{
+              {tabsUpper.map((item, i) => {
                 return (
                   <NavItem tab={item.url} key={i}>
                     {<item.icon stroke={1.5} key={i} />}
@@ -117,16 +118,16 @@ const Dashboard = ({userInfo, children}: DashboardProps) => {
                 )
               })}
             </div>
-            <hr className="my-3 rounded-full border-2 border-sky-700/60"/>
+            <hr className="my-3 rounded-full border-2 border-sky-700/60" />
             <div className="pb-3">
-              {tabsLower.map((item, i)=>{
-                  return (
-                    <NavItem tab={item.url} key={i}>
-                      {<item.icon stroke={1.5} key={i} />}
-                      {item.name}
-                    </NavItem>
-                  )
-                })}
+              {tabsLower.map((item, i) => {
+                return (
+                  <NavItem tab={item.url} key={i}>
+                    {<item.icon stroke={1.5} key={i} />}
+                    {item.name}
+                  </NavItem>
+                )
+              })}
             </div>
           </div>
           <div className="h-full flex flex-col justify-center">
@@ -137,9 +138,9 @@ const Dashboard = ({userInfo, children}: DashboardProps) => {
               mr-1
               duration-100
               cursor-pointer
-            " onClick={()=>{
-              setNavVisibility(false)
-            }}>
+            " onClick={() => {
+                setNavVisibility(false)
+              }}>
               <IconChevronCompactLeft stroke={1.5} />
             </span>
           </div>
@@ -159,7 +160,7 @@ const Dashboard = ({userInfo, children}: DashboardProps) => {
               rounded-md
               duration-100
               cursor-pointer
-            " onClick={()=>{setNavVisibility(true)}}>
+            " onClick={() => { setNavVisibility(true) }}>
               <IconChevronCompactRight stroke={1.5} className="-mx-[5px] my-0.5" />
             </span>
           </span>

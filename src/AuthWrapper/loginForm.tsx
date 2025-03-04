@@ -24,7 +24,10 @@ const LoginForm = () => {
     setFormFill(true)
     // Change the below part of code for acutal authentication code
     // This is just for development testing propose
-    if (usernameRef?.current?.value === "user@local" && passwordRef?.current?.value === "password") {
+    if (
+      usernameRef?.current?.value === "user@local"
+      &&
+      passwordRef?.current?.value === "password") {
       navigate('/dashboard')
     } else { setCorr(false) }
   }
