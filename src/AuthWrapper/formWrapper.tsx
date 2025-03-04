@@ -23,6 +23,7 @@ const FormWrapper = forwardRef<HTMLFormElement, Props>((props, ref) => {
           <form className="
               w-[280px]
               lg:w-[300px]
+              xl:w-[320px]
               bg-sky-300/20
               border-2
               border-sky-50/50
