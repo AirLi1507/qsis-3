@@ -13,57 +13,24 @@ interface RadioCardItemProps {
 }
 
 const RadioCard = {
-  Group: forwardRef<HTMLDivElement, RadioCardGroupProps>((props, ref) => {
-    return (
-      <div onClick={(e: React.MouseEvent)=>{
-        console.log(RadioCard.Value)
-      }}>
-        {props.children}
-      </div>
-    )
-  }),
-  Item: ({value, children, defaultClass, checkedClass, uncheckedClass}: RadioCardItemProps) => {
+  Item: forwardRef<HTMLLabelElement, RadioCardItemProps>((props, ref) => {
 
-    const [cardChecked, checkCard] = useState(false)
+    const radio = document.getElementById(props.value)
 
-    function setCardState() {
-      if (RadioCard.Value === value) {
-        checkCard(true)
-      } else {
-        checkCard(false)
-      }
-    }
-
-    useEffect(()=>{
-      setCardState()
-      document.addEventListener("click",()=>{
-        setCardState()
-      })
+    useEffect(() => {
+      console.log(radio?.hasAttribute('checked'))
     })
-    
+
     return (
-      <div
-        className={`
-          radioCard
-          select-none
-          ${defaultClass}
-          ${
-            cardChecked
-            ?
-            checkedClass
-            :
-            uncheckedClass
-          }
-        `}
-        id={value}
-        onClick={(e: React.MouseEvent)=>{
-          RadioCard.Value = value
-        }}>
-        {children}
-      </div>
+      <label className={`
+        radioCard
+        ${radio?.hasAttribute('checked') ? 'bg-blue-300' : 'bg-rose-500'}
+      `} ref={ref}>
+        <input type="radio" value={props.value} id={prop.value} className="scale-0" />
+        <span>{props.children}</span>
+      </label>
     )
-  },
-  Value: ""
+  })
 }
 
 
