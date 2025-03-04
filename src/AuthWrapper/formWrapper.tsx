@@ -2,7 +2,7 @@ import { FormEvent, forwardRef, ReactNode } from 'react';
 
 type Props = {
   children: ReactNode;
-  func: (e: FormEvent<HTMLFormElement>)=>void;
+  func: (e: FormEvent<HTMLFormElement>) => void;
 }
 
 const wh_full = `
@@ -21,7 +21,8 @@ const FormWrapper = forwardRef<HTMLFormElement, Props>((props, ref) => {
       <div className={`backdrop-blur-xl backdrop-brightness-[1.125] p-2 ${wh_full}`} >
         <div className={`rounded-lg shadow-[0_0_8px_inset_rgba(0,0,0,.15)] flex justify-center items-center overflow-scroll ${wh_full} ${bg}`}>
           <form className="
-              w-[300px]
+              w-[280px]
+              lg:w-[300px]
               bg-sky-300/20
               border-2
               border-sky-50/50
@@ -36,8 +37,8 @@ const FormWrapper = forwardRef<HTMLFormElement, Props>((props, ref) => {
               duration-200
               transform-gpu
           "
-          onSubmit={props.func}
-          ref={ref}>
+            onSubmit={props.func}
+            ref={ref}>
             {props.children}
           </form>
         </div>
