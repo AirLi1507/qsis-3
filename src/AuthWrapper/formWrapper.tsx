@@ -23,7 +23,7 @@ const FormWrapper = forwardRef<HTMLFormElement, Props>((props, ref) => {
           <form className="
               w-[280px]
               lg:w-[300px]
-              xl:w-[320px]
+              xl:w-[310px]
               bg-sky-300/20
               border-2
               border-sky-50/50
@@ -42,7 +42,7 @@ const FormWrapper = forwardRef<HTMLFormElement, Props>((props, ref) => {
             ref={ref}>
             {props.children}
           </form>
-        </div>
+        </div>0
       </div>
     </div>
   )
