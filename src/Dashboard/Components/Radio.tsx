@@ -26,7 +26,7 @@ const RadioCard = {
         radioCard
         ${radio?.hasAttribute('checked') ? 'bg-blue-300' : 'bg-rose-500'}
       `} ref={ref}>
-        <input type="radio" value={props.value} id={prop.value} className="scale-0" />
+        <input type="radio" value={props.value} id={props.value} className="scale-0" />
         <span>{props.children}</span>
       </label>
     )
