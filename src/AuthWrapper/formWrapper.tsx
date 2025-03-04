@@ -42,7 +42,7 @@ const FormWrapper = forwardRef<HTMLFormElement, Props>((props, ref) => {
             ref={ref}>
             {props.children}
           </form>
-        </div>0
+        </div>
       </div>
     </div>
   )
