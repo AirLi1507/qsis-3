@@ -1,37 +1,27 @@
-import React, { forwardRef, useEffect, useState } from "react"
-
-interface RadioCardGroupProps {
-  children?: React.ReactNode
-}
+import { useEffect } from "react"
 
 interface RadioCardItemProps {
+  name: string
   value: string
   children?: React.ReactNode
-  defaultClass: string
-  checkedClass: string
-  uncheckedClass: string
+  className?: string
+  checked?: boolean
 }
 
-const RadioCard = {
-  Item: forwardRef<HTMLLabelElement, RadioCardItemProps>((props, ref) => {
-
-    const radio = document.getElementById(props.value)
-
-    useEffect(() => {
-      console.log(radio?.hasAttribute('checked'))
-    })
-
-    return (
-      <label className={`
-        radioCard
-        ${radio?.hasAttribute('checked') ? 'bg-blue-300' : 'bg-rose-500'}
-      `} ref={ref}>
-        <input type="radio" value={props.value} id={props.value} className="scale-0" />
-        <span>{props.children}</span>
-      </label>
-    )
+const RadioCard = (props: RadioCardItemProps) => {
+  useEffect(()=>{
+    props.checked
+    ?
+    document.querySelector(`#${props.value}`)?.setAttribute('checked','true')
+    :
+    undefined
   })
+  return (
+    <label htmlFor={props.value} className={`radioCard ${props.className}`}>
+      <input type="radio" name={props.name} value={props.value} id={props.value} className="hidden" />
+      <span>{props.children}</span>
+    </label>
+  )
 }
-
 
 export { RadioCard }

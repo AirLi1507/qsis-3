@@ -1,28 +1,47 @@
 import { RadioCard } from "../Components/Radio"
 
-const checkedClass = `bg-green-300`
-const uncheckedClass = `bg-sky-500`
-const defaultClass = `
+const cardClass1 = `
   text-lg
   text-white
+  has-checked:bg-blue-400
+  bg-rose-500
   border-2
-  border-sky-600/75
+  border-white/50
   rounded-lg
-  duration-75
+  duration-150
   p-2
+  cursor-pointer
+  select-none
+`
+
+const cardClass2 = `
+  text-md
+  text-black
+  has-checked:text-white
+  has-checked:bg-indigo-600/75
+  hover:bg-indigo-600/15
+  duration-50
+  p-2
+  cursor-pointer
+  select-none
 `
 
 const Settings = () => {
   return (
     <>
       <div className="flex flex-row gap-2 p-3">
-        <RadioCard.Item uncheckedClass={uncheckedClass} checkedClass={checkedClass} defaultClass={defaultClass} value="val1">idk1</RadioCard.Item>
-        <RadioCard.Item uncheckedClass={uncheckedClass} checkedClass={checkedClass} defaultClass={defaultClass} value="val2">idk2</RadioCard.Item>
-        <RadioCard.Item uncheckedClass={uncheckedClass} checkedClass={checkedClass} defaultClass={defaultClass} value="val3">idk3</RadioCard.Item>
-        <RadioCard.Item uncheckedClass={uncheckedClass} checkedClass={checkedClass} defaultClass={defaultClass} value="val4">idk4</RadioCard.Item>
-        <RadioCard.Item uncheckedClass={uncheckedClass} checkedClass={checkedClass} defaultClass={defaultClass} value="val5">idk5</RadioCard.Item>
+        <RadioCard className={cardClass1} name="idk" value="val1">idk1</RadioCard>
+        <RadioCard className={cardClass1} name="idk" value="val2">idk2</RadioCard>
+        <RadioCard className={cardClass1} name="idk" value="val3" checked>idk3</RadioCard>
+        <RadioCard className={cardClass1} name="idk" value="val4">idk4</RadioCard>
+        <RadioCard className={cardClass1} name="idk" value="val5">idk5</RadioCard>
       </div>
-      <RadioCard.Item uncheckedClass="e e" checkedClass="d d" defaultClass="r r" value="s s">e</RadioCard.Item>
+      <hr className="border-t-2 border-t-sky-600/75" />
+      <div className="w-fit mt-3 ml-3 border-2 border-indigo-900 rounded-md flex overflow-hidden box-border">
+        <RadioCard className={cardClass2} name="ik" value="one" checked>1. One</RadioCard>
+        <RadioCard className={cardClass2} name="ik" value="two">2. Two</RadioCard>
+      </div>
+
     </>
   )
 }
