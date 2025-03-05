@@ -17,7 +17,8 @@ const QuickTabs = ({url, bg, children}: tabProps) => {
       className={`
         text-4xl
         tracking-tight
-        text-black
+        text-black/25
+        hover:text-black
         text-center
         font-bold
         w-full
