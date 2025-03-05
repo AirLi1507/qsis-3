@@ -1,5 +1,4 @@
 @import "tailwindcss";
-/* @plugin "@tailwindcss/typography"; */
 
 @source "./AuthWrapper/";
 @source "./Dashboard/";
@@ -14,6 +13,8 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+@custom-variant hover (&:hover);
+
 html {
   overflow: hidden;
   box-sizing: border-box;
@@ -25,7 +26,8 @@ body {
   box-sizing: border-box;
 }
 
-div, main {
+div,
+main {
   scrollbar-width: none;
 }
 
@@ -34,7 +36,7 @@ div, main {
   height: fit-content;
   background-color: var(--color-blue-50);
   border-radius: 8px;
-  box-shadow: 2px 2px 8px rgba(0,0,0,.25);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, .25);
   padding: 4px;
 }
 
@@ -60,7 +62,7 @@ div, main {
   color: white;
 }
 
-input:is(:autofill,:-webkit-autofill) {
+input:is(:autofill, :-webkit-autofill) {
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: var(--color-sky-800) !important;
 }

@@ -118,7 +118,7 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
                 )
               })}
             </div>
-            <hr className="my-3 rounded-full border-2 border-sky-700/60" />
+            <hr className="my-3 border-1 rounded-full border-sky-700/60" />
             <div className="pb-3">
               {tabsLower.map((item, i) => {
                 return (
@@ -167,7 +167,7 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
           <div className={`
             w-full
             h-full
-            border-3
+            border-2
             border-sky-700/60
             rounded-lg
             shadow-[inset_0_0_6px_rgba(0,0,0,.25)]

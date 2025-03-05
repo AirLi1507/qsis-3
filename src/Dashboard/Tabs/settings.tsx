@@ -36,11 +36,11 @@ const Settings = () => {
         <RadioCard className={cardClass1} name="idk" value="val4">idk4</RadioCard>
         <RadioCard className={cardClass1} name="idk" value="val5">idk5</RadioCard>
       </div>
-      <hr className="my-3 border-t-2 border-t-sky-600/75" />
+      <hr className="my-3 border-t-2 border-t-sky-700/60" />
 
-      <div className="w-[100%] border-2 rounded-xl flex flex-row items-center p-4 box-border">
-        <span>Theme</span>
-        <div className="w-fit ml-auto border-2 border-indigo-900 rounded-md flex overflow-hidden box-border scale-[.8]">
+      <div className="w-[100%] border-2 border-sky-700/60 rounded-xl flex flex-row items-center p-4 box-border">
+        <span className="text-lg">Theme</span>
+        <div className="w-fit ml-auto border-2 border-indigo-900 rounded-md flex overflow-hidden box-border">
           <RadioCard className={cardClass2} name="ik" value="one" checked>Light</RadioCard>
           <RadioCard className={cardClass2} name="ik" value="two">Dark</RadioCard>
         </div>
