@@ -15,9 +15,10 @@ export default defineConfig({
     },
   },
   server: {
+    hmr: true,
     allowedHosts: [
       "test-1.hypernix.dev",
       "test-2.hypernix.dev"
     ]
-    }
+  }
 })

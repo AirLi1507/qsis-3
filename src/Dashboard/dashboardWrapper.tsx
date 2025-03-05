@@ -172,10 +172,12 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
             rounded-lg
             shadow-[inset_0_0_6px_rgba(0,0,0,.25)]
             ${navVisibility ? "blur-xl sm:blur-none pointer-events-none sm:pointer-events-auto" : ""}
+            overflow-x-hidden
+            overflow-y-scroll
+            box-border
+            p-3
           `}>
-            <div className="w-full h-full overflow-scroll">
-              {children}
-            </div>
+            {children}
           </div>
         </main>
       </div>
