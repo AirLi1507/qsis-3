@@ -1,7 +1,6 @@
 import UserData from "../../Data/types.ts"
 
 const Profile = (data: UserData) => {
-  console.log(data)
   return (
     <>
       <div className={`w-full h-fit lg:h-full flex flex-col lg:flex-row p-2`}>
@@ -22,13 +21,13 @@ const Profile = (data: UserData) => {
           lg:w-fit
           lg:h-full
           lg:justify-start
-          lg:pt-12
+          lg:pt-8
           lg:px-6
           sm:mr-2
         `}>
           <img
             src={`data:image/jpeg;charset=utf-8;base64,${data.pfp}`}
-            alt="Student Photo"
+            alt="Avatar"
             className="
               bg-white
               min-w-[240px]
@@ -40,7 +39,9 @@ const Profile = (data: UserData) => {
               hover:rounded-4xl
               active:scale-[1.025]
               duration-[.4s]
+              active:duration-[.1s]
               cursor-pointer
+              select-none
             "
           />
           <span className="

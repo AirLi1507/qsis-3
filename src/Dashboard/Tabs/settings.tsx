@@ -32,7 +32,7 @@ const cardClass2 = `
 
 const Settings = () => {
   return (
-    <>
+    <div>
       <div className="flex flex-row gap-2 p-3 overflow-x-scroll">
         <RadioCard className={cardClass1} name="idk" value="val1">idk1</RadioCard>
         <RadioCard className={cardClass1} name="idk" value="val2">idk2</RadioCard>
@@ -40,18 +40,16 @@ const Settings = () => {
         <RadioCard className={cardClass1} name="idk" value="val4">idk4</RadioCard>
         <RadioCard className={cardClass1} name="idk" value="val5">idk5</RadioCard>
       </div>
-      <hr className="border-t-2 border-t-sky-600/75" />
-      <div className="p-3">
-        <div className="w-fit border-2 border-indigo-900 rounded-md flex overflow-hidden box-border">
-          <RadioCard className={cardClass1} name="ik" value="one" checked>1. One</RadioCard>
+      <hr className="my-3 border-t-2 border-t-sky-700/60" />
+      <div className="w-[100%] border-2 border-sky-700/60 rounded-xl flex flex-row items-center p-4 box-border">
+        <span className="text-lg select-none">Theme</span>
+        <div className="w-fit ml-auto border-2 border-indigo-900 rounded-md flex overflow-hidden box-border">
+          <RadioCard className={cardClass2} name="ik" value="one" checked>1. One</RadioCard>
           <RadioCard className={cardClass2} name="ik" value="two">2. Two</RadioCard>
-          <RadioCard className={cardClass2} name="ik" value="three">3. Three</RadioCard>
-          <RadioCard className={cardClass2} name="ik" value="four">4. Four</RadioCard>
-          <RadioCard className={cardClass2} name="ik" value="five">5. Five</RadioCard>
         </div>
-      </div>
 
-    </>
+      </div>
+    </div>
   )
 }
 

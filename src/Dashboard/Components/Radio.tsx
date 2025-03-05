@@ -11,10 +11,10 @@ interface RadioCardItemProps {
 const RadioCard = (props: RadioCardItemProps) => {
   useEffect(() => {
     props.checked
-    ?
-    document.getElementById(props.value)?.setAttribute('checked', 'true')
-    :
-    undefined
+      ?
+      document.getElementById(props.value)?.setAttribute('checked', 'true')
+      :
+      undefined
   })
   return (
     <label htmlFor={props.value} className={`radioCard ${props.className}`}>
