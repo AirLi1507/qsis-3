@@ -9,10 +9,10 @@ interface RadioCardItemProps {
 }
 
 const RadioCard = (props: RadioCardItemProps) => {
-  useEffect(()=>{
+  useEffect(() => {
     props.checked
     ?
-    document.getElementById(props.value)?.setAttribute('checked','true')
+    document.getElementById(props.value)?.setAttribute('checked', 'true')
     :
     undefined
   })

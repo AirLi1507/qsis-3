@@ -7,13 +7,13 @@ type tabProps = {
   children: React.ReactNode
 }
 
-const QuickTabs = ({url, bg, children}: tabProps) => {
+const QuickTabs = ({ url, bg, children }: tabProps) => {
 
   const navigate = useNavigate()
 
   return (
-    <a 
-      onClick={()=>{navigate(`/dashboard/${url}`)}}
+    <a
+      onClick={() => { navigate(`/dashboard/${url}`) }}
       className={`
         text-4xl
         tracking-tight
@@ -48,17 +48,17 @@ const QuickTabs = ({url, bg, children}: tabProps) => {
 const Home = (data: UserData) => {
 
   const tabArray = [
-    {bg: 'bg-amber-400', url: 'homework', text: "Homework"},
-    {bg: 'bg-red-400', url: 'ec', text: "Extension Curriculum"},
-    {bg: 'bg-blue-500', url: 'ss', text: "Subject Selection"},
-    {bg: 'bg-green-300', url: 'reading', text: "Reading"},
-    {bg: 'bg-blue-200', url: 'profile', text: `${data.role} Profile`},
+    { bg: 'bg-amber-400', url: 'homework', text: "Homework" },
+    { bg: 'bg-red-400', url: 'ec', text: "Extension Curriculum" },
+    { bg: 'bg-blue-500', url: 'ss', text: "Subject Selection" },
+    { bg: 'bg-green-300', url: 'reading', text: "Reading" },
+    { bg: 'bg-blue-200', url: 'profile', text: `${data.role} Profile` },
   ]
 
   if (data.role !== "Student") {
     tabArray.push(
-      {bg: 'bg-yellow-300', url: 'support', text: "Student Support"},
-      {bg: 'bg-sky-300', url: 'album', text: "Album"}
+      { bg: 'bg-yellow-300', url: 'support', text: "Student Support" },
+      { bg: 'bg-sky-300', url: 'album', text: "Album" }
     )
   }
 
@@ -86,13 +86,13 @@ const Home = (data: UserData) => {
           border-t-transparent
         " />
         <div className="grid grid-cols-2 gap-3 pt-5 pb-3 box-border">
-          {tabArray.map((i,key)=>{
+          {tabArray.map((i, key) => {
             return (
               <QuickTabs bg={i.bg} url={i.url} key={key}>{i.text}</QuickTabs>
             )
           })}
         </div>
-      </div>  
+      </div>
     </>
   )
 }

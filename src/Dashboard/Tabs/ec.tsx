@@ -1,9 +1,9 @@
 const ExtensionCurriculum = () => {
 
   return (
-    <>
+    <div>
 
-    </>
+    </div>
   )
 }
 

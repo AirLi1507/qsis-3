@@ -1,9 +1,7 @@
 import UserData from "../../Data/types.ts"
 
 const Profile = (data: UserData) => {
-
-  // const firstName = data.fullname.split(" ")[0]
-
+  console.log(data)
   return (
     <>
       <div className={`w-full h-fit lg:h-full flex flex-col lg:flex-row p-2`}>
@@ -12,12 +10,15 @@ const Profile = (data: UserData) => {
           h-[400px]
           mb-2
           bg-blue-100/50
-          border-b-cyan-300
+          border-2
+          border-black/15
+          hover:border-sky-800/75
           rounded-md
           flex
           flex-col
           justify-center
           items-center
+          duration-150
           lg:w-fit
           lg:h-full
           lg:justify-start
@@ -26,35 +27,62 @@ const Profile = (data: UserData) => {
           sm:mr-2
         `}>
           <img
-            src=""
+            src={`data:image/jpeg;charset=utf-8;base64,${data.pfp}`}
             alt="Student Photo"
             className="
               bg-white
-              w-[240px]
-              h-[240px]
-              rounded-lg
-            " 
+              min-w-[240px]
+              max-h-[240px]
+              border-2
+              border-zinc-500
+              active:border-sky-300
+              rounded-xl
+              hover:rounded-4xl
+              active:scale-[1.025]
+              duration-[.4s]
+              cursor-pointer
+            "
           />
           <span className="
             text-2xl
             text-center
             mt-4
           ">
-            {data.fullname}<br/>
+            {data.fullname}<br />
             {
               (data.form && data.class && data.classNo)
-              ?
-              `${data.form.toString() + data.class.toString()}-${data.classNo.toString()}`
-              :
-              ``
+                ?
+                <span className="text-xl">{data.form.toString() + data.class}-{data.classNo.toString()}</span>
+                :
+                null
             }
           </span>
         </div>
         <div className={`w-full h-full flex flex-col`}>
-          <div className={`w-full h-[600px] bg-amber-400 rounded-md`}>
+          <div className={`
+            w-full
+            h-[600px]
+            border-2
+            border-black/15
+            hover:border-sky-800/75
+            rounded-md
+            duration-150
+          `}>
 
           </div>
-          <div className={`w-full h-full mt-2 bg-green-200 rounded-md p-2`}>
+          <div className={`
+            w-full
+            h-[700px]
+            lg:h-full
+            mt-2
+            bg-blue-200
+            border-2
+            border-black/15
+            hover:border-sky-800/75
+            rounded-md
+            p-2
+            duration-150
+          `}>
 
           </div>
         </div>
