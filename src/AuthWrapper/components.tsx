@@ -26,6 +26,8 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
 
   const [hidden, setHidden] = useState(true)
 
+  const isPassword = props.textType === 'password'
+
   return (
     <div className={`
       text-sky-800
@@ -64,7 +66,19 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
       </span>
       <input
         required
-        type={props.textType}
+        type={
+          isPassword
+            ?
+            (
+              hidden
+                ?
+                "password"
+                :
+                "text"
+            )
+            :
+            props.textType
+        }
         autoCapitalize="none"
         name={props.textType.toString()}
         placeholder={props.placeholder}
