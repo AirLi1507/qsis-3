@@ -17,12 +17,6 @@ import Settings from './Dashboard/Tabs/settings.tsx';
 import ResetForm from './AuthWrapper/resetForm.tsx';
 import { studentInfoSample } from './Data/exampleDataSet.ts';
 
-// const teacherInfoSample = {
-//   role: 'Teacher',
-//   id: 'sus',
-//   fullname: 'IShowSpeed'
-// }
-
 const dashboardTabs = [
   { element: Home, path: 'home' },
   { element: Profile, path: 'profile' },

@@ -108,7 +108,7 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
               <Logo logoSize={36} />
               <span className="text-blue-800 text-4xl font-bold select-none">QSIS 3</span>
             </div>
-            <div className="lg:h-full flex flex-col">
+            <div className="flex flex-col duration-150">
               {tabsUpper.map((item, i) => {
                 return (
                   <NavItem tab={item.url} key={i}>
@@ -118,7 +118,7 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
                 )
               })}
             </div>
-            <hr className="my-3 border-1 rounded-full border-sky-700/60" />
+            <hr className="mt-0 lg:mt-auto my-3 border-1 rounded-full border-sky-700/60" />
             <div className="pb-3">
               {tabsLower.map((item, i) => {
                 return (
