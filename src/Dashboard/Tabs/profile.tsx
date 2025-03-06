@@ -25,25 +25,42 @@ const Profile = (data: UserData) => {
           lg:px-6
           sm:mr-2
         `}>
-          <img
-            src={`data:image/jpeg;charset=utf-8;base64,${data.pfp}`}
-            alt="Avatar"
-            className="
-              bg-white
-              min-w-[240px]
-              max-h-[240px]
-              border-2
-              border-zinc-500
-              active:border-sky-300
-              rounded-xl
-              hover:rounded-4xl
-              active:scale-[1.025]
-              duration-[.4s]
-              active:duration-[.1s]
-              cursor-pointer
-              select-none
-            "
-          />
+          <div className="
+            border-2
+            border-zinc-500
+            active:border-sky-300
+            rounded-xl
+            hover:rounded-4xl
+            flex
+            active:scale-[1.025]
+            duration-[.4s]
+            active:duration-[.1s]
+            cursor-pointer
+            overflow-hidden
+          ">
+            <img
+              src={`data:image/jpeg;charset=utf-8;base64,${data.pfp}`}
+              alt="Avatar"
+              className="
+                min-w-[240px]
+                max-w-[240px]
+                min-h-[240px]
+                max-h-[240px]
+                select-none
+              "
+            />
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhB42QBXN3M3heY3e9oMJGMWRWMgG1VmEz9Q&s"
+              className="
+                w-[240px]
+                h-[240px]
+                opacity-0
+                absolute
+                z-10
+              "
+            />
+          </div>
+
           <span className="
             text-2xl
             text-center

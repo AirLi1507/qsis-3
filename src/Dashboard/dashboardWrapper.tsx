@@ -103,7 +103,7 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
           flex-row
           pl-2
         `}>
-          <div className="h-full flex flex-col pt-8 overflow-scroll">
+          <div className="lg:h-full flex flex-col pt-8 overflow-scroll">
             <div className="mt-2 md:mt-6 mb-4 border-b-sky-700 flex flex-col gap-8 items-center pb-4">
               <Logo logoSize={36} />
               <span className="text-blue-800 text-4xl font-bold select-none">QSIS 3</span>
@@ -118,7 +118,7 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
                 )
               })}
             </div>
-            <hr className="mt-0 lg:mt-auto my-3 border-1 rounded-full border-sky-700/60" />
+            <hr className="my-3 xl:mt-auto border-1 rounded-full border-sky-700/60" />
             <div className="pb-3">
               {tabsLower.map((item, i) => {
                 return (
