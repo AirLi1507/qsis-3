@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { IconAddressBook, IconBallBasketball, IconBooks, IconCheckbox, IconChevronCompactLeft, IconChevronCompactRight, IconDoorExit, IconFilePencil, IconHome, IconPhoto, IconProgressHelp, IconSettings, IconShield, IconUserCircle } from "@tabler/icons-react";
 import Logo from "../Branding/logo.tsx";
 import UserData from "../Data/types.ts";
-import CnMenuWrapper from "./ContextMenu/Wrapper.tsx";
+// import CnMenuWrapper from "./ContextMenu/Wrapper.tsx";
 
 type DashboardProps = {
   userInfo?: UserData
