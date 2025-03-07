@@ -93,7 +93,7 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
 
 
   return (
-    <CnMenuWrapper>
+    // <CnMenuWrapper>
       <div className="w-svw h-svh flex">
         <nav className={`
           bg-sky-50
@@ -181,7 +181,7 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
           </div>
         </main>
       </div>
-    </CnMenuWrapper>
+    // </CnMenuWrapper>
   )
 }
 

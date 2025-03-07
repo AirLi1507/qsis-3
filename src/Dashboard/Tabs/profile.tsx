@@ -5,7 +5,7 @@ const Profile = (data: UserData) => {
     <>
       <div className={`w-full h-fit lg:h-full flex flex-col lg:flex-row p-2`}>
         <div className={`
-          w-full
+          //w-full
           h-[400px]
           mb-2
           bg-blue-100/50
@@ -54,6 +54,7 @@ const Profile = (data: UserData) => {
               className="
                 w-[240px]
                 h-[240px]
+                rounded-4xl
                 opacity-0
                 absolute
                 z-10
