@@ -1,5 +1,27 @@
 import UserData from "../../Data/types.ts"
 
+type CountBlocksProps = {
+  children?: React.ReactNode
+}
+
+const homeworkData = {}
+
+const CountBlocks = ({ children }: CountBlocksProps) => {
+  return (
+    <div className="
+      bg-blue-100/45
+      border-2
+      border-black/15
+      hover:border-sky-800/75
+      rounded-lg
+      flex-1
+      duration-150
+    ">
+      {children}
+    </div>
+  )
+}
+
 const Homework = (data: UserData) => {
 
   return (
@@ -13,36 +35,9 @@ const Homework = (data: UserData) => {
         lg:flex-row
         gap-2
       ">
-        <div className="
-          bg-blue-100/45
-          border-2
-          border-black/15
-          hover:border-sky-800/75
-          rounded-lg
-          flex-1
-          duration-150
-        ">
-        </div>
-        <div className="
-          bg-blue-100/45
-          border-2
-          border-black/15
-          hover:border-sky-800/75
-          rounded-lg
-          flex-1
-          duration-150
-        ">
-        </div>
-        <div className="
-          bg-blue-100/45
-          border-2
-          border-black/15
-          hover:border-sky-800/75
-          rounded-lg
-          flex-1
-          duration-150
-        ">
-        </div>
+        <CountBlocks></CountBlocks>
+        <CountBlocks></CountBlocks>
+        <CountBlocks></CountBlocks>
       </div>
       <div className="
         w-full
@@ -55,7 +50,6 @@ const Homework = (data: UserData) => {
         lg:flex-7
         duration-150
       ">
-
       </div>
     </div>
   )
