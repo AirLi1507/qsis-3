@@ -22,11 +22,11 @@ const Profile = (data: UserData) => {
           lg:justify-start
           lg:pt-8
           lg:px-6
-          sm:mr-2
+          lg:mr-2
         `}>
           <div className="
-            w-[240px]
-            h-[240px]
+            max-w-[240px]
+            max-h-[240px]
             border-2
             border-zinc-500
             active:border-sky-300
@@ -38,14 +38,15 @@ const Profile = (data: UserData) => {
             active:duration-[.1s]
             cursor-pointer
             overflow-hidden
+            box-border
           ">
             <img
               src={`data:image/jpeg;charset=utf-8;base64,${data.pfp}`}
               alt="Avatar"
               className="
                 min-w-[240px]
-                max-w-[240px]
                 min-h-[240px]
+                max-w-[240px]
                 max-h-[240px]
                 select-none
               "
@@ -62,7 +63,6 @@ const Profile = (data: UserData) => {
               "
             />
           </div>
-
           <span className="
             text-sky-950
             text-2xl

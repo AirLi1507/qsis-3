@@ -3,7 +3,7 @@ import UserData from "../../Data/types.ts"
 const Homework = (data: UserData) => {
 
   return (
-    <div className="h-full flex flex-col gap-2">
+    <div className="w-full h-[500px] flex flex-col gap-2">
       <div className="
         w-full
         flex
