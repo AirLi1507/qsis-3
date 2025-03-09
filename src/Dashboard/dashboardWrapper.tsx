@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IconAddressBook, IconBallBasketball, IconBooks, IconCheckbox, IconChevronCompactLeft, IconChevronCompactRight, IconDoorExit, IconFilePencil, IconHome, IconPhoto, IconProgressHelp, IconSettings, IconShield, IconUserCircle } from "@tabler/icons-react";
 import Logo from "../Branding/logo.tsx";
 import UserData from "../Data/types.ts";
@@ -91,6 +91,17 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
     )
   }
 
+  const localConfig = JSON.parse(localStorage.getItem('userPreference') as string)
+
+  const theme = localConfig ? localConfig[0].theme : 0
+
+  useEffect(()=>{
+    if (theme == 0) {
+      document.getElementById('root')?.classList.remove('dark')
+    } else {
+      document.getElementById('root')?.classList.add('dark')
+    }
+  },[])
 
   return (
     // <CnMenuWrapper>

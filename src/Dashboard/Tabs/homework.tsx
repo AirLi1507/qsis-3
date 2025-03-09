@@ -11,10 +11,13 @@ const CountBlocks = (props: CountBlocksProps) => {
   return (
     <div className={`
       text-sky-900
+      dark:text-sky-500
       text-xl
       bg-blue-100/45
+      dark:bg-transparent
       border-2
       border-black/15
+      dark:border-zinc-600
       rounded-lg
       flex
       items-center
@@ -27,7 +30,7 @@ const CountBlocks = (props: CountBlocksProps) => {
         ?
         props.hoverOverride
         :
-        "hover:border-sky-800/75"
+        "hover:border-sky-800/75 dark:hover:border-sky-500"
       }
     `}>
       {props.children}
@@ -50,10 +53,11 @@ const Homework = (data: UserData) => {
         lg:flex-row
         gap-2
       ">
-        <CountBlocks hoverOverride="hover:border-emerald-600 hover:text-emerald-600">
+        <CountBlocks hoverOverride="hover:border-emerald-600 hover:text-emerald-600 dark:hover:border-emerald-400 dark:hover:text-emerald-400">
           Submitted:
           <span className="
             text-emerald-600
+            dark:text-emerald-400
             text-2xl
             font-bold
             ml-auto
@@ -97,9 +101,12 @@ const Homework = (data: UserData) => {
       <div className="
         w-full
         bg-sky-200/35
+        dark:bg-blue-950/25
         border-2
         border-black/15
+        dark:border-zinc-600
         hover:border-sky-900/85
+        dark:hover:border-sky-400
         rounded-lg
         flex-1
         lg:flex-7

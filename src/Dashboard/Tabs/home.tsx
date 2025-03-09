@@ -126,7 +126,7 @@ const Home = (data: UserData) => {
                     overflow-hidden
                   `}
                 >
-                  <span className="p-1">{subject.name}</span>
+                  <span className="text-sm lg:text-lg mr-auto p-1">{subject.name}</span>
                   {children}
                 </div>
               ), <></>)}
@@ -259,6 +259,7 @@ const Home = (data: UserData) => {
       <div className="w-full h-full p-2 md:p-3 box-border">
         <span className="
           text-transparent
+          dark:text-[#60a3cb]
           text-4xl
           lg:text-[2.5rem]
           font-bold
@@ -276,6 +277,7 @@ const Home = (data: UserData) => {
           bg-clip-border
           border-t-3
           border-t-transparent
+          dark:border-t-[#60a3cb]
         " />
         <div className="grid grid-cols-2 gap-3 pt-5 pb-3 box-border">
           {tabArray.map((i, key) => {

@@ -52,6 +52,7 @@ const Settings = () => {
     } else {
       document.getElementById('root')?.classList.add('dark')
     }
+    localStorage.setItem('userPreference', JSON.stringify(userPref))
   }
 
   return (
