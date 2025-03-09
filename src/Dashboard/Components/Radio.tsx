@@ -12,7 +12,7 @@ const RadioCard = (props: RadioCardItemProps) => {
   useEffect(() => {
     props.checked
       ?
-      document.getElementById(props.value)?.setAttribute('checked', 'true')
+      (document.getElementById(props.value) as HTMLInputElement).checked = true
       :
       undefined
   })
