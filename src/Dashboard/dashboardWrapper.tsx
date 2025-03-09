@@ -93,7 +93,7 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
 
   const localConfig = JSON.parse(localStorage.getItem('userPreference') as string)
 
-  const theme = localConfig ? localConfig[0].theme : 0
+  const theme = localConfig ? localConfig.theme : 0
 
   useEffect(()=>{
     if (theme == 0) {
