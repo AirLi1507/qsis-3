@@ -8,9 +8,12 @@ const Profile = (data: UserData) => {
           h-[400px]
           mb-2
           bg-blue-100/50
+          dark:bg-blue-100/5
           border-2
           border-black/15
           hover:border-sky-800/75
+          dark:border-zinc-600
+          dark:hover:border-sky-400
           rounded-md
           flex
           flex-col
@@ -49,6 +52,7 @@ const Profile = (data: UserData) => {
                 max-w-[240px]
                 max-h-[240px]
                 select-none
+                pointer-events-none
               "
             />
             <img
@@ -65,6 +69,7 @@ const Profile = (data: UserData) => {
           </div>
           <span className="
             text-sky-950
+            dark:text-sky-600
             text-2xl
             text-center
             mt-4
@@ -87,6 +92,8 @@ const Profile = (data: UserData) => {
             border-2
             border-black/15
             hover:border-sky-800/75
+            dark:border-zinc-600
+            dark:hover:border-sky-400
             rounded-md
             duration-150
           `}>
@@ -98,9 +105,12 @@ const Profile = (data: UserData) => {
             lg:h-full
             mt-2
             bg-blue-200
+            dark:bg-blue-200/20
             border-2
             border-black/15
             hover:border-sky-800/75
+            dark:border-zinc-600
+            dark:hover:border-sky-400
             rounded-md
             p-2
             duration-150

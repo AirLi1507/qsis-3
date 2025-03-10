@@ -121,7 +121,7 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
           pl-2
           duration-200
         `}>
-          <div className="h-fit xl:h-full flex flex-col pt-8 overflow-scroll">
+          <div className="xl:h-full flex flex-col pt-8 overflow-y-scroll">
             <div className="mt-2 md:mt-6 mb-4 border-b-sky-700 flex flex-col gap-8 items-center pb-4">
               <Logo logoSize={36} />
               <span className="text-blue-800 dark:text-blue-500 text-4xl font-bold select-none duration-200">QSIS 3</span>
