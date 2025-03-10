@@ -20,7 +20,7 @@ const QuickTabs = ({ url, bg, children }: tabProps) => {
         } else {
           setTimeout(() => {
             navigate(`/dashboard/${url}`)
-          }, 200);
+          }, 250);
         }
       }}
       className={`
@@ -84,27 +84,26 @@ const Home = (data: UserData) => {
       url: 'homework',
       content: () => {
         const subjectArray = [
-          {bg: "bg-rose-500", name: "Chinese", outer: true},
-          {bg: "bg-green-600", name: "English"},
-          {bg: "bg-yellow-500", name: "Mathematics"},
-          {bg: "bg-indigo-400", name: "Integrated Science"},
-          {bg: "bg-purple-600", name: "Integrated Humanities"}
+          { bg: "bg-rose-500", name: "Chinese", outer: true },
+          { bg: "bg-green-600", name: "English" },
+          { bg: "bg-yellow-500", name: "Mathematics" },
+          { bg: "bg-indigo-400", name: "Integrated Science" },
+          { bg: "bg-purple-600", name: "Integrated Humanities" }
         ]
 
         return (
           <div className="w-full h-full bg-blue-50 flex">
             <div className="w-full bg-amber-400/50 flex flex-col">
-            <span className="bg-black/25 py-2">Homework</span>
+              <span className="bg-black/25 py-2">Homework</span>
               {subjectArray
-              .slice()
-              .reverse()
-              .reduce((children, subject) => (
-                <div
-                  className={`
-                    ${
-                      subject.outer
-                      ?
-                      `
+                .slice()
+                .reverse()
+                .reduce((children, subject) => (
+                  <div
+                    className={`
+                    ${subject.outer
+                        ?
+                        `
                       text-lg
                       text-start
                       w-[70%]
@@ -112,12 +111,12 @@ const Home = (data: UserData) => {
                       mx-auto
                       mt-auto
                       `
-                      :
-                      `
+                        :
+                        `
                       w-full
                       h-full
                       `
-                    }
+                      }
                     ${subject.bg}
                     rounded-t-xl
                     shadow-[0_0_8px_rgba(0,0,0,.25)]
@@ -125,11 +124,11 @@ const Home = (data: UserData) => {
                     flex-col
                     overflow-hidden
                   `}
-                >
-                  <span className="text-sm lg:text-lg mr-auto p-1">{subject.name}</span>
-                  {children}
-                </div>
-              ), <></>)}
+                  >
+                    <span className="text-sm lg:text-lg mr-auto p-1">{subject.name}</span>
+                    {children}
+                  </div>
+                ), <></>)}
             </div>
 
           </div>
@@ -220,7 +219,7 @@ const Home = (data: UserData) => {
       content: () => {
         return (
           <>
-          
+
           </>
         )
       }
@@ -235,7 +234,7 @@ const Home = (data: UserData) => {
         content: () => {
           return (
             <>
-            
+
             </>
           )
         }
@@ -246,7 +245,7 @@ const Home = (data: UserData) => {
         content: () => {
           return (
             <>
-            
+
             </>
           )
         }
