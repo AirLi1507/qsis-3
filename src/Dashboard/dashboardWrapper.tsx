@@ -91,6 +91,10 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
     )
   }
 
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    localStorage.setItem('userPreference',JSON.stringify({theme: event.matches ? 1 : 0}))
+  });
+
   const localConfig = JSON.parse(localStorage.getItem('userPreference') as string)
 
   const theme = localConfig ? localConfig.theme : 0
