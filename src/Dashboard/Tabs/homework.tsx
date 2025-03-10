@@ -1,18 +1,15 @@
-import UserData from "../../Data/types.ts"
-
 type CountBlocksProps = {
   children?: React.ReactNode
   hoverOverride?: string
 }
-
-//const homeworkData = {}
 
 const CountBlocks = (props: CountBlocksProps) => {
   return (
     <div className={`
       text-sky-900
       dark:text-sky-500
-      text-xl
+      text-lg
+      xl:text-xl
       bg-blue-100/45
       dark:bg-transparent
       border-2
@@ -25,8 +22,7 @@ const CountBlocks = (props: CountBlocksProps) => {
       p-3
       duration-150
       select-none
-      ${
-        props.hoverOverride
+      ${props.hoverOverride
         ?
         props.hoverOverride
         :
@@ -38,9 +34,7 @@ const CountBlocks = (props: CountBlocksProps) => {
   )
 }
 
-const Homework = (data: UserData) => {
-
-  console.log(data?'':'')
+const Homework = () => {
 
   return (
     <div className="w-full h-[500px] flex flex-col gap-2">

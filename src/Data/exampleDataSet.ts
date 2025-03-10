@@ -119,7 +119,7 @@ dVM/5SkkrRmhuIzTEkkwrPCO0LycXXJJJ+NUzvk5wHoB5KsfmkkpH2BdA1XIrozSSXBHVc1HU+Xx
 +6SSBw4aJJJInH//2Q==`
 
 const studentInfoSample = {
-  role: "Student",
+  role: "Teacher",
   id: 20251234,
   pfp: examplePfp,
   fullname: "This Is ElonMusk",
