@@ -11,7 +11,7 @@ const CountBlocks = (props: CountBlocksProps) => {
       text-lg
       xl:text-xl
       bg-blue-100/45
-      dark:bg-transparent
+      dark:bg-blue-950/5
       border-2
       border-black/15
       dark:border-zinc-600
@@ -43,8 +43,8 @@ const Homework = () => {
         flex
         flex-col
         flex-1
-        lg:flex-2
-        lg:flex-row
+        xl:flex-2
+        xl:flex-row
         gap-2
       ">
         <CountBlocks hoverOverride="hover:border-emerald-600 hover:text-emerald-600 dark:hover:border-emerald-400 dark:hover:text-emerald-400">
