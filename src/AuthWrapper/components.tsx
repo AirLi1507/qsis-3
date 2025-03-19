@@ -39,7 +39,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>((props, ref) => {
       border-2
       ${props.submitted
         ?
-        `has-[:invalid]:border-amber-400`
+        `has-[:invalid]:border-yellow-400/75`
         :
         ``
       }

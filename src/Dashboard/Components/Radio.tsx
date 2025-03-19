@@ -5,16 +5,12 @@ interface RadioCardItemProps {
   value: string
   children?: React.ReactNode
   className?: string
-  checked?: boolean
+  checked?: () => boolean
 }
 
 const RadioCard = (props: RadioCardItemProps) => {
   useEffect(() => {
-    props.checked
-      ?
-      (document.getElementById(props.value) as HTMLInputElement).checked = true
-      :
-      undefined
+    (document.getElementById(props.value) as HTMLInputElement).checked = props.checked!()
   })
   return (
     <label htmlFor={props.value} className={`radioCard ${props.className}`}>
