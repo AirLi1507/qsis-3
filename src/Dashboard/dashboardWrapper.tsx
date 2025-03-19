@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { IconAddressBook, IconBallBasketball, IconBooks, IconCheckbox, IconChevronCompactLeft, IconChevronCompactRight, IconDoorExit, IconFilePencil, IconHome, IconPhoto, IconProgressHelp, IconSettings, IconShield, IconUserCircle } from "@tabler/icons-react";
 import Logo from "../Branding/logo.tsx";
 import UserData from "../Data/types.ts";
-// import CnMenuWrapper from "./ContextMenu/Wrapper.tsx";
+import CnMenuWrapper from "./ContextMenu/Wrapper.tsx";
 
 type DashboardProps = {
   userInfo: UserData
@@ -113,9 +113,9 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
   }, [])
 
   return (
-    // <CnMenuWrapper>
-    <div className="dark:text-white w-svw h-svh flex">
-      <nav className={`
+    <CnMenuWrapper>
+      <div className="dark:text-white w-svw h-svh flex">
+        <nav className={`
           bg-sky-50
           dark:bg-slate-950/97.5 
           border-r-1
@@ -126,35 +126,35 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
           pl-2
           duration-200
         `}>
-        <div className="xl:h-full flex flex-col pt-8 overflow-y-scroll">
-          <div className="mt-2 md:mt-6 mb-4 border-b-sky-700 flex flex-col gap-8 items-center pb-4">
-            <Logo logoSize={36} />
-            <span className="text-blue-800 dark:text-blue-500 text-4xl font-bold select-none duration-200">QSIS 3</span>
+          <div className="xl:h-full flex flex-col pt-8 overflow-y-scroll">
+            <div className="mt-2 md:mt-6 mb-4 border-b-sky-700 flex flex-col gap-8 items-center pb-4">
+              <Logo logoSize={36} />
+              <span className="text-blue-800 dark:text-blue-500 text-4xl font-bold select-none duration-200">QSIS 3</span>
+            </div>
+            <div className="flex flex-col duration-150">
+              {tabsUpper.map((item, i) => {
+                return (
+                  <NavItem tab={item.url} key={i}>
+                    {<item.icon stroke={1.5} key={i} />}
+                    {item.name}
+                  </NavItem>
+                )
+              })}
+            </div>
+            <hr className="my-3 2xl:mt-auto border-[1.5px] rounded-full border-sky-700/60 dark:border-[#60a3cb]" />
+            <div className="pb-3">
+              {tabsLower.map((item, i) => {
+                return (
+                  <NavItem tab={item.url} key={i}>
+                    {<item.icon stroke={1.5} key={i} />}
+                    {item.name}
+                  </NavItem>
+                )
+              })}
+            </div>
           </div>
-          <div className="flex flex-col duration-150">
-            {tabsUpper.map((item, i) => {
-              return (
-                <NavItem tab={item.url} key={i}>
-                  {<item.icon stroke={1.5} key={i} />}
-                  {item.name}
-                </NavItem>
-              )
-            })}
-          </div>
-          <hr className="my-3 2xl:mt-auto border-[1.5px] rounded-full border-sky-700/60 dark:border-[#60a3cb]" />
-          <div className="pb-3">
-            {tabsLower.map((item, i) => {
-              return (
-                <NavItem tab={item.url} key={i}>
-                  {<item.icon stroke={1.5} key={i} />}
-                  {item.name}
-                </NavItem>
-              )
-            })}
-          </div>
-        </div>
-        <div className="h-full flex flex-col justify-center">
-          <span className="
+          <div className="h-full flex flex-col justify-center">
+            <span className="
               dark:text-white
               hover:bg-zinc-400/25
               rounded-sm
@@ -163,14 +163,14 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
               duration-100
               cursor-pointer
             " onClick={() => {
-              setNavVisibility(false)
-            }}>
-            <IconChevronCompactLeft stroke={1.5} />
-          </span>
-        </div>
-      </nav>
-      <main className="w-full h-full bg-blue-50 dark:bg-slate-950 p-3 md:p-5 duration-200">
-        <span className={`
+                setNavVisibility(false)
+              }}>
+              <IconChevronCompactLeft stroke={1.5} />
+            </span>
+          </div>
+        </nav>
+        <main className="w-full h-full bg-blue-50 dark:bg-slate-950 p-3 md:p-5 duration-200">
+          <span className={`
             h-full
             ${navVisibility ? "hidden" : "flex"}
             flex-col
@@ -179,16 +179,16 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
             top-0
             -left-[1.5px]
             md:left-[3px]`}>
-          <span className="
+            <span className="
               hover:bg-zinc-400/25
               rounded-md
               duration-100
               cursor-pointer
             " onClick={() => { setNavVisibility(true) }}>
-            <IconChevronCompactRight stroke={1.5} className="-mx-[5px] my-0.5" />
+              <IconChevronCompactRight stroke={1.5} className="-mx-[5px] my-0.5" />
+            </span>
           </span>
-        </span>
-        <div className={`
+          <div className={`
             w-full
             h-full
             border-2
@@ -202,14 +202,14 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
             box-border
             p-3
           `}>
-          <div className={`${navVisibility ? "w-full h-full absolute top-0 left-0 z-10 sm:hidden" : "hidden"}`} onClick={() => { setNavVisibility(false) }} />
-          <div className={`w-full h-full ${navVisibility ? "pointer-events-none sm:pointer-events-auto select-none" : ""}`}>
-            {children}
+            <div className={`${navVisibility ? "w-full h-full absolute top-0 left-0 z-10 sm:hidden" : "hidden"}`} onClick={() => { setNavVisibility(false) }} />
+            <div className={`w-full h-full ${navVisibility ? "pointer-events-none sm:pointer-events-auto select-none" : ""}`}>
+              {children}
+            </div>
           </div>
-        </div>
-      </main>
-    </div>
-    // </CnMenuWrapper>
+        </main>
+      </div>
+    </CnMenuWrapper>
   )
 }
 

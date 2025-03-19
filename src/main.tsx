@@ -23,24 +23,32 @@ const routes = [
   { path: '/404', element: <NotFound /> },
   { path: '/login', element: <LoginForm /> },
   { path: '/reset', element: <ResetForm /> },
-  { path: '/dashboard*', element: <Navigate to='/login' /> },
 ]
 
 const DashboardTabs = [
-  { path: '', element: Home },
-  { path: 'profile', element: Profile },
-  { path: 'homework', element: Homework },
-  { path: 'ec', element: ExtensionCurriculum },
-  { path: 'reading', element: Reading },
-  { path: 'ss', element: SubjectSelection },
-  { path: 'settings', element: Settings },
+  [
+    { path: '', element: Home },
+    { path: 'profile', element: Profile },
+    { path: 'homework', element: Homework },
+    { path: 'ec', element: ExtensionCurriculum },
+    { path: 'reading', element: Reading },
+    { path: 'ss', element: SubjectSelection },
+    { path: 'settings', element: Settings },
+  ],
+  [
+    { path: 'support', element: Support },
+    { path: 'album', element: Album },
+    { path: 'admin', element: Administration }
+  ]
 ]
+
+console.log(DashboardTabs)
 
 let DashboardRoutes: Array<any> = []
 
 if (localStorage.getItem('login') === 'true') {
   routes.pop()
-  DashboardTabs.forEach((i) => {
+  DashboardTabs[0].forEach((i) => {
     DashboardRoutes.push(
       {
         path: `/dashboard/${i.path}`,
@@ -51,6 +59,19 @@ if (localStorage.getItem('login') === 'true') {
       }
     )
   })
+  if (studentInfoSample.role !== "Student") {
+    DashboardTabs[1].forEach((i) => {
+      DashboardRoutes.push(
+        {
+          path: `/dashboard/${i.path}`,
+          element:
+            <Dashboard userInfo={{ data: studentInfoSample }} >
+              <i.element data={studentInfoSample} />
+            </Dashboard >
+        }
+      )
+    })
+  }
 }
 
 DashboardRoutes.forEach((i) => { routes.push(i) })
@@ -58,5 +79,3 @@ DashboardRoutes.forEach((i) => { routes.push(i) })
 const router = createBrowserRouter(routes)
 
 createRoot(document.getElementById('root')!).render(<RouterProvider router={router} />)
-
-

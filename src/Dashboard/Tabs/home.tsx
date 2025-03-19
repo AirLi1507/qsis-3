@@ -65,7 +65,7 @@ const Home = ({ data }: UserData) => {
           <>
             <span className="bg-black/25 py-2">{data.role} Profile</span>
             <div className="
-              h-[40%]
+              h-[50%]
               my-auto
               bg-white
               shadow-[inset_0_0_4px_rgba(0,0,0,.5)]
@@ -147,21 +147,27 @@ const Home = ({ data }: UserData) => {
               h-[55%]
               lg:h-[65%]
               m-auto
-              bg-white
+              bg-zinc-200
               rounded-2xl
               shadow-[inset_0_0_4px_rgba(0,0,0,.25)]
               flex
               overflow-hidden
             ">
               <div className="
+                w-full
+                h-fit
                 m-auto
+                bg-white
                 grid
                 grid-cols-2
                 lg:flex
                 lg:flex-row
                 gap-2
+                justify-center
+                items-center
                 lg:scale-110
                 xl:scale-125
+                py-8
               ">
                 <IconBallBasketball className="text-amber-600" />
                 <IconBallFootball className="text-blue-950" />
