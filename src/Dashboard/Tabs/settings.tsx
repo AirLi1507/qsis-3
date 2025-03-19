@@ -1,3 +1,4 @@
+import UserData from "../../Data/types"
 import { RadioCard } from "../Components/Radio"
 
 const cardClass2 = `
@@ -17,7 +18,7 @@ const cardClass2 = `
   select-none
 `
 
-const Settings = () => {
+const Settings = ({ data }: UserData) => {
 
   const localConfig = JSON.parse(localStorage.getItem('userPreference') as string)
 
@@ -44,7 +45,7 @@ const Settings = () => {
     <div>
       <div className="w-[100%] border-2 border-sky-700/60 dark:border-zinc-600 dark:hover:border-[#60a3cb] rounded-xl flex flex-row items-center p-4 duration-150">
         <span className="text-lg select-none">Theme</span>
-        <div className="w-fit ml-auto border-2 border-indigo-900 rounded-md flex overflow-hidden box-border" onClick={()=>{setTheme()}}>
+        <div className="w-fit ml-auto border-2 border-indigo-900 rounded-md flex overflow-hidden box-border" onClick={() => { setTheme() }}>
           <RadioCard className={cardClass2} name="theme" value="0" checked={0 == localConfig?.theme}>Light</RadioCard>
           <RadioCard className={cardClass2} name="theme" value="1" checked={1 == localConfig?.theme}>Dark</RadioCard>
         </div>

@@ -1,6 +1,6 @@
 import UserData from "../../Data/types.ts"
 
-const Profile = (data: UserData) => {
+const Profile = ({ data }: UserData) => {
   return (
     <>
       <div className={`w-full h-fit lg:h-full flex flex-col lg:flex-row p-2`}>

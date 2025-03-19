@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { Navigate, createBrowserRouter, RouterProvider } from 'react-router-dom'
 import LoginForm from './AuthWrapper/loginForm.tsx';
 import NotFound from './AuthWrapper/notfound.tsx';
 import Dashboard from './Dashboard/dashboardWrapper.tsx';
@@ -17,39 +17,46 @@ import Settings from './Dashboard/Tabs/settings.tsx';
 import ResetForm from './AuthWrapper/resetForm.tsx';
 import { studentInfoSample } from './Data/exampleDataSet.ts';
 
-const dashboardTabs = [
-  { element: Home, path: 'home' },
-  { element: Profile, path: 'profile' },
-  { element: Homework, path: 'homework' },
-  { element: ExtensionCurriculum, path: 'ec' },
-  { element: Reading, path: 'reading' },
-  { element: SubjectSelection, path: 'ss' },
-  { element: Support, path: 'support' },
-  { element: Album, path: 'album' },
-  { element: Administration, path: 'admin' },
-  { element: Settings, path: 'settings' },
+const routes = [
+  { path: '/', element: <Navigate to='/login' /> },
+  { path: '/*', element: <Navigate to='/404' /> },
+  { path: '/404', element: <NotFound /> },
+  { path: '/login', element: <LoginForm /> },
+  { path: '/reset', element: <ResetForm /> },
+  { path: '/dashboard*', element: <Navigate to='/login' /> },
 ]
 
-createRoot(document.getElementById('root')!).render(
-  <>
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element=<Navigate to='/login' /> />
-        <Route path='/login' element=<LoginForm /> />
-        <Route path='/reset' element=<ResetForm /> />
-        <Route path='/dashboard' element=<Navigate to='/dashboard/home' /> />
-        {dashboardTabs.map(function(item, i) {
-          return (
-            <Route key={item.path || i} path={`/dashboard/${item.path}`} element={
-              <Dashboard userInfo={studentInfoSample}>
-                {item.element(studentInfoSample)}
-              </Dashboard>
-            } />
-          )
-        })}
-        <Route path='/404' element=<NotFound /> />
-        <Route path='/*' element=<Navigate to='/404' /> />
-      </Routes>
-    </BrowserRouter>
-  </>
-)
+const DashboardTabs = [
+  { path: '', element: Home },
+  { path: 'profile', element: Profile },
+  { path: 'homework', element: Homework },
+  { path: 'ec', element: ExtensionCurriculum },
+  { path: 'reading', element: Reading },
+  { path: 'ss', element: SubjectSelection },
+  { path: 'settings', element: Settings },
+]
+
+let DashboardRoutes: Array<any> = []
+
+if (localStorage.getItem('login') === 'true') {
+  routes.pop()
+  DashboardTabs.forEach((i) => {
+    DashboardRoutes.push(
+      {
+        path: `/dashboard/${i.path}`,
+        element:
+          <Dashboard userInfo={{ data: studentInfoSample }} >
+            <i.element data={studentInfoSample} />
+          </Dashboard >
+      }
+    )
+  })
+}
+
+DashboardRoutes.forEach((i) => { routes.push(i) })
+
+const router = createBrowserRouter(routes)
+
+createRoot(document.getElementById('root')!).render(<RouterProvider router={router} />)
+
+

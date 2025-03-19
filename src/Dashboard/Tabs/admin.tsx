@@ -1,4 +1,6 @@
-const Administration = () => {
+import UserData from "../../Data/types"
+
+const Administration = ({ data }: UserData) => {
 
   return (
     <>

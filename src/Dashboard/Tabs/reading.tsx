@@ -1,4 +1,6 @@
-const Reading = () => {
+import UserData from "../../Data/types"
+
+const Reading = ({ data }: UserData) => {
 
   return (
     <>

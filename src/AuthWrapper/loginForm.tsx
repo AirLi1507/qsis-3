@@ -1,4 +1,4 @@
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import Logo from "../Branding/logo.tsx"
 import FormWrapper from "./formWrapper.tsx"
 import { IconKey, IconLockQuestion, IconUser } from '@tabler/icons-react';
@@ -8,6 +8,12 @@ import { useNavigate } from "react-router-dom";
 const LoginForm = () => {
 
   const navigate = useNavigate()
+
+  useEffect(() => {
+    if (localStorage.getItem('login') === 'true') {
+      navigate('/dashboard')
+    }
+  })
 
   const formRef = useRef<HTMLFormElement>(null)
 
@@ -27,10 +33,16 @@ const LoginForm = () => {
     if (
       usernameRef?.current?.value === "user@local"
       &&
-      passwordRef?.current?.value === "password") {
-      navigate('/dashboard')
+      passwordRef?.current?.value === "password"
+    ) {
+      setCorr(true)
+      localStorage.setItem('login', 'true')
+      location.replace('/dashboard')
     } else { setCorr(false) }
   }
+
+  useState(() => {
+  })
 
   return (
     <FormWrapper func={(e) => { login(e) }} ref={formRef}>

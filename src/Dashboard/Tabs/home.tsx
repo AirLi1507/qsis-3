@@ -54,7 +54,7 @@ const QuickTabs = ({ url, bg, children }: tabProps) => {
   )
 }
 
-const Home = (data: UserData) => {
+const Home = ({ data }: UserData) => {
 
   const tabArray = [
     {

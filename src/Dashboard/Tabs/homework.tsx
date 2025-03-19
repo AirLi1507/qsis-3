@@ -1,3 +1,5 @@
+import UserData from "../../Data/types"
+
 type CountBlocksProps = {
   children?: React.ReactNode
   hoverOverride?: string
@@ -34,7 +36,7 @@ const CountBlocks = (props: CountBlocksProps) => {
   )
 }
 
-const Homework = () => {
+const Homework = ({ data }: UserData) => {
 
   return (
     <div className="w-full h-[500px] flex flex-col gap-2">
