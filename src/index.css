@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-@source "./AuthWrapper/";
-@source "./Dashboard/";
-
 @font-face {
   font-family: 'Noto Sans';
   font-style: normal;

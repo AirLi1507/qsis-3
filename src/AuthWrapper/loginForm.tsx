@@ -1,19 +1,10 @@
-import { FormEvent, useEffect, useRef, useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import Logo from "../Branding/logo.tsx"
 import FormWrapper from "./formWrapper.tsx"
 import { IconKey, IconLockQuestion, IconUser } from '@tabler/icons-react';
 import { Button, Hyperlink, TextField } from "./components.tsx";
-import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (localStorage.getItem('login') === 'true') {
-      navigate('/dashboard')
-    }
-  })
 
   const formRef = useRef<HTMLFormElement>(null)
 
@@ -41,10 +32,11 @@ const LoginForm = () => {
     } else { setCorr(false) }
   }
 
-  useState(() => {
-  })
-
   return (
+    localStorage.getItem('login') === 'true'
+    ?
+    location.replace('/dashboard')
+    :
     <FormWrapper func={(e) => { login(e) }} ref={formRef}>
       <Logo logoSize={40} className="mt-8" />
       <span className="text-blue-800 text-[2.5rem] font-bold mt-5">QSIS 3</span>

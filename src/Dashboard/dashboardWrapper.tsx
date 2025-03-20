@@ -28,10 +28,10 @@ const NavItem = ({ tab, children }: NavItemProps) => {
     <a
       onClick={() => {
         if (tab !== "logout") {
-          navigate(`/dashboard/${tab}`)
+          navigate(`/dashboard${tab !== '' ? '/' + tab : ''}`)
         } else {
           localStorage.removeItem('login')
-          navigate('/login')
+          location.replace('/login')
         }
       }}
       className={`
