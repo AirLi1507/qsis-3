@@ -17,7 +17,7 @@ import ResetForm from '../AuthWrapper/resetForm.tsx';
 
 const BaseRoutes = [
   { path: '/', element: <Navigate to='/login' /> },
-  { path: '/*', element: <NotFound /> },
+  { path: '*', element: <NotFound /> },
   { path: '/login', element: <LoginForm /> },
   { path: '/reset', element: <ResetForm /> },
 ]

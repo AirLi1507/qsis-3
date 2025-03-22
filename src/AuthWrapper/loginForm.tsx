@@ -33,10 +33,6 @@ const LoginForm = () => {
   }
 
   return (
-    localStorage.getItem('login') === 'true'
-    ?
-    location.replace('/dashboard')
-    :
     <FormWrapper func={(e) => { login(e) }} ref={formRef}>
       <Logo logoSize={40} className="mt-8" />
       <span className="text-blue-800 text-[2.5rem] font-bold mt-5">QSIS 3</span>

@@ -1,43 +1,56 @@
-import { ContextMenu } from "radix-ui";
-import CnMenuItem from "./Item";
-import { Menus } from "./Menu";
-import { createContext } from "react";
+import { useEffect, useState } from "react";
 
-type WrapperProps = {
-  children: React.ReactNode
+type ContextMenuProps = {
+  children?: React.ReactNode
+  className?: string
 }
 
-const MyContextMenu = {
-  Root: createContext({}),
-  Wrapper: () => {
+type ContextMenuItemProps = {
+  func?: () => void
+  children?: React.ReactNode | string
+  className?: string
+}
+
+const ContextMenu = {
+  Wrapper: ({children, className}: ContextMenuProps) => {
+
+    const [menuOpen, setMenuOpen] = useState(false)
+
+    useEffect(()=>{
+      const root = document.getElementById('root')
+      root?.addEventListener('contextmenu',(e)=>{
+        e.preventDefault()
+        setMenuOpen(true)
+        const menu = document.getElementById('menu') as HTMLDivElement
+        if (menu) {
+          menu.style.top = e.pageY + 'px'
+          menu.style.left = e.pageX + 'px'
+        }
+      })
+      root?.addEventListener('click',(e)=>{
+        e.preventDefault()
+        setMenuOpen(false)
+      })
+    })
+
     return (
-      <MyContextMenu.Root.Provider value={{idl: 'idk'}}>
-        <div>idk</div>
-      </MyContextMenu.Root.Provider>
+      menuOpen
+        ?
+        <div className={className + " absolute z-50"} id="menu" onClick={(e)=>{e.preventDefault()}}>
+          {children}
+        </div>
+        :
+        undefined
     )
-  }
+  },
+  Item: ({children, className, func}: ContextMenuItemProps) => {
+    return (
+      <div className={className} onClick={()=>{func && func()}}>
+        {children}
+      </div>
+    )
 }
 
-const CnMenuWrapper = ({children}: WrapperProps) =>{
+}
 
-  return (
-    <ContextMenu.Root modal={false}>
-      <ContextMenu.Trigger>
-        {children}
-      </ContextMenu.Trigger>
-      <ContextMenu.Portal>
-        <ContextMenu.Content className="contextMenuContent">
-          {Menus()[0].map((item, i) => (
-            <CnMenuItem menuItem={item} key={i} />
-          ))}
-          <hr className="my-1 border-t-2 border-t-zinc-200" />
-          {Menus()[1].map((item, i) => (
-            <CnMenuItem menuItem={item} key={i} />
-          ))}
-        </ContextMenu.Content>
-      </ContextMenu.Portal>
-    </ContextMenu.Root>
-  );
-};
-
-export default CnMenuWrapper
+export default ContextMenu

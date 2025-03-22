@@ -102,8 +102,8 @@ const Home = ({ data }: UserData) => {
                   <div
                     className={`
                     ${subject.outer
-                        ?
-                        `
+                      ?
+                      `
                       text-lg
                       text-start
                       w-[70%]
@@ -111,12 +111,12 @@ const Home = ({ data }: UserData) => {
                       mx-auto
                       mt-auto
                       `
-                        :
-                        `
+                      :
+                      `
                       w-full
                       h-full
                       `
-                      }
+                    }
                     ${subject.bg}
                     rounded-t-xl
                     shadow-[0_0_8px_rgba(0,0,0,.25)]
@@ -164,7 +164,6 @@ const Home = ({ data }: UserData) => {
                 lg:flex-row
                 gap-2
                 justify-center
-                items-center
                 lg:scale-110
                 xl:scale-125
                 py-8

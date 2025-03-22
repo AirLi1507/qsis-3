@@ -14,52 +14,14 @@
 
 @custom-variant hover (&:hover);
 
-html {
+html, body {
   overflow: hidden;
   box-sizing: border-box;
 }
 
-body {
-  font-family: "Noto Sans", sans-serif;
-  overflow: hidden;
-  box-sizing: border-box;
-}
+body { font-family: "Noto Sans", sans-serif; }
 
-div,
-main {
-  scrollbar-width: none;
-}
-
-.contextMenuContent {
-  width: 13.5rem;
-  height: fit-content;
-  background-color: var(--color-blue-50);
-  border-radius: 8px;
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, .25);
-  padding: 4px;
-}
-
-.contextMenuGroup {
-  margin-bottom: 4px;
-  border-bottom: 2px var(--color-zinc-200) solid;
-  padding-bottom: 4px;
-}
-
-.contextMenuItem {
-  font-size: .925rem;
-  height: fit-content;
-  width: 100%;
-  border-radius: 4px;
-  display: flex;
-  padding: 2.75px;
-  padding-left: 14px;
-  user-select: none;
-  outline: none;
-}
-
-.contextMenuItem:hover {
-  color: white;
-}
+* { scrollbar-width: none; }
 
 input:is(:autofill, :-webkit-autofill) {
   -webkit-background-clip: text !important;

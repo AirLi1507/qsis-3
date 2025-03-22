@@ -1,4 +1,5 @@
-import { forwardRef } from 'react';
+import { forwardRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   children: React.ReactNode;
@@ -17,9 +18,19 @@ const bg = `
 
 const FormWrapper = forwardRef<HTMLFormElement, Props>((props, ref) => {
 
+  const navigate = useNavigate()
+
+  const isLoggedIn = localStorage.getItem('login') === 'true'
+
+  useEffect(()=>{
+    if (isLoggedIn) {
+      navigate('/dashboard')
+    }
+  },[])
+
   return (
-    <div className={`w-svw h-svh ${bg} select-none pointer-events-none`}>
-      <div className={`backdrop-blur-xl backdrop-brightness-[1.125] p-2 ${wh_full}`} >
+    <div className={`w-svw h-svh ${bg} ${isLoggedIn ? "hidden" : null} select-none pointer-events-none`}>
+      <div className={`backdrop-blur-xl backdrop-brightness-[1.125] p-2 ${wh_full}`}>
         <div className={`rounded-lg shadow-[0_0_8px_inset_rgba(0,0,0,.15)] flex justify-center items-center overflow-scroll pointer-events-none ${wh_full} ${bg}`}>
           <form className="
             w-[280px]
