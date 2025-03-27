@@ -1,7 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import Dashboard from "../Dashboard/dashboardWrapper"
-import { studentInfoSample } from "../Data/exampleDataSet"
-import { BaseRoutes, DashboardTabs } from "./route"
+import { studentInfoSample } from "../Data/exampleDataSet.ts"
+import Dashboard from "../Dashboard/dashboardWrapper.tsx"
+import { BaseRoutes, DashboardTabs } from "./route.tsx"
 
 function getRoutes() {
 

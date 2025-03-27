@@ -44,7 +44,8 @@ const Profile = ({ data }: UserData) => {
             box-border
           ">
             <img
-              src={`data:image/jpeg;charset=utf-8;base64,${data.pfp}`}
+            /*  src={`data:image/jpeg;charset=utf-8;base64,${data.pfp}`} */
+              src={data.pfp}
               alt="Avatar"
               className="
                 min-w-[240px]

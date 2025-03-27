@@ -6,8 +6,6 @@ type Props = {
 const Logo = ({logoSize, className}: Props) => {
 
     const outerSq = `
-        w-(--divSize)
-        h-(--divSize)
         grid
         grid-cols-2
         rotate-45
@@ -34,9 +32,8 @@ const Logo = ({logoSize, className}: Props) => {
 
     return (
         <>        
-            <style>{`:root {--divSize: ${2 * logoSize}px}`}</style>
             <div className={`flex flex-col justify-center items-center ${className}`}>
-                <div className={`group ${outerSq}`}>
+                <div className={`group ${outerSq}`} style={{width: `${2 * logoSize}px`, height: `${2 * logoSize}px`}}>
                     <span className={`bg-amber-300 ${innerSq}`}></span>
                     <span className={`bg-orange-800 ${innerSq}`}></span>
                     <span className={`bg-blue-700 ${innerSq}`}></span>

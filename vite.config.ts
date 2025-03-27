@@ -6,10 +6,11 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [
     react(),
-    tailwindcss()
+    tailwindcss(),
   ],
   build: {
     emptyOutDir: true,
+    target: "es2023"
   },
   resolve: {
     alias: {
@@ -19,6 +20,6 @@ export default defineConfig({
   },
   server: {
     hmr: true,
-    allowedHosts: ["test-1.hypernix.dev"]
+    allowedHosts: true
   }
 })

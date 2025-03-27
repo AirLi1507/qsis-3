@@ -14,33 +14,44 @@ type ContextMenuItemProps = {
 const ContextMenu = {
   Wrapper: ({children, className}: ContextMenuProps) => {
 
-    const [menuOpen, setMenuOpen] = useState(false)
+    const [menuOpen, setMenuOpen] = useState<boolean>(false)
 
     useEffect(()=>{
-      const root = document.getElementById('root')
-      root?.addEventListener('contextmenu',(e)=>{
+      document.oncontextmenu = (e) => {
         e.preventDefault()
         setMenuOpen(true)
-        const menu = document.getElementById('menu') as HTMLDivElement
-        if (menu) {
-          menu.style.top = e.pageY + 'px'
-          menu.style.left = e.pageX + 'px'
-        }
-      })
-      root?.addEventListener('click',(e)=>{
-        e.preventDefault()
+        const menu = document.querySelector('#menu') as HTMLDivElement
+        menu.setAttribute(
+          'style',
+          `
+          top: ${
+          (menu.clientHeight + e.pageY > document.body.clientHeight)
+          ?
+          e.pageY - menu.clientHeight + "px"
+          :
+          e.pageY + "px"
+          };
+          left: ${
+          (menu.clientWidth + e.pageX > document.body.clientWidth)
+          ?
+          e.pageX - menu.clientWidth + "px"
+          :
+          e.pageX + "px"
+          };
+          `
+        )
+      }
+      document.onclick = () => {
         setMenuOpen(false)
-      })
+      }
+
+      document.body.onresize = (ev) => {console.dir(ev)}
     })
 
     return (
-      menuOpen
-        ?
-        <div className={className + " absolute z-50"} id="menu" onClick={(e)=>{e.preventDefault()}}>
-          {children}
-        </div>
-        :
-        undefined
+      <div className={className + ` absolute z-50 select-none ${menuOpen ? "" : "hidden"}`} id="menu">
+        {children}
+      </div>
     )
   },
   Item: ({children, className, func}: ContextMenuItemProps) => {

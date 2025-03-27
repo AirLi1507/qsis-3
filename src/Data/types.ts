@@ -3,7 +3,7 @@ export default interface UserData {
   {
     role: String
     id: Number | String
-    pfp: String
+    pfp: string
     fullname: String
     form?: Number
     class?: String

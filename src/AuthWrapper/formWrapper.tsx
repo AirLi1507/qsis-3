@@ -11,8 +11,8 @@ const wh_full = `
   h-full`
 
 const bg = `
-  bg-[url('/images/bg_portrait.webp')]
-  lg:bg-[url('/images/bg.webp')]
+  bg-[url('https://cdn.hypernix.dev/img/bg_portrait.webp')]
+  lg:bg-[url('https://cdn.hypernix.dev/img/bg.webp')]
   bg-no-repeat
   bg-cover`
 

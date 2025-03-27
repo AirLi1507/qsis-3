@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom'
 
 import LoginForm from '../AuthWrapper/loginForm.tsx';
-import NotFound from '../AuthWrapper/notfound.tsx';
+import NotFound from './notfound.tsx';
 
 import Home from '../Dashboard/Tabs/home.tsx';
 import Profile from '../Dashboard/Tabs/profile.tsx';
