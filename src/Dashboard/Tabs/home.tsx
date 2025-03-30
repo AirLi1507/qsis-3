@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom"
-import UserData from "../../Data/types.ts"
+import { useContext } from "react"
 import { IconBallBasketball, IconBallFootball, IconBallVolleyball, IconCheckbox, IconCpu2, IconMusic, IconPiano, IconPlayCardStar, IconUserFilled, IconVideo } from "@tabler/icons-react"
+import { UserContext } from "../../Data/context"
 
 type tabProps = {
   url: String
@@ -54,7 +55,9 @@ const QuickTabs = ({ url, bg, children }: tabProps) => {
   )
 }
 
-const Home = ({ data }: UserData) => {
+const Home = () => {
+
+  const data = useContext(UserContext)
 
   const tabArray = [
     {
@@ -102,8 +105,8 @@ const Home = ({ data }: UserData) => {
                   <div
                     className={`
                     ${subject.outer
-                      ?
-                      `
+                        ?
+                        `
                       text-lg
                       text-start
                       w-[70%]
@@ -111,12 +114,12 @@ const Home = ({ data }: UserData) => {
                       mx-auto
                       mt-auto
                       `
-                      :
-                      `
+                        :
+                        `
                       w-full
                       h-full
                       `
-                    }
+                      }
                     ${subject.bg}
                     rounded-t-xl
                     shadow-[0_0_8px_rgba(0,0,0,.25)]
@@ -161,21 +164,21 @@ const Home = ({ data }: UserData) => {
                 grid
                 grid-cols-2
                 lg:flex
-                lg:flex-row
                 gap-2
                 justify-center
                 lg:scale-110
                 xl:scale-125
-                py-8
+                py-2
+                lg:py-8
               ">
-                <IconBallBasketball className="text-amber-600" />
-                <IconBallFootball className="text-blue-950" />
-                <IconBallVolleyball className="text-yellow-500" />
-                <IconVideo className="text-slate-600" />
-                <IconCpu2 className="text-emerald-500" />
-                <IconMusic className="text-yellow-700/55" />
-                <IconPiano className="text-black" />
-                <IconPlayCardStar className="text-rose-500" />
+                <IconBallBasketball className="text-amber-600 ecIcon" />
+                <IconBallFootball className="text-blue-950 ecIcon" />
+                <IconBallVolleyball className="text-yellow-500 ecIcon" />
+                <IconVideo className="text-slate-600 ecIcon" />
+                <IconCpu2 className="text-emerald-500 ecIcon" />
+                <IconMusic className="text-yellow-700/55 ecIcon" />
+                <IconPiano className="text-black ecIcon" />
+                <IconPlayCardStar className="text-rose-500 ecIcon" />
               </div>
             </div>
           </>

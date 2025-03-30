@@ -7,60 +7,76 @@ type ContextMenuProps = {
 
 type ContextMenuItemProps = {
   func?: () => void
-  children?: React.ReactNode | string
+  children?: React.ReactNode
   className?: string
 }
 
 const ContextMenu = {
-  Wrapper: ({children, className}: ContextMenuProps) => {
+  Wrapper: ({ children, className }: ContextMenuProps) => {
 
     const [menuOpen, setMenuOpen] = useState<boolean>(false)
+    const [onMenu, setOnMenu] = useState<boolean>(false)
 
-    useEffect(()=>{
-      document.oncontextmenu = (e) => {
+    useEffect(() => {
+      document.body.oncontextmenu = (e) => {
         e.preventDefault()
-        setMenuOpen(true)
-        const menu = document.querySelector('#menu') as HTMLDivElement
-        menu.setAttribute(
-          'style',
-          `
-          top: ${
-          (menu.clientHeight + e.pageY > document.body.clientHeight)
-          ?
-          e.pageY - menu.clientHeight + "px"
-          :
-          e.pageY + "px"
-          };
-          left: ${
-          (menu.clientWidth + e.pageX > document.body.clientWidth)
-          ?
-          e.pageX - menu.clientWidth + "px"
-          :
-          e.pageX + "px"
-          };
-          `
-        )
+        if (!onMenu) {
+          setMenuOpen(true)
+          const menu = document.querySelector('#menu') as HTMLDivElement
+          menu.setAttribute(
+            'style',
+            `
+            top: ${(menu.clientHeight + e.pageY > document.body.clientHeight)
+              ?
+              e.pageY - menu.clientHeight + "px"
+              :
+              e.pageY + "px"
+            };
+            left: ${(menu.clientWidth + e.pageX > document.body.clientWidth)
+              ?
+              e.pageX - menu.clientWidth + "px"
+              :
+              e.pageX + "px"
+            };
+            `
+          )
+        }
       }
       document.onclick = () => {
         setMenuOpen(false)
       }
-
-      document.body.onresize = (ev) => {console.dir(ev)}
     })
 
     return (
-      <div className={className + ` absolute z-50 select-none ${menuOpen ? "" : "hidden"}`} id="menu">
+      <div
+        className={
+          `
+          ${className}
+          absolute
+          select-none
+          ${menuOpen
+            ?
+            `z-50`
+            :
+            "-z-50"
+          }
+          `
+        }
+        id="menu"
+        onMouseOver={() => { setOnMenu(true) }}
+        onMouseOut={() => { setOnMenu(false) }}
+      >
         {children}
       </div>
     )
   },
-  Item: ({children, className, func}: ContextMenuItemProps) => {
+  Item: ({ children, className, func }: ContextMenuItemProps) => {
     return (
-      <div className={className} onClick={()=>{func && func()}}>
+      <div className={className} onClick={() => { func && func() }}>
         {children}
       </div>
     )
-}
+  }
 
 }
 

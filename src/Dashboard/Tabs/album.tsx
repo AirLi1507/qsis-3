@@ -1,7 +1,9 @@
+import { useContext } from "react"
+import { UserContext } from "../../Data/context.tsx"
 import { Navigate } from "react-router-dom"
-import UserData from "../../Data/types.ts"
 
-const Album = ({ data }: UserData) => {
+const Album = () => {
+  const data = useContext(UserContext)
   const noPerm = data.role == "Student"
 
   return (

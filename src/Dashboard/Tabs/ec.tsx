@@ -1,6 +1,4 @@
-import UserData from "../../Data/types"
-
-const ExtensionCurriculum = ({ data }: UserData) => {
+const ExtensionCurriculum = () => {
 
   return (
     <div>

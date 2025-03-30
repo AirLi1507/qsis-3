@@ -1,6 +1,4 @@
-import UserData from "../../Data/types"
-
-const SubjectSelection = ({ data }: UserData) => {
+const SubjectSelection = () => {
 
   return (
     <>

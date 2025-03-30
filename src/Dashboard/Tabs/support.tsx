@@ -1,6 +1,4 @@
-import UserData from "../../Data/types"
-
-const Support = ({ data }: UserData) => {
+const Support = () => {
 
   return (
     <>

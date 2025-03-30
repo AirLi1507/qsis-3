@@ -1,14 +1,10 @@
-import { useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
 import { IconAddressBook, IconBallBasketball, IconBooks, IconCheckbox, IconChevronCompactLeft, IconChevronCompactRight, IconDoorExit, IconFilePencil, IconHome, IconPhoto, IconProgressHelp, IconSettings, IconShield, IconUserCircle } from "@tabler/icons-react";
 import Logo from "../Branding/logo.tsx";
-import UserData from "../Data/types.ts";
 import ContextMenu from "./ContextMenu/Wrapper.tsx";
-
-type DashboardProps = {
-  userInfo: UserData
-  children: React.ReactNode
-}
+import { UserContext } from "../Data/context.tsx";
+import { Menus } from "./ContextMenu/Menu.ts";
 
 type NavItemProps = {
   tab: String
@@ -39,7 +35,12 @@ const NavItem = ({ tab, children }: NavItemProps) => {
         ${isTab ? "text-zinc-50" : "dark:text-zinc-50"}
         w-[240px]
         md:w-[260px]
-        ${isTab ? "bg-sky-700/60 dark:bg-[#60a3cb]" : "hover:bg-sky-700/15 dark:hover:bg-sky-700/25 active:bg-sky-700/30 dark:active:bg-sky-700/40"}
+        ${isTab
+          ?
+          "bg-sky-700/60 dark:bg-[#60a3cb]"
+          :
+          "hover:bg-sky-700/15 dark:hover:bg-sky-700/25 active:bg-sky-700/30 dark:active:bg-sky-700/40"
+        }
         rounded-full
         py-3
         px-3
@@ -62,9 +63,9 @@ const NavItem = ({ tab, children }: NavItemProps) => {
   )
 }
 
-const Dashboard = ({ userInfo, children }: DashboardProps) => {
+const Dashboard = () => {
 
-  const data = userInfo.data
+  const data = useContext(UserContext)
 
   const [navVisibility, setNavVisibility] = useState(true)
 
@@ -81,8 +82,7 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
     { name: "Settings", url: "settings", icon: IconSettings },
     { name: "Logout", url: "logout", icon: IconDoorExit },
     {
-      name: `${data?.class ? `${data?.form}${data?.class}-${data?.classNo}` : ``
-        } ${data?.fullname}`, url: "profile", icon: IconUserCircle
+      name: `${data?.class ? `${data?.form}${data?.class}-${data?.classNo}` : null} ${data?.fullname}`, url: "profile", icon: IconUserCircle
     },
   ]
 
@@ -114,30 +114,48 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
 
   return (
     <>
-      <ContextMenu.Wrapper className="
-        dark:text-white
-        text-base
-        w-50
-        bg-blue-50
-        dark:bg-zinc-900
-        rounded-lg
-        shadow-black/50
-        dark:shadow-black/75
-        shadow-sm
-        p-[4.5px]
-        select-none
-        ">
-        <ContextMenu.Item className="
-          hover:bg-red-400
-          rounded-sm
-          flex
-          p-[2.5px]
-          pl-3
-          "
-          func={()=>{console.log("idk");}}
-        >
-          <span>idk</span>
-        </ContextMenu.Item>
+      <ContextMenu.Wrapper className="contextMenuWrapper">
+        {Menus()[0].map((item, i) => {
+          return (
+            <ContextMenu.Item
+              className={`
+                contextMenuItem
+                ${item.bg
+                  ?
+                  item.bg
+                  :
+                  "hover:bg-sky-700/60 dark:hover:bg-sky-400/70"
+                }
+              `}
+              func={item.func}
+              key={i}
+            >
+              <span className="scale-95">{item.text}</span>
+              <item.icon stroke={1.75} className="ml-auto scale-75" />
+            </ContextMenu.Item>
+          )
+        })}
+        <hr className="my-[4.5px] border-t-2 border-t-zinc-400/45 dark:border-t-zinc-700 rounded-lg" />
+        {Menus()[1].map((item, i) => {
+          return (
+            <ContextMenu.Item
+              className={`
+                contextMenuItem
+                ${item.bg
+                  ?
+                  item.bg
+                  :
+                  "hover:bg-sky-700/60 dark:hover:bg-sky-400/70"
+                }
+              `}
+              func={item.func}
+              key={i}
+            >
+              <span className="scale-95">{item.text}</span>
+              <item.icon stroke={1.75} className="ml-auto scale-75" />
+            </ContextMenu.Item>
+          )
+        })}
       </ContextMenu.Wrapper>
       <div className="dark:text-white w-svw h-svh flex">
         <nav className={`
@@ -229,7 +247,7 @@ const Dashboard = ({ userInfo, children }: DashboardProps) => {
           `}>
             <div className={`${navVisibility ? "w-full h-full absolute top-0 left-0 z-10 sm:hidden" : "hidden"}`} onClick={() => { setNavVisibility(false) }} />
             <div className={`w-full h-full ${navVisibility ? "pointer-events-none sm:pointer-events-auto select-none" : ""}`}>
-              {children}
+              <Outlet />
             </div>
           </div>
         </main>

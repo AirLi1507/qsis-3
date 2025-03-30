@@ -1,44 +1,40 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import { studentInfoSample } from "../Data/exampleDataSet.ts"
+import { useContext } from "react"
 import Dashboard from "../Dashboard/dashboardWrapper.tsx"
-import { BaseRoutes, DashboardTabs } from "./route.tsx"
+import { BaseRoutes, DashboardTabs } from "./routes.tsx"
+import { DataProvider, UserContext } from "../Data/context.tsx"
+import { getData } from "../Data/getUserData.ts"
 
 function getRoutes() {
+
+  const data = useContext(UserContext)
 
   var Routes: any = BaseRoutes
 
   if (localStorage.getItem('login') === 'true') {
-    DashboardTabs[0].forEach((i) => {
-      Routes.push(
-        {
-          path: `/dashboard/${i.path}`,
-          element:
-            <Dashboard userInfo={{ data: studentInfoSample }} >
-              <i.element data={studentInfoSample} />
-            </Dashboard >
-        }
-      )
+    Routes.push({
+      path: "/dashboard",
+      element: (
+        <DataProvider data={getData()}>
+          <Dashboard />
+        </DataProvider>
+      ),
+      children:
+        data.role !== "Student"
+          ?
+          DashboardTabs[0].concat(DashboardTabs[1])
+          :
+          DashboardTabs[0]
     })
-
-    if (studentInfoSample.role !== "Student") {
-      DashboardTabs[1].forEach((i) => {
-        Routes.push(
-          {
-            path: `/dashboard/${i.path}`,
-            element:
-              <Dashboard userInfo={{ data: studentInfoSample }} >
-                <i.element data={studentInfoSample} />
-              </Dashboard >
-          }
-        )
-      })
-    }
   }
 
   return createBrowserRouter(Routes)
 }
 
-const Router = () => {
-  return <RouterProvider router={getRoutes()} />
+function Router() {
+  return (
+    <RouterProvider router={getRoutes()} />
+  )
 }
-export {Router}
+
+export { Router }

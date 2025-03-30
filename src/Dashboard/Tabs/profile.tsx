@@ -1,10 +1,15 @@
-import UserData from "../../Data/types.ts"
+import { useContext } from "react"
+import { UserContext } from "../../Data/context"
 
-const Profile = ({ data }: UserData) => {
+const Profile = () => {
+
+  const data = useContext(UserContext)
+
   return (
     <>
-      <div className={`w-full h-fit lg:h-full flex flex-col lg:flex-row p-2`}>
+      <div className={`w-full h-fit lg:h-full lg:flex`}>
         <div className={`
+          w-full
           h-[400px]
           mb-2
           bg-blue-100/50
@@ -44,7 +49,7 @@ const Profile = ({ data }: UserData) => {
             box-border
           ">
             <img
-            /*  src={`data:image/jpeg;charset=utf-8;base64,${data.pfp}`} */
+              /*  src={`data:image/jpeg;charset=utf-8;base64,${data.pfp}`} */
               src={data.pfp}
               alt="Avatar"
               className="
@@ -65,6 +70,7 @@ const Profile = ({ data }: UserData) => {
                 opacity-0
                 absolute
                 z-10
+                pointer-events-none
               "
             />
           </div>

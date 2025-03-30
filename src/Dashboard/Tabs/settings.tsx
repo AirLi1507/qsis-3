@@ -1,5 +1,4 @@
-import UserData from "../../Data/types"
-import { RadioCard } from "../Components/Radio"
+import { RadioCard } from "../Components/Radio.tsx"
 
 const cardClass2 = `
   text-md
@@ -18,7 +17,7 @@ const cardClass2 = `
   select-none
 `
 
-const Settings = ({ data }: UserData) => {
+const Settings = () => {
 
   const getLocalStorage = () => localStorage.getItem('userPreference')
   const localConfig = () => getLocalStorage() ? JSON.parse(getLocalStorage() as string) : false

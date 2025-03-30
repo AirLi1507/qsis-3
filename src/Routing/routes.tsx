@@ -24,18 +24,18 @@ const BaseRoutes = [
 
 const DashboardTabs = [
   [
-    { path: '', element: Home },
-    { path: 'profile', element: Profile },
-    { path: 'homework', element: Homework },
-    { path: 'ec', element: ExtensionCurriculum },
-    { path: 'reading', element: Reading },
-    { path: 'ss', element: SubjectSelection },
-    { path: 'settings', element: Settings },
+    { path: '', element: <Home /> },
+    { path: 'profile', element: <Profile /> },
+    { path: 'homework', element: <Homework /> },
+    { path: 'ec', element: <ExtensionCurriculum /> },
+    { path: 'reading', element: <Reading /> },
+    { path: 'ss', element: <SubjectSelection /> },
+    { path: 'settings', element: <Settings /> },
   ],
   [
-    { path: 'support', element: Support },
-    { path: 'album', element: Album },
-    { path: 'admin', element: Administration }
+    { path: 'support', element: <Support /> },
+    { path: 'album', element: <Album />  },
+    { path: 'admin', element: <Administration /> }
   ]
 ]
 
