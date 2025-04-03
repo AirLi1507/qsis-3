@@ -5,7 +5,6 @@ import { IconMail, IconSignLeft } from "@tabler/icons-react"
 import Logo from "../Branding/logo.tsx"
 
 const ResetForm = () => {
-  const formRef = useRef<HTMLFormElement>(null)
 
   const [isSubmitted, setSubmit] = useState(false)
 
@@ -15,7 +14,7 @@ const ResetForm = () => {
   }
 
   return (
-    <FormWrapper func={(e) => { resetCredentials(e) }} ref={formRef}>
+    <FormWrapper func={(e) => { resetCredentials(e) }}>
       <Logo logoSize={40} className="mt-8" />
       <span className="text-blue-800 text-[2.5rem] font-bold mt-5">QSIS 3</span>
       <div className="w-full mt-4 flex flex-col gap-3">
