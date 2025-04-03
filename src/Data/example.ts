@@ -1,12 +1,4 @@
-interface DataType {
-  role?: string
-  id?: number | string
-  pfp?: string
-  fullname?: string
-  form?: number
-  class?: "A" | "B" | "C" | "D" | "E"
-  classNo?: number
-}
+import { DataType } from "./context.tsx"
 
 const studentInfoSample: DataType = {
   role: "Student",

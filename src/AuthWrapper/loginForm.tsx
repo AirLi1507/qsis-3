@@ -6,8 +6,6 @@ import { Button, Hyperlink, TextField } from "./components.tsx";
 
 const LoginForm = () => {
 
-  const formRef = useRef<HTMLFormElement>(null)
-
   const usernameRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
 
@@ -33,7 +31,7 @@ const LoginForm = () => {
   }
 
   return (
-    <FormWrapper func={(e) => { login(e) }} ref={formRef}>
+    <FormWrapper func={(e) => { login(e) }}>
       <Logo logoSize={40} className="mt-8" />
       <span className="text-blue-800 text-[2.5rem] font-bold mt-5">QSIS 3</span>
       <div className="mt-4 flex flex-col gap-3">

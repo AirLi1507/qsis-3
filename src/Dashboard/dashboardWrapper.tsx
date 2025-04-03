@@ -71,7 +71,7 @@ const Dashboard = () => {
 
   const tabsUpper = [
     { name: "Home", url: "", icon: IconHome },
-    { name: `${data?.role} Profile`, url: "profile", icon: IconAddressBook },
+    { name: `${data.role} Profile`, url: "profile", icon: IconAddressBook },
     { name: "Homework", url: "homework", icon: IconFilePencil },
     { name: "Extension Curriculum", url: "ec", icon: IconBallBasketball },
     { name: "Reading", url: "reading", icon: IconBooks },
@@ -82,7 +82,7 @@ const Dashboard = () => {
     { name: "Settings", url: "settings", icon: IconSettings },
     { name: "Logout", url: "logout", icon: IconDoorExit },
     {
-      name: `${data?.class ? `${data?.form}${data?.class}-${data?.classNo}` : null} ${data?.fullname}`, url: "profile", icon: IconUserCircle
+      name: `${data.class ? `${data.form}${data.class}-${data.classNo}` : null} ${data.fullname}`, url: "profile", icon: IconUserCircle
     },
   ]
 

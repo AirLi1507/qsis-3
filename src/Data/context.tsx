@@ -1,6 +1,6 @@
 import { createContext } from "react";
 
-interface DataType {
+export interface DataType {
   role?: string
   id?: number | string
   pfp?: string

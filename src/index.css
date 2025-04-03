@@ -40,14 +40,13 @@
   @apply w-full lg:w-fit mx-1 scale-110 lg:scale-105
 }
 
+* { scrollbar-width: none; }
+
 html, body {
+  font-family: "Noto Sans", sans-serif;
   overflow: hidden;
   box-sizing: border-box;
 }
-
-body { font-family: "Noto Sans", sans-serif; }
-
-* { scrollbar-width: none; }
 
 input:is(:autofill, :-webkit-autofill) {
   -webkit-background-clip: text !important;

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
-type ContextMenuProps = {
+interface ContextMenuProps {
   children?: React.ReactNode
   className?: string
 }
 
-type ContextMenuItemProps = {
+interface ContextMenuItemProps {
   func?: () => void
   children?: React.ReactNode
   className?: string
@@ -17,33 +17,51 @@ const ContextMenu = {
     const [menuOpen, setMenuOpen] = useState<boolean>(false)
     const [onMenu, setOnMenu] = useState<boolean>(false)
 
+    function showMenu(e: MouseEvent) {
+      if (!onMenu) {
+        setMenuOpen(true)
+        const menu = document.querySelector('#menu') as HTMLDivElement
+        menu.style.setProperty(
+          "top",
+          (menu.offsetHeight + e.pageY > document.body.offsetHeight)
+            ?
+            e.pageY - menu.offsetHeight + "px"
+            :
+            e.pageY + "px"
+        )
+        menu.style.setProperty(
+          "left",
+          (menu.offsetWidth + e.pageX > document.body.offsetWidth)
+            ?
+            e.pageX - menu.offsetWidth + "px"
+            :
+            e.pageX + "px"
+        )
+      }
+    }
+
     useEffect(() => {
       document.body.oncontextmenu = (e) => {
         e.preventDefault()
-        if (!onMenu) {
-          setMenuOpen(true)
-          const menu = document.querySelector('#menu') as HTMLDivElement
-          menu.setAttribute(
-            'style',
-            `
-            top: ${(menu.clientHeight + e.pageY > document.body.clientHeight)
-              ?
-              e.pageY - menu.clientHeight + "px"
-              :
-              e.pageY + "px"
-            };
-            left: ${(menu.clientWidth + e.pageX > document.body.clientWidth)
-              ?
-              e.pageX - menu.clientWidth + "px"
-              :
-              e.pageX + "px"
-            };
-            `
-          )
-        }
+        showMenu(e)
       }
       document.onclick = () => {
         setMenuOpen(false)
+      }
+      window.onresize = () => {
+        const menu = document.querySelector('#menu') as HTMLDivElement
+        (menu.offsetTop + menu.offsetHeight > document.body.offsetHeight)
+          &&
+          menu.style.setProperty(
+            "top",
+            document.body.offsetHeight - menu.offsetHeight + "px"
+          );
+        (menu.offsetLeft + menu.offsetWidth > document.body.offsetWidth)
+          &&
+          menu.style.setProperty(
+            "left",
+            document.body.offsetWidth - menu.offsetWidth + "px"
+          )
       }
     })
 

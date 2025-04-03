@@ -24,6 +24,8 @@ const Profile = () => {
           flex-col
           justify-center
           items-center
+          py-4
+          pl-4
           duration-150
           lg:w-fit
           lg:h-full
@@ -34,7 +36,6 @@ const Profile = () => {
         `}>
           <div className="
             max-w-[240px]
-            max-h-[240px]
             border-2
             border-zinc-500
             active:border-sky-300
@@ -54,9 +55,7 @@ const Profile = () => {
               alt="Avatar"
               className="
                 min-w-[240px]
-                min-h-[240px]
                 max-w-[240px]
-                max-h-[240px]
                 select-none
                 pointer-events-none
               "
@@ -65,7 +64,6 @@ const Profile = () => {
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhB42QBXN3M3heY3e9oMJGMWRWMgG1VmEz9Q&s"
               className="
                 w-[240px]
-                h-[240px]
                 rounded-4xl
                 opacity-0
                 absolute
