@@ -14,6 +14,33 @@
 
 @custom-variant hover (&:hover);
 
+.outerSq {
+  @apply
+    grid
+    grid-cols-2
+    rotate-45
+    hover:rotate-[10845deg]
+    active:rotate-[10845deg]
+    will-change-transform
+    transform-gpu
+    duration-[45s]
+}
+
+.innerSq {
+  @apply
+    w-full
+    h-full
+    rounded-none
+    group-hover:rounded-[50%]
+    group-active:rounded-[50%]
+    shadow-[-1.5px_0px_2px_rgba(0,0,0,.25)]
+    group-hover:scale-[.8]
+    group-active:scale-[.8]
+    transform-gpu
+    duration-500
+    select-none
+}
+
 .contextMenuWrapper {
   @apply
     dark:text-white 
