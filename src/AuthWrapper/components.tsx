@@ -17,7 +17,7 @@ interface HyperlinkProps {
   icon?: React.ForwardRefExoticComponent<IconProps & React.RefAttributes<Icon>>
 }
 
-type ButtonProps = {
+interface ButtonProps {
   func: () => void
   text: string
 }

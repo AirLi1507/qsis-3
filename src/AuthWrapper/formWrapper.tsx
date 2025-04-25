@@ -6,11 +6,7 @@ type Props = {
   func: (e: React.FormEvent<HTMLFormElement>) => void;
 }
 
-const wh_full = `
-  w-full
-  h-full`
-
-const bg = `
+const schoolBg = `
   bg-[url('https://cdn.hypernix.dev/img/bg_portrait.webp')]
   lg:bg-[url('https://cdn.hypernix.dev/img/bg.webp')]
   bg-no-repeat
@@ -29,9 +25,9 @@ const FormWrapper = ({ children, func }: Props) => {
   }, [])
 
   return (
-    <div className={`w-svw h-svh ${bg} ${isLoggedIn ? "hidden" : null} select-none`} onContextMenu={(e) => { e.preventDefault() }}>
-      <div className={`backdrop-blur-xl backdrop-brightness-[1.125] p-2 ${wh_full}`}>
-        <div className={`rounded-lg shadow-[0_0_8px_inset_rgba(0,0,0,.15)] flex justify-center items-center overflow-scroll ${wh_full} ${bg}`}>
+    <div className={`w-svw h-svh ${schoolBg} ${isLoggedIn ? "hidden" : null} select-none`} onContextMenu={(e) => { e.preventDefault() }}>
+      <div className={`w-full h-full backdrop-blur-xl backdrop-brightness-[1.125] p-2`}>
+        <div className={`w-full h-full rounded-lg shadow-[0_0_8px_inset_rgba(0,0,0,.15)] flex justify-center items-center overflow-scroll ${schoolBg}`}>
           <form className="
             w-[280px]
             lg:w-[300px]
