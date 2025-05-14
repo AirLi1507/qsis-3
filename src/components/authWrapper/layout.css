@@ -1,0 +1,5 @@
+@reference "../../app/globals.css";
+
+.authBackground {
+  @apply bg-[url("https://cdn.hypernix.dev/img/bg_portrait.webp")] lg:bg-[url("https://cdn.hypernix.dev/img/bg.webp")] bg-cover bg-no-repeat
+}
