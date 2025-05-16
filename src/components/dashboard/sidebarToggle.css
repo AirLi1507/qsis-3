@@ -1,0 +1,19 @@
+@keyframes fade {
+  0% {
+    display: flex;
+    opacity: 1;
+  }
+
+  100% {
+    display: none;
+    opacity: 0;
+  }
+}
+
+.fadeOut {
+  animation: fade 1s ease forwards;
+}
+
+.fadeIn {
+  animation: fade 1s ease forwards reverse;
+}

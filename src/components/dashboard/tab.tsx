@@ -10,7 +10,7 @@ interface TabProps {
 
 const Tab = (prop: TabProps) => {
   return (
-    <Link href={prop.href} className="m-4 h-12 hover:bg-sky-200/62.5 rounded-4xl flex items-center duration-100 p-4 cursor-pointer">
+    <Link href={prop.href} className="text-lg mx-4 h-12 hover:bg-sky-300/15 rounded-4xl flex items-center duration-200 p-4 cursor-pointer select-none">
       {
         prop.icon
         &&

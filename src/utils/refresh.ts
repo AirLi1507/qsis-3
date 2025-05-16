@@ -10,7 +10,7 @@ export default async function refresh(): Promise<boolean> {
   const result = await dataFetch
   if (result === "false") {
     localStorage.removeItem("accessToken")
-    if (location.pathname.includes("dashboard") || location.pathname.includes("api")) {
+    if (location.pathname.includes("dashboard") || location.pathname.includes("api") || location.pathname === "/") {
       location.href = "/login"
     }
     return false
