@@ -15,7 +15,7 @@ const ResetPage = () => {
   }, [])
   return (
     <AuthCard>
-      <Logo logoSize={40} className="mt-8 mb-4" />
+      <Logo logoSize={40} variant="hover" className="mt-8 mb-4" />
       <span className="text-sky-700 text-4xl text-center font-bold select-none">QSIS 3</span>
       <Textbox type="email" placeholder="Email" name="email" Icon={IconMail} required />
       <Button>Recover</Button>

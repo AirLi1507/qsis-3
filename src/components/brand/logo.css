@@ -1,24 +1,32 @@
 @reference "../../app/global.css";
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg) translateZ(0);
+  }
+
+  to {
+    transform: rotate(360deg) translateZ(0);
+  }
+}
+
 .outerSq {
   @apply
     grid
     grid-cols-2
-    rotate-45    
+    rotate-45 
     will-change-transform
-    transform-gpu
 }
 
-.outerSq.spin {
-  @apply 
-    rotate-[36000deg]
-    duration-[3600s]
+.spin {
+  animation: spin 1s linear infinite;
 }
 
 .outerSq.hover {
   @apply
     hover:rotate-[10845deg]
     active:rotate-[10845deg]
+    transform-gpu
     duration-[45s]
 }
 
@@ -34,15 +42,9 @@
 }
 
 .innerSq.hover {
-  @apply
-    group-hover:rounded-[50%]
-    group-active:rounded-[50%]
-    group-hover:scale-[.8]
-    group-active:scale-[.8]
+  @apply group-hover:rounded-[50%] group-active:rounded-[50%] group-hover:scale-[.8] group-active:scale-[.8]
 }
 
 .innerSq.spin {
-  @apply 
-    scale-[.8]
-    rounded-[50%]
+  @apply scale-[.8] rounded-[50%]
 }

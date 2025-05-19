@@ -26,6 +26,7 @@ const LoginPage = () => {
       passwordRef.current!.parentElement!.classList.replace("border-sky-50/25", "border-rose-400/80")
       passwordRef.current!.parentElement!.classList.replace("text-sky-900/75", "text-rose-400")
     } else {
+      localStorage.setItem("uid", uidRef.current!.value)
       router.push("/dashboard")
     }
   }
@@ -38,7 +39,7 @@ const LoginPage = () => {
       <Logo logoSize={40} variant="hover" className="mt-8 mb-4" />
       <span className="text-sky-700 text-4xl text-center font-bold select-none">QSIS 3</span>
       <Textbox type="text" name="uid" placeholder="Username" Icon={IconUser} required ref={uidRef} />
-      <Textbox type="password" minLength={8} name="password" placeholder="Password" Icon={IconKey} required ref={passwordRef} />
+      <Textbox type="password" minLength={6} name="password" placeholder="Password" Icon={IconKey} required ref={passwordRef} />
       <Hyperlink href="/reset" icon={IconLockQuestion}>Forget password?</Hyperlink>
       <Button>Login</Button>
     </AuthCard>
