@@ -7,7 +7,6 @@ const Root = () => {
     refresh()
     return
   }, [])
-
 }
 
 

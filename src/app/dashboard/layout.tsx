@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 }
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="w-full h-full bg-white/45 rounded-2xl inset-shadow-[0_0_4px_rgba(0,0,0,.5)] backdrop-blur-xl flex overflow-scroll box-border pointer-events-none">
+    <div className="dark:text-white w-full h-full bg-white/45 dark:bg-zinc-950/75 rounded-2xl inset-shadow-[0_0_4px_rgba(0,0,0,.5)] backdrop-blur-xl flex overflow-scroll box-border duration-150 pointer-events-none">
       <Wrapper>
         {children}
       </Wrapper>
-    </div >
+    </div>
   )
 }
 

@@ -10,8 +10,12 @@ import refresh from "../../../utils/refresh";
 import { IconKey, IconLockQuestion, IconUser } from "@tabler/icons-react"
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { LangProvider } from "@/app/context";
 
 const LoginPage = () => {
+
+  const t = useTranslations("Auth")
 
   const uidRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)
@@ -35,14 +39,16 @@ const LoginPage = () => {
     refresh()
   }, [])
   return (
-    <AuthCard onSubmit={(e) => { submit(e) }} >
-      <Logo logoSize={40} variant="hover" className="mt-8 mb-4" />
-      <span className="text-sky-700 text-4xl text-center font-bold select-none">QSIS 3</span>
-      <Textbox type="text" name="uid" placeholder="Username" Icon={IconUser} required ref={uidRef} />
-      <Textbox type="password" minLength={6} name="password" placeholder="Password" Icon={IconKey} required ref={passwordRef} />
-      <Hyperlink href="/reset" icon={IconLockQuestion}>Forget password?</Hyperlink>
-      <Button>Login</Button>
-    </AuthCard>
+    <LangProvider>
+      <AuthCard onSubmit={(e) => { submit(e) }} >
+        <Logo logoSize={40} variant="hover" className="mt-8 mb-4" />
+        <span className="text-sky-700 text-4xl text-center font-bold select-none">QSIS 3</span>
+        <Textbox type="text" name="uid" placeholder={t("username")} Icon={IconUser} required ref={uidRef} />
+        <Textbox type="password" minLength={6} name="password" placeholder={t("password")} Icon={IconKey} required ref={passwordRef} />
+        <Hyperlink href="/reset" icon={IconLockQuestion}>{t("forget")}</Hyperlink>
+        <Button>{t("login")}</Button>
+      </AuthCard>
+    </LangProvider>
   )
 }
 

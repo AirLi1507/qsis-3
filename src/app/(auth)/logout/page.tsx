@@ -9,6 +9,7 @@ import { useEffect } from "react";
 const Logout = () => {
   const router = useRouter()
   useEffect(() => {
+    document.body.className = ""
     const loadingText = document.getElementById("loading")
     setInterval(() => {
       if (loadingText!.innerText.length == 10) {
@@ -18,7 +19,7 @@ const Logout = () => {
       }
     }, 100)
     logout(function() { router.push("/login") })
-  }, [router])
+  })
   return (
     <AuthCard>
       <Logo logoSize={40} variant="spin" className="mt-8 mb-4" />

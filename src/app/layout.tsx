@@ -1,6 +1,9 @@
 import { Metadata } from "next"
 import { Ubuntu } from "next/font/google"
 import "./global.css"
+import { LangProvider } from "./context"
+import { getLocale } from "next-intl/server"
+import { NextIntlClientProvider } from "next-intl"
 
 export const metadata: Metadata = {
   title: "QSIS 3",
@@ -17,14 +20,17 @@ const ubuntu = Ubuntu({
   display: 'swap'
 })
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = async ({ children }: { children: React.ReactNode }) => {
+  const locale = await getLocale()
   return (
-    <html lang="en" className={ubuntu.className} translate="no">
+    <html lang={locale} className={ubuntu.className}>
       <body>
         <div className="w-svw h-svh bg-[url('https://cdn.hypernix.dev/img/bg_portrait.webp')] lg:bg-[url('https://cdn.hypernix.dev/img/bg.webp')] bg-cover bg-no-repeat pointer-events-none">
-          <div className="w-full h-full bg-transparent backdrop-blur-xl backdrop-brightness-105 p-1.5 md:p-2 xl:p-3">
+          <div className="w-full h-full bg-transparent backdrop-blur-xl backdrop-brightness-105 dark:backdrop-brightness-50 p-1.5 md:p-2 xl:p-3 duration-150">
             <div className="w-full h-full bg-[url('https://cdn.hypernix.dev/img/bg_portrait.webp')] lg:bg-[url('https://cdn.hypernix.dev/img/bg.webp')] bg-cover bg-no-repeat rounded-2xl shadow-[0_0_8px_inset_rgba(0,0,0,.25)] flex justify-center items-center overflow-scroll box-border pointer-events-none">
-              {children}
+              <NextIntlClientProvider locale={locale}>
+                {children}
+              </NextIntlClientProvider>
             </div>
           </div>
         </div>
