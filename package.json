@@ -1,5 +1,5 @@
 {
-  "name": "next-qsis",
+  "name": "qsis-3",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,6 +12,7 @@
     "@tabler/icons-react": "^3.33.0",
     "next": "15.3.1",
     "next-intl": "^4.1.0",
+    "qsis-3": "link:",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "universal-cookie": "^8.0.1"
@@ -19,8 +20,8 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@tailwindcss/postcss": "^4.1.7",
-    "@types/node": "^20.17.48",
-    "@types/react": "^19.1.4",
+    "@types/node": "^20.17.50",
+    "@types/react": "^19.1.5",
     "@types/react-dom": "^19.1.5",
     "eslint": "^9.27.0",
     "eslint-config-next": "15.3.1",
