@@ -9,7 +9,7 @@ export default getRequestConfig(async () => {
   if (storedLang) {
     locale = storedLang.value
   } else {
-    locale = "en"
+    locale = "en-US"
   }
 
   return {

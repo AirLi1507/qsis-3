@@ -1,10 +1,10 @@
 "use client";
 
-import AuthCard from "@/components/authWrapper/card";
+import AuthCard from "@/components/auth/card";
 import Logo from "@/components/brand/logo";
-import Textbox from "@/components/authWrapper/textbox";
-import Button from "@/components/authWrapper/button";
-import Hyperlink from "@/components/authWrapper/link";
+import Textbox from "@/components/auth/textbox";
+import Button from "@/components/auth/button";
+import Hyperlink from "@/components/auth/link";
 import { IconMail, IconSignLeft } from "@tabler/icons-react";
 import refresh from "@/utils/refresh";
 import { useEffect } from "react";

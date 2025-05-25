@@ -1,17 +1,16 @@
 "use client";
 
-import AuthCard from "@/components/authWrapper/card"
+import AuthCard from "@/components/auth/card"
 import Logo from "@/components/brand/logo"
-import Textbox from "@/components/authWrapper/textbox"
-import Hyperlink from "@/components/authWrapper/link";
-import Button from "@/components/authWrapper/button"
+import Textbox from "@/components/auth/textbox"
+import Hyperlink from "@/components/auth/link";
+import Button from "@/components/auth/button"
 import login from "../../../utils/login";
 import refresh from "../../../utils/refresh";
 import { IconKey, IconLockQuestion, IconUser } from "@tabler/icons-react"
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { LangProvider } from "@/app/context";
 
 const LoginPage = () => {
 
@@ -39,16 +38,14 @@ const LoginPage = () => {
     refresh()
   }, [])
   return (
-    <LangProvider>
-      <AuthCard onSubmit={(e) => { submit(e) }} >
-        <Logo logoSize={40} variant="hover" className="mt-8 mb-4" />
-        <span className="text-sky-700 text-4xl text-center font-bold select-none">QSIS 3</span>
-        <Textbox type="text" name="uid" placeholder={t("username")} Icon={IconUser} required ref={uidRef} />
-        <Textbox type="password" minLength={6} name="password" placeholder={t("password")} Icon={IconKey} required ref={passwordRef} />
-        <Hyperlink href="/reset" icon={IconLockQuestion}>{t("forget")}</Hyperlink>
-        <Button>{t("login")}</Button>
-      </AuthCard>
-    </LangProvider>
+    <AuthCard onSubmit={(e) => { submit(e) }} >
+      <Logo logoSize={40} variant="hover" className="mt-8 mb-4" />
+      <span className="text-sky-700 text-4xl text-center font-bold select-none">QSIS 3</span>
+      <Textbox type="text" name="uid" placeholder={t("username")} Icon={IconUser} required ref={uidRef} />
+      <Textbox type="password" minLength={6} name="password" placeholder={t("password")} Icon={IconKey} required ref={passwordRef} />
+      <Hyperlink href="/reset" icon={IconLockQuestion}>{t("forget")}</Hyperlink>
+      <Button>{t("login")}</Button>
+    </AuthCard>
   )
 }
 

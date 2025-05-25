@@ -1,0 +1,34 @@
+{
+  "Auth" : {
+    "username": "Username",
+    "password": "Password",
+    "login": "Login",
+    "forget": "Forget password?",
+    "email": "Email",
+    "recover": "Recover",
+    "back": "Go back",
+    "loading": "Loading"
+  },
+  "Dashboard": {
+    "home": "Home",
+    "profile": "Student Profile",
+    "homework": "Homework",
+    "ec": "Extension Curriculum",
+    "reading": "Reading",
+    "ss": "Subject Selection",
+    "album": "Album",
+    "logout": "Logout",
+    "admin": "Administration",
+    "settings": "Settings",
+    "profile_desc": "View your account profile. 🪪",
+    "homework_desc": "Have you submitted your homework? 🤔"
+  },
+  "Settings": {
+    "color-pref": "Color Preference",
+    "color-description": "Switching to Light/Dark mode in QSIS 3.",
+    "language": "Language",
+    "language-description": "Switching between languages in QSIS 3.",
+    "light": "Light",
+    "dark": "Dark"
+  }
+}

@@ -13,12 +13,12 @@ export function theme(value?: string, callback?: () => void) {
     }
     return value
   } else {
-    const localTheme = localStorage.getItem("theme")
+    const localTheme = localStorage.theme
     if (localTheme) {
       if (localTheme === "dark") {
-        document.body.classList.add("dark")
+        document.body.classList.toggle("dark", true)
       } else {
-        document.body.classList.remove("dark")
+        document.body.classList.toggle("dark", false)
       }
       const themeSelector = document.getElementsByName("theme")[0] as HTMLSelectElement
       if (themeSelector) {

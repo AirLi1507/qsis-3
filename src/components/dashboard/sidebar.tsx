@@ -1,12 +1,18 @@
 "use client"
 
-import { IconAddressBook, IconBallBasketball, IconBooks, IconCheckbox, IconChevronCompactLeft, IconDoorExit, IconFilePencil, IconHome, IconSettings } from "@tabler/icons-react"
+import { IconAddressBook, IconBallBasketball, IconBooks, IconCheckbox, IconChevronCompactLeft, IconDoorExit, IconFilePencil, IconHome, IconSettings, IconShield } from "@tabler/icons-react"
 import Tab from "./tab"
 import Logo from "../brand/logo"
 import { useTranslations } from "next-intl"
+import { useEffect, useState } from "react"
+import { getRole } from "@/utils/role"
 
 const Sidebar = ({ callback }: { callback: () => void }) => {
   const t = useTranslations("Dashboard")
+  const [role, setRole] = useState<number | undefined>(undefined)
+  useEffect(() => {
+    getRole(setRole)
+  }, [])
   return (
     <>
       <nav className="min-w-fit bg-sky-50/25 dark:bg-black/10 shadow-xl flex flex-col overflow-scroll box-border duration-500 transform-gpu will-change-transform">
@@ -23,8 +29,15 @@ const Sidebar = ({ callback }: { callback: () => void }) => {
           <Tab href="/dashboard/ss" icon={IconCheckbox}>{t("ss")}</Tab>
         </div>
         <div className="mt-auto mb-4">
-          <Tab href="/logout" icon={IconDoorExit}>Logout</Tab>
-          <Tab href="/dashboard/settings" icon={IconSettings}>Settings</Tab>
+          <Tab href="/logout" icon={IconDoorExit}>{t("logout")}</Tab>
+          {
+            (role && (role > 0))
+              ?
+              <Tab href="/dashboard/admin" icon={IconShield}>{t("admin")}</Tab>
+              :
+              null
+          }
+          <Tab href="/dashboard/settings" icon={IconSettings}>{t("settings")}</Tab>
           <Tab href="" icon={IconAddressBook}>3A-XX MinecraftPlayer87</Tab>
         </div>
       </nav>
