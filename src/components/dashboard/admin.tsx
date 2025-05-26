@@ -1,7 +1,7 @@
 "use client"
 
 import { getRole } from "@/utils/role"
-import { redirect, useRouter } from "next/navigation"
+import { redirect } from "next/navigation"
 import { useEffect, useState } from "react"
 
 const AdminComponent = ({ children }: { children: React.ReactNode }) => {
@@ -9,23 +9,14 @@ const AdminComponent = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     getRole(setRole)
   }, [])
-  return (
-    <>
-      {
-        role
-          ?
-          (
-            role > 0
-              ?
-              children
-              :
-              "d"
-          )
-          :
-          "diddy"
-      }
-    </>
-  )
+  if (role == undefined) {
+    return <></>
+  }
+  if (role > 0) {
+    return children
+  } else {
+    redirect("/dashboard")
+  }
 }
 
 export default AdminComponent
