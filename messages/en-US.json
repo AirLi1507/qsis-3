@@ -25,7 +25,12 @@
     "homework_desc": "Have you submitted your homework yet? 🤔",
     "ec_desc": "Did you have fun in your EC? 😁",
     "reading_desc": "Have you stepped in the golden house? 🏠",
-    "ss_desc": "Choose the elective subject as your dream job's first step! 💼"
+    "ss_desc": "Choose the elective subject as your dream job's first step! 💼",
+    "basic_info": "Basic Information",
+    "name": "Name",
+    "class": "Class",
+    "class_no": "Class No.",
+    "subjects": "Subjects"
   },
   "Settings": {
     "color-pref": "Color Preference",

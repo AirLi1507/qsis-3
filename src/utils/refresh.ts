@@ -1,3 +1,5 @@
+import { redirect } from "next/navigation"
+
 export default async function refresh(): Promise<boolean> {
   const request = fetch(
     "/api/auth/refresh",
@@ -9,12 +11,12 @@ export default async function refresh(): Promise<boolean> {
   const result = await (await request).text()
   if (result === "false") {
     if (location.pathname.includes("dashboard") || location.pathname.includes("api") || location.pathname === "/") {
-      location.href = "/login"
+      redirect("/logout")
     }
     return false
   } else {
     if (!location.pathname.includes("dashboard")) {
-      location.href = "/dashboard"
+      redirect("/dashboard")
     }
     return true
   }

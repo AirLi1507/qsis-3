@@ -48,7 +48,7 @@ const Settings = () => {
     }
   }, [])
   return (
-    <div className="w-full m-2 bg-white/25 dark:bg-black/20 rounded-lg shadow-[0_0_4px_rgba(0,0,0,.25)] flex flex-col duration-500 overflow-hidden">
+    <div className="w-full m-2 bg-white/25 dark:bg-black/20 rounded-xl shadow-[0_0_4px_rgba(0,0,0,.25)] flex flex-col duration-500 overflow-hidden">
       <div className="text-2xl font-medium w-full bg-white/25 dark:bg-white/20 shadow-md p-6 duration-750 select-none">{t("Dashboard.settings")}</div>
       <div className="flex flex-col gap-2 md:gap-3 lg:gap-4 p-2 md:p-3 lg:p-4 overflow-scroll box-border">
         <OptionCard

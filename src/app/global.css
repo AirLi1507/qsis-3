@@ -2,7 +2,16 @@
 
 @custom-variant dark (&:where(.dark, .dark *, , dark.hover *));
 @custom-variant hover (&:hover);
+@custom-variant autofill (&:-webkit-autofill, &:autofill);
 
 * {
   scrollbar-width: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition-duration: 86400s;
+  transition-timing-function: linear;
 }

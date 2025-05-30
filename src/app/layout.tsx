@@ -31,7 +31,7 @@ const Layout = async ({ children }: { children: React.ReactNode }) => {
     <html lang={locale} className={`${ubuntu.className} ${nototc.className}`}>
       <body>
         <div className="w-svw h-svh bg-[url('https://cdn.hypernix.dev/img/bg_portrait.webp')] lg:bg-[url('https://cdn.hypernix.dev/img/bg.webp')] bg-cover bg-no-repeat pointer-events-none overflow-hidden box-border">
-          <div className="w-full h-full bg-transparent backdrop-blur-xl backdrop-brightness-105 dark:backdrop-brightness-50 p-1.5 md:p-2 xl:p-3 duration-150">
+          <div className="w-full h-full bg-transparent backdrop-blur-xl backdrop-brightness-105 dark:backdrop-brightness-50 p-1.5 md:p-2 xl:p-2.5 duration-150">
             <div className="w-full h-full bg-[url('https://cdn.hypernix.dev/img/bg_portrait.webp')] lg:bg-[url('https://cdn.hypernix.dev/img/bg.webp')] bg-cover bg-no-repeat rounded-2xl shadow-[0_0_8px_inset_rgba(0,0,0,.25)] flex justify-center items-center overflow-scroll box-border pointer-events-none">
               <NextIntlClientProvider locale={locale}>
                 {children}

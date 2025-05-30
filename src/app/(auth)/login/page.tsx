@@ -40,7 +40,7 @@ const LoginPage = () => {
   return (
     <AuthCard onSubmit={(e) => { submit(e) }} >
       <Logo logoSize={40} variant="hover" className="mt-8 mb-4" />
-      <span className="text-sky-700 text-4xl text-center font-bold select-none">QSIS 3</span>
+      <span className="text-sky-700 text-4xl text-center font-bold mb-2 select-none">QSIS 3</span>
       <Textbox type="text" name="uid" placeholder={t("username")} Icon={IconUser} required ref={uidRef} />
       <Textbox type="password" minLength={6} name="password" placeholder={t("password")} Icon={IconKey} required ref={passwordRef} />
       <Hyperlink href="/reset" icon={IconLockQuestion}>{t("forget")}</Hyperlink>
