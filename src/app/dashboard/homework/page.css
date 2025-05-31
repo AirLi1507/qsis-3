@@ -1,0 +1,5 @@
+@reference "../../global.css";
+
+.row {
+  @apply p-1 md:p-2 border-b-2 border-b-sky-950/25 dark:border-b-white/25
+}

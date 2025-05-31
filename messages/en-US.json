@@ -30,7 +30,13 @@
     "name": "Name",
     "class": "Class",
     "class_no": "Class No.",
-    "subjects": "Subjects"
+    "subjects": "Subjects",
+    "subject": "Subject",
+    "name": "Name",
+    "date": "Date",
+    "on_time": "On Time Submissions",
+    "not_submitted": "Not Submitted",
+    "exemptions": "Exemptions"
   },
   "Settings": {
     "color-pref": "Color Preference",

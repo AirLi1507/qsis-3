@@ -29,7 +29,13 @@
     "name": "姓名",
     "class": "班別",
     "class_no": "學號",
-    "subjects": "修讀科目"
+    "subjects": "修讀科目",
+    "subject": "科目",
+    "name": "名稱",
+    "date": "日期",
+    "on_time": "準時呈交",
+    "not_submitted": "欠交",
+    "exemptions": "豁免呈交"
   },
   "Settings": {
     "color-pref": "主題",
