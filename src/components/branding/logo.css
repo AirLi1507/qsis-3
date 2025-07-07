@@ -1,0 +1,19 @@
+@reference "../../index.css";
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg) translateZ(0);
+  }
+
+  to {
+    transform: rotate(360deg) translateZ(0);
+  }
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+.logoInner {
+  @apply shadow-sm group-hover:rounded-[50%] group-hover:scale-80 duration-500
+}

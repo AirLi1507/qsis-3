@@ -1,6 +1,13 @@
-const Topbar = ({ title }: { title: string }) => {
+interface TopbarProp {
+  title: string
+  rounded?: boolean
+}
+
+const Topbar = (prop: TopbarProp) => {
   return (
-    <span className="text-2xl font-medium w-full bg-white/45 dark:bg-white/20 rounded-lg shadow-[0_0_4px_rgba(0,0,0,.25)] p-6 duration-750 select-none">{title}</span>
+    <div className={`text-2xl font-medium w-full bg-white/50 ${prop.rounded && "rounded-lg"} shadow-md p-6 select-none`}>
+      {prop.title}
+    </div>
   )
 }
 

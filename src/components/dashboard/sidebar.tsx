@@ -1,65 +1,63 @@
-"use client"
-
-import { IconAddressBook, IconBallBasketball, IconBooks, IconCheckbox, IconChevronCompactLeft, IconDoorExit, IconFilePencil, IconHome, IconSettings, IconShield } from "@tabler/icons-react"
-import Tab from "./tab"
-import Logo from "../brand/logo"
-import { useTranslations } from "next-intl"
+import { IconAddressBook, IconBallBasketball, IconBooks, IconCheckbox, IconChevronCompactLeft, IconDoorExit, IconFilePencil, IconHome, IconSettings, IconUser, type Icon } from "@tabler/icons-react"
+import { Link, useLocation } from "react-router"
 import { useEffect, useState } from "react"
-import { getRole } from "@/utils/role"
-import { getBasicInfo } from "@/utils/info"
+import { collapse } from "./layout"
+import Logo from "../branding/logo"
 
-const Sidebar = ({ callback }: { callback: () => void }) => {
-  const t = useTranslations("Dashboard")
-  const [role, setRole] = useState<number | undefined>(undefined)
-  const [info, setInfo] = useState<{ chi_name: string, eng_name: string, class: string, classNo: number }>()
-  const [name, setName] = useState("")
+interface TabProp {
+  icon: Icon
+  name: string
+  href: string
+}
+
+const Tab = (prop: TabProp) => {
+  const location = useLocation().pathname.split("/")[2]
+  const [active, setActive] = useState(false)
   useEffect(() => {
-    getRole(setRole)
-    getBasicInfo(setInfo)
-  }, [])
-  useEffect(() => {
-    if (info) {
-      if (role && role > 0) {
-        setName(`${info.chi_name} ${info.eng_name}`)
-        return
-      }
-      setName(`${info.class}-${info.classNo} ${info.chi_name} ${info.eng_name}`)
+    if (
+      /* Checking if current path matches the hypertext reference */
+      (prop.href === location)
+      ||
+      /* Checking for Home tab that its hypertext reference is blank */
+      (prop.href === "" && location == undefined)
+    ) {
+      setActive(true)
+    } else {
+      setActive(false)
     }
-  }, [info, role])
+  }, [location])
   return (
-    <>
-      <nav className="min-w-fit bg-sky-50/25 dark:bg-black/10 shadow-xl flex flex-col px-3 overflow-scroll box-border duration-500 transform-gpu will-change-transform">
-        <div className="flex flex-col">
-          <Logo logoSize={36} className="mt-12 mb-8" variant="hover" />
-          <span className="text-sky-700 dark:text-sky-500 text-3xl text-center font-bold select-none">QSIS 3</span>
-        </div>
-        <div className="min-h-fit mt-6 flex flex-col">
-          <Tab href="/dashboard" icon={IconHome}>{t("home")}</Tab>
-          <Tab href="/dashboard/profile" icon={IconAddressBook}>{t("profile")}</Tab>
-          <Tab href="/dashboard/homework" icon={IconFilePencil}>{t("homework")}</Tab>
-          <Tab href="/dashboard/ec" icon={IconBallBasketball}>{t("ec")}</Tab>
-          <Tab href="/dashboard/reading" icon={IconBooks}>{t("reading")}</Tab>
-          <Tab href="/dashboard/ss" icon={IconCheckbox}>{t("ss")}</Tab>
-        </div>
-        <div className="mt-auto mb-4">
-          <Tab href="/logout" icon={IconDoorExit}>{t("logout")}</Tab>
-          {
-            (role && (role > 0))
-              ?
-              <Tab href="/dashboard/admin" icon={IconShield}>{t("admin")}</Tab>
-              :
-              null
-          }
-          <Tab href="/dashboard/settings" icon={IconSettings}>{t("settings")}</Tab>
-          <Tab href="" icon={IconAddressBook}>{name}</Tab>
-        </div>
-      </nav>
-      <div className="flex justify-end">
-        <span className="mr-2 h-8 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg flex absolute top-[50%] cursor-pointer" onClick={callback}>
-          <IconChevronCompactLeft stroke={2} className="m-auto" />
-        </span>
+    <Link to={prop.href} className={`w-60 ${active ? "text-white bg-sky-600/50" : "hover:bg-sky-600/15"} rounded-full flex gap-1 items-center p-3 duration-150 select-none`}>
+      <prop.icon stroke={1.5} />
+      <span>{prop.name}</span>
+    </Link>
+  )
+}
+
+const Sidebar = () => {
+  return (
+    <nav className="min-w-fit bg-blue-50/25 shadow-lg shadow-black/15 flex flex-col p-4 overflow-y-scroll box-border duration-500">
+      <div className="mx-auto my-8">
+        <Logo size={72} />
       </div>
-    </>
+      <span className="text-sky-700 text-3xl font-bold mx-auto mb-6 select-none">
+        OpenSIS
+      </span>
+      <div className="flex flex-col mb-auto">
+        <Tab icon={IconHome} name="Home" href="" />
+        <Tab icon={IconAddressBook} name="Profile" href="profile" />
+        <Tab icon={IconFilePencil} name="Homework" href="homework" />
+        <Tab icon={IconBallBasketball} name="Extension Curriculum" href="ec" />
+        <Tab icon={IconBooks} name="Reading" href="reading" />
+        <Tab icon={IconCheckbox} name="Subject Selection" href="ss" />
+      </div>
+      <Tab icon={IconDoorExit} name="Logout" href="/auth/logout" />
+      <Tab icon={IconSettings} name="Settings" href="settings" />
+      <Tab icon={IconUser} name="User" href="#" />
+      <span className="h-8 hover:bg-black/5 rounded-lg flex items-center absolute left-58.5 top-[50%] -translate-y-[50%] duration-100 cursor-pointer" onClick={collapse}>
+        <IconChevronCompactLeft />
+      </span>
+    </nav>
   )
 }
 
