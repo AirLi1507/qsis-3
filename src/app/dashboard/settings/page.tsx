@@ -19,19 +19,19 @@ interface OptionCardProp {
 
 const OptionCard = (prop: OptionCardProp) => {
   return (
-    <div className="w-full bg-white/25 dark:bg-white/10 rounded-md shadow-[0_0_4px_rgba(0,0,0,.25)] flex items-center p-6 duration-150 select-none">
-      <prop.icon size={40} className="duration-500" />
-      <div className="h-full ml-4 mr-auto flex flex-col duration-500">
+    <div className="w-full bg-white/25 dark:bg-white/10 rounded-md shadow-[0_0_4px_rgba(0,0,0,.25)] flex flex-col md:flex-row gap-4 md:gap-0 items-center p-6 duration-150 select-none">
+      <prop.icon size={40} className="min-w-10 min-h-10 duration-500" />
+      <div className="h-full md:ml-4 md:mr-2 flex flex-col items-center md:items-start duration-500">
         <span className="text-xl">{prop.title}</span>
         <span className="text-black/65 dark:text-white/75 text-md duration-500">{prop.description}</span>
       </div>
-      <div className="bg-white/45 dark:bg-white/15 rounded-sm shadow-[0_0_2px_rgba(0,0,0,.25)] flex gap-1 items-center p-2">
+      <div className="md:ml-auto bg-white /45 dark:bg-white/15 rounded-sm shadow-[0_0_2px_rgba(0,0,0,.25)] flex gap-1 items-center p-2">
         <select className="flex appearance-none outline-none duration-500" id={prop.name} name={prop.name} onChange={prop.onChange}>
           {prop.children}
         </select>
         <IconCaretDownFilled size={16} className="text-black/75 dark:text-white/75 duration-500" />
       </div>
-    </div>
+    </div >
   )
 }
 
@@ -48,7 +48,7 @@ const Settings = () => {
     }
   }, [])
   return (
-    <div className="w-full m-2 bg-white/25 dark:bg-black/20 rounded-xl shadow-[0_0_4px_rgba(0,0,0,.25)] flex flex-col duration-500 overflow-hidden">
+    <div className="w-full bg-white/25 dark:bg-black/20 rounded-xl shadow-[0_0_4px_rgba(0,0,0,.25)] flex flex-col duration-500 overflow-hidden">
       <div className="text-2xl font-medium w-full bg-white/25 dark:bg-white/20 shadow-md p-6 duration-750 select-none">{t("Dashboard.settings")}</div>
       <div className="flex flex-col gap-2 md:gap-3 lg:gap-4 p-2 md:p-3 lg:p-4 overflow-scroll box-border">
         <OptionCard

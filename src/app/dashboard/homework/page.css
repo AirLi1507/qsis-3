@@ -1,5 +1,9 @@
 @reference "../../global.css";
 
+.header {
+  @apply border-b-2 drop-shadow-[0_2px_2px_rgba(0,0,0,.1)] p-1.5 lg:p-2
+}
+
 .row {
-  @apply p-1 md:p-2 border-b-2 border-b-sky-950/25 dark:border-b-white/25
+  @apply p-1 lg:p-2 border-b-2 border-b-sky-950/25 dark:border-b-white/25
 }

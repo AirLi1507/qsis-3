@@ -6,16 +6,29 @@ import Logo from "../brand/logo"
 import { useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
 import { getRole } from "@/utils/role"
+import { getBasicInfo } from "@/utils/info"
 
 const Sidebar = ({ callback }: { callback: () => void }) => {
   const t = useTranslations("Dashboard")
   const [role, setRole] = useState<number | undefined>(undefined)
+  const [info, setInfo] = useState<{ chi_name: string, eng_name: string, class: string, classNo: number }>()
+  const [name, setName] = useState("")
   useEffect(() => {
     getRole(setRole)
+    getBasicInfo(setInfo)
   }, [])
+  useEffect(() => {
+    if (info) {
+      if (role && role > 0) {
+        setName(`${info.chi_name} ${info.eng_name}`)
+        return
+      }
+      setName(`${info.class}-${info.classNo} ${info.chi_name} ${info.eng_name}`)
+    }
+  }, [info, role])
   return (
     <>
-      <nav className="min-w-fit bg-sky-50/25 dark:bg-black/10 shadow-xl flex flex-col overflow-scroll box-border duration-500 transform-gpu will-change-transform">
+      <nav className="min-w-fit bg-sky-50/25 dark:bg-black/10 shadow-xl flex flex-col px-3 overflow-scroll box-border duration-500 transform-gpu will-change-transform">
         <div className="flex flex-col">
           <Logo logoSize={36} className="mt-12 mb-8" variant="hover" />
           <span className="text-sky-700 dark:text-sky-500 text-3xl text-center font-bold select-none">QSIS 3</span>
@@ -38,7 +51,7 @@ const Sidebar = ({ callback }: { callback: () => void }) => {
               null
           }
           <Tab href="/dashboard/settings" icon={IconSettings}>{t("settings")}</Tab>
-          <Tab href="" icon={IconAddressBook}>3A-XX MinecraftPlayer87</Tab>
+          <Tab href="" icon={IconAddressBook}>{name}</Tab>
         </div>
       </nav>
       <div className="flex justify-end">

@@ -2,7 +2,6 @@ export async function getRole(callback: (arg: number) => void) {
   const request = await fetch(
     "/api/role",
     {
-      "method": "Post",
       "credentials": "include"
     }
   )

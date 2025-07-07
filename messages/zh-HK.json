@@ -32,7 +32,8 @@
     "subjects": "修讀科目",
     "subject": "科目",
     "name": "名稱",
-    "date": "日期",
+    "date": "截止日期",
+    "todo": "待呈交",
     "on_time": "準時呈交",
     "not_submitted": "欠交",
     "exemptions": "豁免呈交"

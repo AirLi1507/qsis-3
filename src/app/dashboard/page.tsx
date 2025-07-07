@@ -32,7 +32,7 @@ const QuickNav = (prop: QuickNavProp) => {
 const Dashboard = () => {
   const t = useTranslations("Dashboard")
   return (
-    <div className="w-full h-full m-2 flex flex-col">
+    <div className="w-full h-full flex flex-col">
       <span className="text-2xl font-medium w-full bg-white/45 dark:bg-white/20 rounded-lg shadow-[0_0_4px_rgba(0,0,0,.25)] p-6 duration-750 select-none">{t("quick_nav")}</span>
       <div className="w-full h-fit mt-4 grid grid-cols-2 gap-4 p-2 pb-6 overflow-y-scroll">
         <QuickNav url="/dashboard/profile" icon={IconAddressBook} title={t("profile")} description={t("profile_desc")} />

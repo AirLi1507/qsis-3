@@ -29,7 +29,6 @@ const LoginPage = () => {
       passwordRef.current!.parentElement!.classList.replace("border-sky-50/25", "border-rose-400/80")
       passwordRef.current!.parentElement!.classList.replace("text-sky-900/75", "text-rose-400")
     } else {
-      localStorage.setItem("uid", uidRef.current!.value)
       router.push("/dashboard")
     }
   }

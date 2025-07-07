@@ -14,10 +14,10 @@ const Homework = () => {
 
   useEffect(() => {
     getRole(setRole)
-  })
+  }, [])
   if (role == undefined) {
     return (
-      <div className="w-full h-full flex flex-col gap-4 p-2 overflow-y-scroll box-border">
+      <div className="w-full h-fit flex flex-col gap-4">
         <Topbar title={t("homework")} />
       </div>
     )
@@ -33,7 +33,7 @@ const Homework = () => {
     )
   } else {
     return (
-      <div className="w-full h-full flex flex-col gap-4 p-2 overflow-y-scroll box-border">
+      <div className="w-full h-fit flex flex-col gap-4">
         <Topbar title={t("homework")} />
       </div>
     )

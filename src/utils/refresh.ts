@@ -4,7 +4,6 @@ export default async function refresh(): Promise<boolean> {
   const request = fetch(
     "/api/auth/refresh",
     {
-      method: "Post",
       credentials: "include"
     }
   )

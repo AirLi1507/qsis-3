@@ -1,6 +1,7 @@
 "use client"
 
 import Topbar from "@/components/dashboard/topbar"
+import { getProfile } from "@/utils/profile"
 import { Icon, IconChalkboard, IconHash, IconLabelFilled } from "@tabler/icons-react"
 import { useTranslations } from "next-intl"
 import Image from "next/image"
@@ -15,7 +16,7 @@ interface LabelProp {
 
 const Label = (prop: LabelProp) => {
   return (
-    <div className="text-sky-900/85 dark:text-sky-50/85 w-fit border-2 border-zinc-200 dark:border-zinc-400 rounded-lg flex gap-1 items-center p-2">
+    <div className="text-sky-900/85 dark:text-white w-fit border-2 border-zinc-200 dark:border-zinc-400 rounded-lg flex gap-1 items-center p-2">
       <prop.icon />
       <span className="font-medium select-none">{prop.text}</span>
       <span className="ml-1.5">{prop.value}</span>
@@ -25,65 +26,41 @@ const Label = (prop: LabelProp) => {
 
 const Profile = () => {
   const t = useTranslations("Dashboard")
-  const cookies = new Cookies
   const [pfpSrc, setPfpSrc] = useState<undefined | string>(undefined)
   const [profile, setProfile] = useState<undefined | { name: string, class: string, classNo: number }>(undefined)
-  async function getPfp(uid: string) {
-    if (pfpSrc) {
-      return
-    }
-    const request = await fetch(
-      "/api/pfp",
-      {
-        method: "post",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(
-          {
-            uid: uid
-          }
-        )
-      }
-    )
-    if (request.status == 200) {
-      const blob = await request.blob()
-      const url = URL.createObjectURL(blob)
-      setPfpSrc(url)
-    }
-    return
-  }
-  async function getProfile(uid: string) {
-    if (profile) {
-      return
-    }
-    const request = await fetch(
-      "/api/profile",
-      {
-        method: "post",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          uid: uid,
-          lang: cookies.get("lang")
-        })
-      }
-    )
-    if (request.status == 200) {
-      const result = await request.json() as { name: string, class: string, classNo: number }
-      setProfile(result)
-    }
-    return
-  }
   useEffect(() => {
-    getPfp(localStorage.uid)
-    getProfile(localStorage.uid)
-  })
+    const cookies = new Cookies
+    async function getPfp() {
+      if (pfpSrc) {
+        return
+      }
+      const request = await fetch(
+        "/api/pfp",
+        {
+          method: "post",
+          credentials: "include",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(
+            {
+              uid: cookies.get("uid")
+            }
+          )
+        }
+      )
+      if (request.status == 200) {
+        const blob = await request.blob()
+        const url = URL.createObjectURL(blob)
+        setPfpSrc(url)
+      }
+      return
+    }
+    getPfp()
+    getProfile(setProfile)
+  }, [pfpSrc])
   return (
-    <div className="w-full h-full m-2 flex flex-col pb-4">
+    <div className="w-full h-full flex flex-col">
       <Topbar title={t("profile")} />
       <div className="mt-4 w-full h-full bg-white/25 dark:bg-black/20 rounded-xl shadow-[0_0_4px_rgba(0,0,0,.25)] flex flex-col gap-6 p-4 lg:p-5 xl:p-6 overflow-scroll box-border">
         <div className="flex flex-col lg:flex-row gap-6 items-center xl:px-4">

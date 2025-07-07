@@ -1,120 +1,99 @@
 import Topbar from "@/components/dashboard/topbar"
 import { useTranslations } from "next-intl"
 import { useEffect, useState } from "react"
-
-interface TableProp {
-  color: string
-  title: string
-  children: React.ReactNode
-}
-
-interface RowProp {
-  subject: string
-  name: string
-  date: string
-}
-
-const Table = (prop: TableProp) => {
-  const t = useTranslations("Dashboard")
-  return (
-    <div className="w-full min-h-60 md:min-h-45 bg-white/25 dark:bg-black/20 rounded-xl shadow-[0_0_4px_rgba(0,0,0,.25)] flex flex-col pb-2 overflow-hidden box-border">
-      <div className={`text-white text-2xl font-medium w-full ${prop.color} shadow-md p-5 select-none`}>{prop.title}</div>
-      <div className="w-full h-fit md:px-4 overflow-scroll box-border">
-        <table className="w-full h-fit border-separate border-spacing-x-4 md:border-spacing-x-6 border-spacing-y-2.5 md:border-spacing-y-4">
-          <tbody>
-            <tr className="text-xl select-none">
-              <th className="border-b-2 border-b-sky-600/75 p-2.5">{t("subject")}</th>
-              <th className="border-b-2 border-b-sky-600/75 p-2.5">{t("name")}</th>
-              <th className="border-b-2 border-b-sky-600/75 p-2.5">{t("date")}</th>
-            </tr>
-            {prop.children}
-          </tbody>
-        </table>
-      </div>
-    </div>
-  )
-}
-
-const Row = (prop: RowProp) => {
-  return (
-    <tr className="text-lg">
-      <td className="min-w-20 text-center row">{prop.subject}</td>
-      <td className="min-w-fit w-full row">{prop.name}</td>
-      <td className="min-w-32 text-center row">{prop.date}</td>
-    </tr>
-  )
-}
+import { Row, Table } from "./common"
 
 const Student = () => {
   const t = useTranslations("Dashboard")
-  const [hw, setHw] = useState<{ name: string, subject: string, date: string, status: number }[]>()
-
-  async function getHomework() {
-    const request = await fetch(
-      "/api/homework",
-      {
-        method: "Post",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          uid: localStorage.uid
-        })
-      }
-    )
-    if (request.status == 200) {
-      setHw(await request.json())
-    }
-  }
-
-  function convertDate(n: number) {
-    n = n * 1000
-    const d = new Date(n)
-    return `${d.getDate()}-${d.getMonth() + 1}-${d.getFullYear()}`
-  }
+  const [todo, setTodo] = useState<{ name: string, subject: string, due_date: string }[]>()
+  const [hw, setHw] = useState<{ name: string, subject: string, due_date: string, status: number, submission_status: number }[]>()
+  const [count, setCount] = useState({ todo: 0, on_time: 0, not_submitted: 0, exemption: 0 })
 
   useEffect(() => {
+    async function getHomework() {
+      if (todo || hw) {
+        return
+      }
+      setTodo(await (await fetch(
+        "/api/homework/todo",
+        {
+          credentials: "include"
+        }
+      )).json()
+      )
+      setHw(await (await fetch(
+        "/api/homework/submission",
+        {
+          credentials: "include"
+        }
+      )).json()
+      )
+    }
     getHomework()
   })
 
+  useEffect(() => {
+    if (!hw || !todo) {
+      return
+    }
+    for (let i = 0; i < todo.length; i++) {
+      todo[i].due_date = todo[i].due_date.split("T")[0]
+      setCount((prev) => ({ ...prev, todo: prev.todo + 1 }))
+    }
+    for (let i = 0; i < hw.length; i++) {
+      hw[i].due_date = hw[i].due_date.split("T")[0]
+      switch (hw[i].submission_status) {
+        case 0:
+          setCount((prev) => ({ ...prev, not_submitted: prev.not_submitted + 1 }))
+          break
+        case 1:
+          setCount((prev) => ({ ...prev, on_time: prev.on_time + 1 }))
+          break
+        case 2:
+          setCount((prev) => ({ ...prev, exemption: prev.exemption + 1 }))
+          break
+      }
+    }
+  }, [todo, hw])
+
   return (
-    <div className="w-full h-full flex flex-col gap-4 p-2 overflow-y-scroll box-border">
+    <div className="w-full h-fit flex flex-col gap-4">
       <Topbar title={t("homework")} />
-      <Table color="bg-emerald-500/50 dark:bg-emerald-400/65" title={t("on_time")}>
+      <Table color="border-b-sky-400" title={t("todo")} total={count.todo} expand>
         {
-          hw
-          &&
-          hw.map((i, key) => {
-            if (i.status == 1) {
-              return <Row subject={i.subject} name={i.name} date={convertDate(Number(i.date))} key={key} />
+          todo?.map((i, key) => {
+            return <Row subject={i.subject} name={i.name} date={i.due_date} key={key} />
+          })
+        }
+      </Table>
+      <Table color="border-b-emerald-500/50 dark:border-b-emerald-400/65" title={t("on_time")} total={count.on_time}>
+        {
+          hw?.map((i, key) => {
+            if (i.submission_status == 1) {
+              return <Row subject={i.subject} name={i.name} date={i.due_date} key={key} />
             }
           })
         }
       </Table>
-      <Table color="bg-rose-500/62.5 dark:bg-rose-400/65" title={t("not_submitted")}>
+      <Table color="border-b-rose-500/62.5 dark:border-b-rose-400/65" title={t("not_submitted")} total={count.not_submitted}>
         {
-          hw
-          &&
-          hw.map((i, key) => {
-            if (i.status == 0) {
-              return <Row subject={i.subject} name={i.name} date={convertDate(Number(i.date))} key={key} />
+          hw?.map((i, key) => {
+            if (i.submission_status == 0) {
+              return <Row subject={i.subject} name={i.name} date={i.due_date} key={key} />
             }
           })
         }
       </Table>
-      <Table color="bg-yellow-500/75 dark:bg-yellow-300/75" title={t("exemptions")}>
+      <Table color="border-b-yellow-500/95 dark:border-b-yellow-300/95" title={t("exemptions")} total={count.exemption}>
         {
-          hw
-          &&
-          hw.map((i, key) => {
-            if (i.status == 2) {
-              return <Row subject={i.subject} name={i.name} date={convertDate(Number(i.date))} key={key} />
+          hw?.map((i, key) => {
+            if (i.submission_status == 2) {
+              return <Row subject={i.subject} name={i.name} date={i.due_date} key={key} />
             }
           })
         }
       </Table>
-    </div>
+    </div >
   )
 }
 

@@ -33,7 +33,8 @@
     "subjects": "Subjects",
     "subject": "Subject",
     "name": "Name",
-    "date": "Date",
+    "date": "Due Date",
+    "todo": "To-do",
     "on_time": "On Time Submissions",
     "not_submitted": "Not Submitted",
     "exemptions": "Exemptions"
