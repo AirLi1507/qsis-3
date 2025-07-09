@@ -3,25 +3,11 @@ import OptionCard from "../../components/dashboard/settings/optioncard"
 import Topbar from "../../components/dashboard/topbar"
 import { useTranslation } from "react-i18next"
 import { ThemeContext } from "../../utils/context"
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 
 const Settings = () => {
   const { theme, setTheme } = useContext(ThemeContext)
   const { t, i18n } = useTranslation()
-  useEffect(() => {
-    const themeSel = document.getElementsByName("theme")[0] as HTMLSelectElement
-    const langSel = document.getElementsByName("lang")[0] as HTMLSelectElement
-    const {
-      userTheme,
-      lang
-    } = localStorage
-    if (userTheme) {
-      themeSel.value = userTheme
-    }
-    if (lang) {
-      langSel.value = lang
-    }
-  }, [])
   return (
     <div className="w-full h-full bg-white/25 dark:bg-black/15 rounded-xl shadow-lg dark:inset-shadow-[0_0_8px_rgba(0,0,0,.1)] overflow-hidden box-border">
       <Topbar title={t("dashboard.settings")} />

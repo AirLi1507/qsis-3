@@ -1,8 +1,10 @@
 import { IconAddressBook, IconBallBasketball, IconBooks, IconCheckbox, IconChevronCompactLeft, IconDoorExit, IconFilePencil, IconHome, IconSettings, IconUser, type Icon } from "@tabler/icons-react"
 import { Link, useLocation } from "react-router"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { collapse } from "./layout"
 import Logo from "../branding/logo"
+import { useTranslation } from "react-i18next"
+import { UserContext } from "../../utils/context"
 
 interface TabProp {
   icon: Icon
@@ -11,7 +13,7 @@ interface TabProp {
 }
 
 const Tab = (prop: TabProp) => {
-  const location = useLocation().pathname.split("/")[2]
+  const location = useLocation().pathname.split("/").pop()
   const [active, setActive] = useState(false)
   useEffect(() => {
     if (
@@ -19,7 +21,7 @@ const Tab = (prop: TabProp) => {
       (prop.href === location)
       ||
       /* Checking for Home tab that its hypertext reference is blank */
-      (prop.href === "" && location == undefined)
+      (prop.href === "" && location === "dashboard")
     ) {
       setActive(true)
     } else {
@@ -35,6 +37,8 @@ const Tab = (prop: TabProp) => {
 }
 
 const Sidebar = () => {
+  const { t } = useTranslation()
+  const { chi_name, eng_name, form, className, classNo } = useContext(UserContext).user
   return (
     <nav className="min-w-fit bg-blue-50/25 dark:bg-black/10 shadow-lg shadow-black/15 flex flex-col p-4 overflow-y-scroll box-border duration-500">
       <div className="mx-auto my-8">
@@ -44,16 +48,16 @@ const Sidebar = () => {
         OpenSIS
       </span>
       <div className="flex flex-col mb-auto">
-        <Tab icon={IconHome} name="Home" href="" />
-        <Tab icon={IconAddressBook} name="Profile" href="profile" />
-        <Tab icon={IconFilePencil} name="Homework" href="homework" />
-        <Tab icon={IconBallBasketball} name="Extension Curriculum" href="ec" />
-        <Tab icon={IconBooks} name="Reading" href="reading" />
-        <Tab icon={IconCheckbox} name="Subject Selection" href="ss" />
+        <Tab icon={IconHome} name={t("dashboard.home")} href="" />
+        <Tab icon={IconAddressBook} name={t("dashboard.profile")} href="profile" />
+        <Tab icon={IconFilePencil} name={t("dashboard.homework")} href="homework" />
+        <Tab icon={IconBallBasketball} name={t("dashboard.ec")} href="ec" />
+        <Tab icon={IconBooks} name={t("dashboard.reading")} href="reading" />
+        <Tab icon={IconCheckbox} name={t("dashboard.ss")} href="ss" />
       </div>
-      <Tab icon={IconDoorExit} name="Logout" href="/auth/logout" />
-      <Tab icon={IconSettings} name="Settings" href="settings" />
-      <Tab icon={IconUser} name="User" href="#" />
+      <Tab icon={IconDoorExit} name={t("dashboard.logout")} href="/auth/logout" />
+      <Tab icon={IconSettings} name={t("dashboard.settings")} href="settings" />
+      <Tab icon={IconUser} name={`${form}${className}-${classNo} ${chi_name} ${eng_name}`} href="#" />
       <span className="h-8 hover:bg-black/5 rounded-lg flex items-center absolute left-58.5 top-[50%] -translate-y-[50%] duration-100 cursor-pointer" onClick={collapse}>
         <IconChevronCompactLeft />
       </span>

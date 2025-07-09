@@ -17,7 +17,13 @@
     "reading": "Reading",
     "ss": "Subject Selection",
     "logout": "Logout",
-    "settings": "Settings"
+    "settings": "Settings",
+    "quick_nav": "Quick Navigation",
+    "profile_desc": "View your account profile. 🪪",
+    "homework_desc": "Have you submitted your homework yet? 🤔",
+    "ec_desc": "Did you have fun in your EC? 😁",
+    "reading_desc": "Have you stepped in the golden house? 🏠",
+    "ss_desc": "Choose the elective subject as your dream job's first step! 💼"
   },
   "settings": {
     "theme": "Color Preference",
