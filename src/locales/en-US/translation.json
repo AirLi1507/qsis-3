@@ -1,0 +1,30 @@
+{
+  "auth": {
+    "username": "Username",
+    "password": "Password",
+    "forget_pw": "Forget password?",
+    "login": "Login",
+    "email": "Email",
+    "reset": "Reset",
+    "back": "Go back",
+    "loading": "Loading"
+  },
+  "dashboard": {
+    "home": "Home",
+    "profile":"Student Profile",
+    "homework": "Homework",
+    "ec": "Extension Curriculum",
+    "reading": "Reading",
+    "ss": "Subject Selection",
+    "logout": "Logout",
+    "settings": "Settings"
+  },
+  "settings": {
+    "theme": "Color Preference",
+    "theme_desc": "Switching to Light/Dark mode in QSIS 3.",
+    "lang": "Language",
+    "lang_desc": "Switching between languages in QSIS 3.",
+    "light": "Light",
+    "dark": "Dark"
+  }
+}

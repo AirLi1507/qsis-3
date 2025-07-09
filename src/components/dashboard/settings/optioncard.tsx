@@ -12,18 +12,18 @@ interface OptionCardProp {
 
 const OptionCard = (prop: OptionCardProp) => {
   return (
-    <div className="w-full bg-white/50 rounded-xl shadow-md flex items-center p-6.5 select-none">
+    <div className="w-full bg-white/50 dark:bg-white/10 rounded-xl shadow-md flex items-center p-6.5 select-none">
       <prop.icon size={48} stroke={1.5} />
       <div className="ml-4 mr-auto flex flex-col">
         <span className="text-xl">
           {prop.title}
         </span>
-        <span className="text-black/65">
+        <span className="text-black/65 dark:text-white/80">
           {prop.description}
         </span>
       </div>
-      <div className="bg-white/50 rounded-md inset-shadow-[0_0_2px_rgba(0,0,0,.5)] pr-2">
-        <select name={prop.name} onChange={prop.onChange} className="p-3">
+      <div className="bg-white/50 dark:bg-white/10 rounded-md inset-shadow-[0_0_2px_rgba(0,0,0,.5)] dark:inset-shadow-none">
+        <select name={prop.name} onChange={prop.onChange} className="text-center p-3 appearance-none">
           {prop.children}
         </select>
       </div>

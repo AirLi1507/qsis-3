@@ -1,31 +1,50 @@
-import { IconMoon } from "@tabler/icons-react"
+import { IconLanguage, IconMoon, IconSun } from "@tabler/icons-react"
 import OptionCard from "../../components/dashboard/settings/optioncard"
 import Topbar from "../../components/dashboard/topbar"
+import { useTranslation } from "react-i18next"
+import { ThemeContext } from "../../utils/context"
+import { useContext, useEffect } from "react"
 
 const Settings = () => {
+  const { theme, setTheme } = useContext(ThemeContext)
+  const { t, i18n } = useTranslation()
+  useEffect(() => {
+    const themeSel = document.getElementsByName("theme")[0] as HTMLSelectElement
+    const langSel = document.getElementsByName("lang")[0] as HTMLSelectElement
+    const {
+      userTheme,
+      lang
+    } = localStorage
+    if (userTheme) {
+      themeSel.value = userTheme
+    }
+    if (lang) {
+      langSel.value = lang
+    }
+  }, [])
   return (
-    <div className="w-full h-full bg-white/25 rounded-xl shadow-lg overflow-hidden box-border">
-      <Topbar title="Settings" />
+    <div className="w-full h-full bg-white/25 dark:bg-black/15 rounded-xl shadow-lg dark:inset-shadow-[0_0_8px_rgba(0,0,0,.1)] overflow-hidden box-border">
+      <Topbar title={t("dashboard.settings")} />
       <div className="w-full h-full flex flex-col gap-4 p-4 overflow-y-scroll box-border">
         <OptionCard
-          icon={IconMoon}
-          title="Color Preference"
+          icon={theme === "light" ? IconSun : IconMoon}
+          title={t("settings.theme")}
           name="theme"
-          description="Switching to Light/Dark mode in OpenSIS."
-          onChange={(e) => { alert(e.currentTarget.value) }}
+          description={t("settings.theme_desc")}
+          onChange={(e) => { setTheme(e.currentTarget.value); localStorage.setItem("theme", e.currentTarget.value) }}
         >
-          <option>Light</option>
-          <option>Dark</option>
+          <option value="light">{t("settings.light")}</option>
+          <option value="dark" > {t("settings.dark")}</option>
         </OptionCard>
         <OptionCard
-          icon={IconMoon}
-          title="Color Preference"
-          name="theme"
-          description="Switching to Light/Dark mode in OpenSIS."
-          onChange={(e) => { alert(e.currentTarget.value) }}
+          icon={IconLanguage}
+          title={t("settings.lang")}
+          name="lang"
+          description={t("settings.lang_desc")}
+          onChange={(e) => { i18n.changeLanguage(e.currentTarget.value); localStorage.setItem("lang", e.currentTarget.value) }}
         >
-          <option>Light</option>
-          <option>Dark</option>
+          <option value="en">English</option>
+          <option value="zh_Hant">正體中文</option>
         </OptionCard>
       </div>
     </div>

@@ -1,0 +1,31 @@
+{
+  "auth": {
+    "username": "使用者",
+    "password": "密碼",
+    "forget_pw": "忘記密碼?",
+    "login": "登入",
+    "email": "電子郵件",
+    "reset": "復原",
+    "back": "返回",
+    "loading": "請稍等"
+  },
+  "dashboard": {
+    "home": "首頁",
+    "profile":"學生檔案",
+    "homework": "功課",
+    "ec": "延伸課程",
+    "reading": "閱讀",
+    "ss": "選修科目",
+    "logout": "登出",
+    "admin": "管理",
+    "settings": "設定"
+  },
+  "settings": {
+    "theme": "主題",
+    "theme_desc": "在QSIS中切換淺色/深色主題",
+    "lang": "語言",
+    "lang_desc": "在QSIS中切換顯示語言",
+    "light": "淺色",
+    "dark": "深色"
+  }
+}

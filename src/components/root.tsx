@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { refresh } from "../utils/auth.ts";
 import { useNavigate } from "react-router";
 import { Outlet } from "react-router";
+import { ThemeContext } from "../utils/context.tsx";
 
 const Root = () => {
+  const { theme } = useContext(ThemeContext)
   const navigate = useNavigate()
   const [status, setStatus] = useState<boolean>()
   useEffect(() => {
@@ -41,7 +43,7 @@ const Root = () => {
     }
   }, [status])
   return (
-    <div className="w-svw h-svh background">
+    <div className={`dark:text-white w-svw h-svh background ${theme}`}>
       <div className="w-full h-full backdrop-blur-lg backdrop-brightness-105 dark:backdrop-brightness-50 p-1.5 md:p-2 xl:p-2.5 duration-150">
         <div className="w-full h-full rounded-lg inset-shadow-[0_0_8px_rgba(0,0,0,.25)] background flex overflow-y-scroll overflow-x-hidden box-border">
           <Outlet />

@@ -27,7 +27,7 @@ const Tab = (prop: TabProp) => {
     }
   }, [location])
   return (
-    <Link to={prop.href} className={`w-60 ${active ? "text-white bg-sky-600/50" : "hover:bg-sky-600/15"} rounded-full flex gap-1 items-center p-3 duration-150 select-none`}>
+    <Link to={prop.href} className={`w-60 ${active ? "text-white bg-sky-600/50 dark:bg-sky-400/75" : "hover:bg-sky-600/15"} rounded-full flex gap-2 items-center p-3 duration-150 select-none`}>
       <prop.icon stroke={1.5} />
       <span>{prop.name}</span>
     </Link>
@@ -36,11 +36,11 @@ const Tab = (prop: TabProp) => {
 
 const Sidebar = () => {
   return (
-    <nav className="min-w-fit bg-blue-50/25 shadow-lg shadow-black/15 flex flex-col p-4 overflow-y-scroll box-border duration-500">
+    <nav className="min-w-fit bg-blue-50/25 dark:bg-black/10 shadow-lg shadow-black/15 flex flex-col p-4 overflow-y-scroll box-border duration-500">
       <div className="mx-auto my-8">
         <Logo size={72} />
       </div>
-      <span className="text-sky-700 text-3xl font-bold mx-auto mb-6 select-none">
+      <span className="text-sky-700 dark:text-sky-500 text-3xl font-bold mx-auto mb-6 select-none">
         OpenSIS
       </span>
       <div className="flex flex-col mb-auto">

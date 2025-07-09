@@ -12,8 +12,12 @@
   "dependencies": {
     "@tabler/icons-react": "^3.34.0",
     "@tailwindcss/vite": "^4.1.11",
+    "i18next": "^25.3.1",
+    "i18next-browser-languagedetector": "^8.2.0",
+    "i18next-http-backend": "^3.0.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-i18next": "^15.6.0",
     "react-router": "^7.6.3",
     "tailwindcss": "^4.1.11"
   },

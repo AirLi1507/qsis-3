@@ -5,8 +5,10 @@ import Anchor from "../../components/auth/anchor.tsx"
 import Card from "../../components/auth/card.tsx"
 import { useNavigate } from "react-router"
 import { login } from "../../utils/auth.ts"
+import { useTranslation } from "react-i18next"
 
 const Login = () => {
+  const { t } = useTranslation()
   const navigate = useNavigate()
   async function submit(e: React.FormEvent) {
     e.preventDefault()
@@ -28,10 +30,10 @@ const Login = () => {
   }
   return (
     <Card onSubmit={submit}>
-      <Textbox Icon={IconUser} name="uid" placeholder="Username" required />
-      <Textbox Icon={IconKey} name="password" type="password" placeholder="Password" minLength={6} required />
-      <Anchor Icon={IconLockQuestion} href="/auth/reset">Forget password?</Anchor>
-      <Button>Login</Button>
+      <Textbox Icon={IconUser} name="uid" placeholder={t("auth.username")} required />
+      <Textbox Icon={IconKey} name="password" type="password" placeholder={t("auth.password")} minLength={6} required />
+      <Anchor Icon={IconLockQuestion} href="/auth/reset">{t("auth.forget_pw")}</Anchor>
+      <Button>{t("auth.login")}</Button>
     </Card>
   )
 }
