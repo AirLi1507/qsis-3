@@ -21,7 +21,7 @@ const Tab = (prop: TabProp) => {
       (prop.href === location)
       ||
       /* Checking for Home tab that its hypertext reference is blank */
-      (prop.href === location && location === "dashboard")
+      (prop.href === "" && location === "dashboard")
     ) {
       setActive(true)
     } else {
