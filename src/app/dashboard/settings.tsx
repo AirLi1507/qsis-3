@@ -10,7 +10,7 @@ const Settings = () => {
   const { t, i18n } = useTranslation()
   return (
     <div className="w-full h-full bg-white/25 dark:bg-black/15 rounded-xl shadow-lg dark:inset-shadow-[0_0_8px_rgba(0,0,0,.1)] overflow-hidden box-border">
-      <Topbar title={t("dashboard.settings")} />
+      <Topbar title={t("tab_name.settings")} />
       <div className="w-full h-full flex flex-col gap-4 p-4 overflow-y-scroll box-border">
         <OptionCard
           icon={theme === "light" ? IconSun : IconMoon}
