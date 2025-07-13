@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@tabler/icons-react": "^3.34.0",
+    "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.11",
     "@vitejs/plugin-react-oxc": "^0.2.3",
     "i18next": "^25.3.2",
@@ -19,6 +20,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-i18next": "^15.6.0",
+    "react-markdown": "^10.1.0",
     "react-router": "^7.6.3",
     "tailwindcss": "^4.1.11"
   },

@@ -35,6 +35,12 @@
     "class": "班別",
     "year": "本學年度"
   },
+  "ec": {
+    "name": "名稱",
+    "description": "課程簡介",
+    "teacher": "負責老師",
+    "cost": "費用"
+  },
   "settings": {
     "theme": "主題",
     "theme_desc": "在QSIS中切換淺色/深色主題",

@@ -34,6 +34,12 @@
     "class": "Class",
     "year": "Year"
   },
+  "ec": {
+    "name": "Name",
+    "description": "Descripton",
+    "teacher": "Teacher",
+    "cost": "Cost"
+  },
   "settings": {
     "theme": "Color Preference",
     "theme_desc": "Switching to Light/Dark mode in QSIS 3.",

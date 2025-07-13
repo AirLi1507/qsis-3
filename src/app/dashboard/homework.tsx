@@ -1,6 +1,13 @@
+import { useTranslation } from "react-i18next"
+import Topbar from "../../components/dashboard/topbar"
+
 const Homework = () => {
+  const { t } = useTranslation()
   return (
-    <>HOMEWORk</>
+    <>
+      <Topbar title={t("tab_name.homework")} rounded />
+
+    </>
   )
 }
 
