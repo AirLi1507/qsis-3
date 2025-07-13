@@ -1,4 +1,4 @@
-import { IconAddressBook, IconBallBasketball, IconBooks, IconCheckbox, IconChevronCompactLeft, IconDoorExit, IconFilePencil, IconHome, IconSettings, IconUser, type Icon } from "@tabler/icons-react"
+import { IconAddressBook, IconBallBasketball, IconBooks, IconChalkboard, IconCheckbox, IconChevronCompactLeft, IconDoorExit, IconFilePencil, IconHome, IconSettings, IconUser, type Icon } from "@tabler/icons-react"
 import { Link, useLocation } from "react-router"
 import { useContext, useEffect, useState } from "react"
 import { collapse } from "./layout"
@@ -55,6 +55,7 @@ const Sidebar = () => {
         <Tab icon={IconBallBasketball} name={t("tab_name.ec")} href="ec" />
         <Tab icon={IconBooks} name={t("tab_name.reading")} href="reading" />
         <Tab icon={IconCheckbox} name={t("tab_name.ss")} href="ss" />
+        <Tab icon={IconChalkboard} name={t("tab_name.ilearn")} href="ilearn" />
       </div>
       <Tab icon={IconDoorExit} name={t("tab_name.logout")} href="/auth/logout" />
       <Tab icon={IconSettings} name={t("tab_name.settings")} href="settings" />

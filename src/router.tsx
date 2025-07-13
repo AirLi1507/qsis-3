@@ -12,6 +12,7 @@ import ExtensionCurriculum from "./app/dashboard/ec.tsx";
 import Reading from "./app/dashboard/reading.tsx";
 import SubjectSelection from "./app/dashboard/ss.tsx";
 import Settings from "./app/dashboard/settings.tsx";
+import ILearn from "./app/dashboard/ilearn.tsx";
 
 const Router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const Router = createBrowserRouter([
           {
             path: "ss",
             Component: SubjectSelection
+          },
+          {
+            path: "ilearn",
+            Component: ILearn
           },
           {
             path: "settings",

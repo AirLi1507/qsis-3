@@ -29,7 +29,7 @@ i18n
   // for all options read: https://www.i18next.com/overview/configuration-options
   .init({
     resources,
-    ns: ["translation", "auth", "dashboard", "settings"],
+    ns: ["translation"],
     fallbackLng: 'en',
     debug: true,
 

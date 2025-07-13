@@ -28,7 +28,7 @@ const Layout = () => {
           <span className="h-8 hover:bg-black/5 rounded-lg flex items-center absolute left-71 top-[50%] -translate-y-[50%] opacity-0 duration-100 cursor-pointer pointer-events-none" id="innerToggle" onClick={collapse}>
             <IconChevronCompactRight />
           </span>
-          <main className="w-full h-full p-4 overflow-y-scroll overflow-x-hidden box-border">
+          <main className="w-full min-w-[380px] h-full p-4 overflow-y-scroll overflow-x-hidden box-border">
             <Outlet />
           </main>
         </div>

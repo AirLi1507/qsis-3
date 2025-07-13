@@ -19,17 +19,17 @@ const OptionCard = (prop: OptionCardProp) => {
     }
   }, [])
   return (
-    <div className="w-full bg-white/50 dark:bg-white/10 rounded-xl shadow-md flex items-center p-6.5 select-none">
+    <div className="w-full bg-white/50 dark:bg-white/10 rounded-xl shadow-md flex flex-col md:flex-row gap-4 md:gap-0 items-center p-6.5 select-none">
       <prop.icon size={48} stroke={1.5} />
-      <div className="ml-4 mr-auto flex flex-col">
+      <div className="md:ml-4 md:mr-auto flex flex-col items-center md:items-start">
         <span className="text-xl">
           {prop.title}
         </span>
-        <span className="text-black/65 dark:text-white/80">
+        <span className="text-black/65 dark:text-white/80 text-center">
           {prop.description}
         </span>
       </div>
-      <div className="bg-white/50 dark:bg-white/10 rounded-md inset-shadow-[0_0_2px_rgba(0,0,0,.5)] dark:inset-shadow-none">
+      <div className="md:ml-4 bg-white/50 dark:bg-white/10 rounded-md inset-shadow-[0_0_2px_rgba(0,0,0,.5)] dark:inset-shadow-none">
         <select name={prop.name} onChange={prop.onChange} className="text-center p-3 appearance-none outline-none">
           {prop.children}
         </select>
