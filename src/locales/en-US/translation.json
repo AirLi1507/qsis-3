@@ -35,10 +35,17 @@
     "year": "Year"
   },
   "ec": {
+    "attendance": "Attendance",
+    "available": "Available",
     "name": "Name",
     "description": "Descripton",
     "teacher": "Teacher",
     "cost": "Cost"
+  },
+  "ilearn": {
+    "summary": "iSummary",
+    "not_generated": "Not yet generated.",
+    "helper": "iHelper"
   },
   "settings": {
     "theme": "Color Preference",

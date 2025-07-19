@@ -25,7 +25,7 @@ const Layout = () => {
       <div className="w-full h-full bg-white/45 dark:bg-zinc-950/75 backdrop-blur-xl inset-shadow-[0_0_4px_rgba(0,0,0,.5)] duration-150">
         <div id="dashboard" className="min-w-[calc(100%)] h-full flex duration-500">
           <Sidebar />
-          <span className="h-8 hover:bg-black/5 rounded-lg flex items-center absolute left-71 top-[50%] -translate-y-[50%] opacity-0 duration-100 cursor-pointer pointer-events-none" id="innerToggle" onClick={collapse}>
+          <span className="h-8 hover:bg-black/5 rounded-lg flex items-center absolute left-71 top-[50%] -translate-y-[50%] opacity-0 duration-500 cursor-pointer pointer-events-none" id="innerToggle" onClick={collapse}>
             <IconChevronCompactRight />
           </span>
           <main className="w-full min-w-[380px] h-full p-4 overflow-y-scroll overflow-x-hidden box-border">

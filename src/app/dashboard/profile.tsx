@@ -1,33 +1,20 @@
 import { useTranslation } from "react-i18next"
 import Topbar from "../../components/dashboard/topbar.tsx"
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { UserContext } from "../../utils/context.tsx"
+import { fetcher } from "../../utils/fetcher.ts"
+import useSWR from "swr"
 
 const Profile = () => {
-  const { chi_name, eng_name, form, className, classNo } = useContext(UserContext).user
+  const { chi_name, eng_name, form, className, classNo } = useContext(UserContext)
   const { t } = useTranslation()
-  const [pfp, setPfp] = useState("")
-  async function getPfp() {
-    if (pfp) {
-      return
-    }
-    const request = await fetch(
-      "/api/pfp",
-      {
-        method: "post",
-        credentials: "include",
-      }
-    )
-    if (request.status == 200) {
-      const blob = await request.blob()
-      const url = URL.createObjectURL(blob)
-      setPfp(url)
-    }
-    return
+
+  let pfp: string = ""
+  const { data } = useSWR("/api/v1/user/pfp", fetcher("blob", "get"))
+  if (data) {
+    pfp = URL.createObjectURL(data)
   }
-  useEffect(() => {
-    getPfp()
-  }, [])
+
   return (
     <>
       <Topbar title={t("tab_name.profile")} rounded />
@@ -38,8 +25,10 @@ const Profile = () => {
           <span className="text-xl"><span className="mr-2 select-none">{t("profile.fullname")}:</span>{chi_name} {eng_name}</span>
           {
             form && className && classNo
-            &&
-            <span className="text-lg"><span className="mr-2 select-none">{t("profile.class")}:</span>{form + className}-{classNo}</span>
+              ?
+              <span className="text-lg"><span className="mr-2 select-none">{t("profile.class")}:</span>{form + className}-{classNo}</span>
+              :
+              null
           }
         </div>
       </div>

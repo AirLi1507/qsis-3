@@ -1,4 +1,6 @@
 import { createContext, useEffect, useState, type SetStateAction } from "react";
+import useSWR from "swr";
+import { fetcher } from "./fetcher.ts";
 
 export const ThemeContext = createContext({
   theme: "light",
@@ -21,44 +23,23 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
 }
 
 interface userInterface {
-  chi_name: undefined,
-  eng_name: undefined,
-  form: undefined,
-  className: undefined,
-  classNo: undefined
+  chi_name?: string,
+  eng_name?: string,
+  form?: number,
+  className?: string,
+  classNo?: number,
+  role?: number
 }
 
-export const UserContext = createContext({ user: {} as userInterface })
+export const UserContext = createContext({} as userInterface)
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState(
-    {
-      chi_name: undefined,
-      eng_name: undefined,
-      form: undefined,
-      className: undefined,
-      classNo: undefined
-    }
-  )
-  useEffect(() => {
-    async function getUser() {
-      const request = await fetch(
-        "/api/info/user",
-        {
-          credentials: "include"
-        }
-      )
-      return await request.json()
-    }
-    async function request() {
-      setUser(await getUser())
-      return
-    }
-    request()
-  }, [])
-  return (
-    <UserContext.Provider value={{ user }}>
-      {children}
-    </UserContext.Provider>
-  )
+  const { data } = useSWR<userInterface>("/api/v1/user", fetcher("json"))
+  if (data) {
+    return (
+      <UserContext.Provider value={data}>
+        {children}
+      </UserContext.Provider>
+    )
+  }
 }

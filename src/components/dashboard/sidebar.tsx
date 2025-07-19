@@ -39,7 +39,7 @@ const Tab = (prop: TabProp) => {
 
 const Sidebar = () => {
   const { t } = useTranslation()
-  const { chi_name, eng_name, form, className, classNo } = useContext(UserContext).user
+  const { chi_name, eng_name, form, className, classNo } = useContext(UserContext)
   return (
     <nav className="min-w-fit bg-blue-50/25 dark:bg-black/10 shadow-lg shadow-black/15 flex flex-col p-4 overflow-y-scroll box-border duration-500">
       <div className="mx-auto my-8">

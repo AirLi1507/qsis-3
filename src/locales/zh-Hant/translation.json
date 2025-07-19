@@ -36,10 +36,17 @@
     "year": "本學年度"
   },
   "ec": {
+    "attendance": "已參與課程",
+    "available": "現有課程",
     "name": "名稱",
     "description": "課程簡介",
     "teacher": "負責老師",
     "cost": "費用"
+  },
+  "ilearn": {
+    "summary": "智學小總結",
+    "not_generated": "未生成總結",
+    "helper": "智助小幫手"
   },
   "settings": {
     "theme": "主題",

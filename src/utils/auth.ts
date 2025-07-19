@@ -1,5 +1,5 @@
 export async function refresh(): Promise<boolean> {
-  const request = await fetch("/api/auth/refresh", {
+  const request = await fetch("/api/v1/auth/refresh", {
     credentials: "include",
   });
   if (request.ok) {
@@ -16,7 +16,7 @@ export async function login(uid: string, password: string): Promise<boolean> {
     password: password
   };
   const request = await fetch(
-    "/api/auth/login",
+    "/api/v1/auth/login",
     {
       method: "post",
       headers: {
@@ -34,7 +34,7 @@ export async function login(uid: string, password: string): Promise<boolean> {
 
 export async function logout(): Promise<boolean> {
   const request = await fetch(
-    "/api/auth/logout",
+    "/api/v1/auth/logout",
     {
       credentials: "include"
     }

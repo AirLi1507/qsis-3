@@ -1,33 +1,18 @@
 import { useTranslation } from "react-i18next"
-import Topbar from "../../components/dashboard/topbar"
-import { useEffect, useState } from "react"
-import Table from "../../components/dashboard/ec/table"
+import useSWR from "swr"
+import { fetcher } from "../../utils/fetcher.ts"
+import Topbar from "../../components/dashboard/topbar.tsx"
+import Table from "../../components/dashboard/ec/table.tsx"
 
 const ExtensionCurriculum = () => {
   const { t } = useTranslation()
-  const [ec, setEc] = useState<{ name: string, description: string, teacher: string, cost: number }[]>([])
-  useEffect(() => {
-    async function getList() {
-      const request = await fetch(
-        "/api/ec/list",
-        {
-          credentials: "include"
-        }
-      )
-      if (request.ok) {
-        return await request.json()
-      }
-    }
-    async function request() {
-      setEc(await getList())
-      return
-    }
-    request()
-  }, [])
+
+  const { data } = useSWR<{ name: string, description: string, teacher: string, cost: number }[]>("/api/v1/ec/list", fetcher("json"))
+
   return (
     <>
       <Topbar title={t("tab_name.ec")} rounded />
-      <Table title="idk" data={ec} />
+      <Table title={t("ec.available")} data={data} />
     </>
   )
 }
