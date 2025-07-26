@@ -35,12 +35,15 @@
     "year": "Year"
   },
   "ec": {
-    "attendance": "Attendance",
+    "attended": "Attended Curriculum",
     "available": "Available",
     "name": "Name",
     "description": "Descripton",
     "teacher": "Teacher",
-    "cost": "Cost"
+    "cost": "Cost",
+    "registration": "Registration Form",
+    "select": "Opinion",
+    "submit": "Submit"
   },
   "ilearn": {
     "summary": "iSummary",

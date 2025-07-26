@@ -1,0 +1,9 @@
+@reference "../../../index.css";
+
+.t-head {
+  @apply text-xl border-b-1 border-b-black/25 dark:border-b-white/25 pb-2.5 px-2 md:px-4
+}
+
+.t-row {
+  @apply text-lg border-b-1 dark:border-b-white/50 pt-6 pb-4 px-2 md:px-4;
+}
