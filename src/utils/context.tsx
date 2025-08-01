@@ -22,7 +22,7 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   )
 }
 
-interface userInterface {
+interface UserInterface {
   chi_name?: string,
   eng_name?: string,
   form?: number,
@@ -31,10 +31,10 @@ interface userInterface {
   role?: number
 }
 
-export const UserContext = createContext({} as userInterface)
+export const UserContext = createContext({} as UserInterface)
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
-  const { data } = useSWR<userInterface>("/api/v1/user", fetcher("json"))
+  const { data } = useSWR<UserInterface>("/api/v1/user", fetcher("json"))
   if (data) {
     return (
       <UserContext.Provider value={data}>
@@ -42,4 +42,30 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
       </UserContext.Provider>
     )
   }
+}
+
+interface CurriculumInterface {
+  ec_id: number,
+  name: string,
+  description: string,
+  teacher: string
+  cost: number
+}
+
+interface EcInterface {
+  list?: CurriculumInterface[],
+  attended?: CurriculumInterface[]
+}
+
+export const EcContext = createContext<EcInterface>({})
+
+export const EcProvider = ({ children }: { children: React.ReactNode }) => {
+  const list = useSWR<CurriculumInterface[]>("/api/v1/ec/list", fetcher("json"))
+  const attended = useSWR<CurriculumInterface[]>("/api/v1/ec/attendance", fetcher("json"))
+
+  return (
+    <EcContext.Provider value={{ list: list.data, attended: attended.data }}>
+      {children}
+    </EcContext.Provider>
+  )
 }

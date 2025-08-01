@@ -6,6 +6,7 @@ import Card from "../../components/auth/card.tsx"
 import { useNavigate } from "react-router"
 import { login } from "../../utils/auth.ts"
 import { useTranslation } from "react-i18next"
+import { Helmet } from "react-helmet"
 
 const Login = () => {
   const { t } = useTranslation()
@@ -29,12 +30,18 @@ const Login = () => {
     }
   }
   return (
-    <Card onSubmit={submit}>
-      <Textbox Icon={IconUser} name="uid" placeholder={t("auth.username")} required />
-      <Textbox Icon={IconKey} name="password" type="password" placeholder={t("auth.password")} minLength={6} required />
-      <Anchor Icon={IconLockQuestion} href="/auth/reset">{t("auth.forget_pw")}</Anchor>
-      <Button>{t("auth.login")}</Button>
-    </Card>
+    <>
+      <Helmet>
+        <title>QSIS 3 - {t("auth.login")}</title>
+        <meta name="description" content="QSIS 3 Login Page" />
+      </Helmet>
+      <Card onSubmit={submit}>
+        <Textbox Icon={IconUser} name="uid" placeholder={t("auth.username")} required />
+        <Textbox Icon={IconKey} name="password" type="password" placeholder={t("auth.password")} minLength={6} required />
+        <Anchor Icon={IconLockQuestion} href="/auth/reset">{t("auth.forget_pw")}</Anchor>
+        <Button>{t("auth.login")}</Button>
+      </Card>
+    </>
   )
 }
 

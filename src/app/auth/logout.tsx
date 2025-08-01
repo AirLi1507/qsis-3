@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { logout } from "../../utils/auth.ts"
 import Card from "../../components/auth/card.tsx"
 import { useTranslation } from "react-i18next"
+import { Helmet } from "react-helmet"
 
 const Logout = () => {
   const { t } = useTranslation()
@@ -26,11 +27,17 @@ const Logout = () => {
     request()
   }, [])
   return (
-    <Card logoSpin>
-      <span className="text-sky-900 text-xl select-none" id="loading">
-        {t("auth.loading")}
-      </span>
-    </Card >
+    <>
+      <Helmet>
+        <title>QSIS 3 | {t("tab_name.logout")}</title>
+        <meta name="description" content="QSIS 3 Logout Page" />
+      </Helmet>
+      <Card logoSpin>
+        <span className="text-sky-900 text-xl select-none" id="loading">
+          {t("auth.loading")}
+        </span>
+      </Card >
+    </>
   )
 }
 

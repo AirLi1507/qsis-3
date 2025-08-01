@@ -73,6 +73,9 @@ const Router = createBrowserRouter([
             Component: Settings
           }
         ]
+      },
+      {
+        path: "robots.txt",
       }
     ],
     ErrorBoundary: NotFound

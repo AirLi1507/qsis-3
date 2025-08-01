@@ -32,10 +32,15 @@ const Select = ({ children, name }: { children: React.ReactNode, name: string })
         }
       })
     })
+    allOpt.forEach((el) => {
+      if (el.value === "") {
+        el.disabled = false
+      }
+    })
   }
   return (
-    <select name={name} className="w-full bg-white/45 dark:bg-white/10 rounded-lg shadow-md p-4 outline-none appearance-none cursor-pointer" onChange={handleChange} defaultValue="">
-      <option value="">{t("ec.select")}</option>
+    <select name={name} required className="w-full bg-white/50 dark:bg-white/10 rounded-lg shadow-md p-4 outline-none appearance-none cursor-pointer" onChange={handleChange} defaultValue="">
+      <option value="">{t("ec.select")} {Number(name) + 1}</option>
       {children}
     </select>
   )
@@ -72,7 +77,7 @@ const Form = (prop: FormProp) => {
         return
       }
     } else {
-      alert("Could not join specified EC(s) due to internal problem(s).")
+      alert((await request.json() as { error: string }).error)
     }
     return
   }
@@ -107,7 +112,7 @@ const Form = (prop: FormProp) => {
             :
             null
         }
-        <input type="submit" value={t("ec.submit")} className="w-full bg-white/80 dark:bg-white/25 rounded-lg shadow-md p-4 cursor-pointer" />
+        <input type="submit" value={t("ec.submit")} className="w-full bg-white/85 dark:bg-white/25 rounded-lg shadow-md p-4 cursor-pointer" />
       </div>
     </form >
   )

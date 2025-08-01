@@ -4,6 +4,7 @@ import { useContext } from "react"
 import { UserContext } from "../../utils/context.tsx"
 import { fetcher } from "../../utils/fetcher.ts"
 import useSWR from "swr"
+import { Helmet } from "react-helmet"
 
 const Profile = () => {
   const { chi_name, eng_name, form, className, classNo } = useContext(UserContext)
@@ -17,6 +18,10 @@ const Profile = () => {
 
   return (
     <>
+      <Helmet>
+        <title>QSIS 3 | {t("tab_name.profile")}</title>
+        <meta name="description" content="QSIS 3 Dashboard Profile Tab" />
+      </Helmet>
       <Topbar title={t("tab_name.profile")} rounded />
       <div className="w-full mt-4 flex flex-col md:flex-row gap-6 md:gap-4 items-center p-2 overflow-hidden box-border">
         <img src={pfp} height={160} width={160} className="min-w-[160px] min-h-[214px] rounded-xl shadow-md dark:shadow-white/25" />

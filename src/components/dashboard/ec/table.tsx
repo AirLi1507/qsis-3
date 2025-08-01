@@ -19,7 +19,7 @@ const Table = (prop: TableProp) => {
   const [expand, setExpand] = useState(prop.defaultExpand ? true : false)
 
   return (
-    <div className={`bg-white/45 dark:bg-black/10 ${expand ? "max-h-100" : "max-h-17"} shadow-md dark:shadow-black/20 rounded-xl overflow-scroll box-border`}>
+    <div className={`bg-white/45 dark:bg-black/10 ${expand ? "max-h-150" : "max-h-15 md:max-h-17"} shadow-md dark:shadow-black/20 rounded-xl overflow-hidden box-border`}>
       <div className="text-xl font-medium w-full bg-white/50 dark:bg-white/25 shadow-md flex p-4 md:p-5 select-none">
         {prop.title}
         <span className="ml-auto cursor-pointer" onClick={() => setExpand(!expand)}>
@@ -32,7 +32,7 @@ const Table = (prop: TableProp) => {
           }
         </span>
       </div>
-      <div className="px-6 py-4 md:py-6 overflow-x-scroll box-border">
+      <div className="max-h-133 px-6 py-4 md:py-6 overflow-scroll box-border">
         <table className="min-w-[720px] w-full">
           <thead className="select-none">
             <tr>

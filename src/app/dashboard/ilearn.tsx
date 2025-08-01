@@ -3,6 +3,7 @@ import Topbar from "../../components/dashboard/topbar.tsx"
 import Markdown from "react-markdown"
 import { useState } from "react"
 import { IconCaretDownFilled, IconCaretUpFilled, IconRefresh } from "@tabler/icons-react"
+import { Helmet } from "react-helmet"
 
 const ILearn = () => {
   const { t } = useTranslation()
@@ -27,6 +28,10 @@ const ILearn = () => {
   }
   return (
     <>
+      <Helmet>
+        <title>QSIS 3 | {t("tab_name.ilearn")}</title>
+        <meta name="description" content="QSIS 3 Dashboard iLearn Tab" />
+      </Helmet>
       <Topbar title={t("tab_name.ilearn")} rounded />
       <div className={`${!summaryExpand && "max-h-15"} my-4 mx-2 bg-white/45 dark:bg-white/5 rounded-xl shadow-md overflow-hidden box-border`}>
         <div className="text-xl font-medium w-full bg-white/50 dark:bg-white/25 shadow-md flex p-4 select-none">

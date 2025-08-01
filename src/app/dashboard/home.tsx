@@ -2,11 +2,16 @@ import { IconAddressBook, IconBallBasketball, IconBooks, IconCheckbox, IconFileP
 import Tab from "../../components/dashboard/home/tab"
 import Topbar from "../../components/dashboard/topbar"
 import { useTranslation } from "react-i18next"
+import { Helmet } from "react-helmet"
 
 const Home = () => {
   const { t } = useTranslation()
   return (
     <>
+      <Helmet>
+        <title>QSIS 3 | {t("dashboard")}</title>
+        <meta name="description" content="QSIS 3 Dashboard Home" />
+      </Helmet>
       <Topbar title={t("home.quick_nav")} rounded />
       <div className="h-fit mt-4 flex flex-col md:grid md:grid-cols-2 gap-4 px-2 pb-4">
         <Tab href="profile" icon={IconAddressBook} title={t("tab_name.profile")} description={t("home.profile_desc")} />

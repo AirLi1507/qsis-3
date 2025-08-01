@@ -1,25 +1,35 @@
 import { useTranslation } from "react-i18next"
-import useSWR from "swr"
-import { fetcher } from "../../utils/fetcher.ts"
 import Topbar from "../../components/dashboard/topbar.tsx"
 import Table from "../../components/dashboard/ec/table.tsx"
 import Form from "../../components/dashboard/ec/form.tsx"
+import { useContext } from "react"
+import { EcContext, EcProvider } from "../../utils/context.tsx"
+import { Helmet } from "react-helmet"
 
-const ExtensionCurriculum = () => {
+const EcLayout = () => {
   const { t } = useTranslation()
 
-  const attended = useSWR<{ name: string, description: string, teacher: string, cost: number }[]>("/api/v1/ec/attendance", fetcher("json")).data
-  const available = useSWR<{ ec_id: number, name: string, description: string, teacher: string, cost: number }[]>("/api/v1/ec/list", fetcher("json")).data
+  const { list, attended } = useContext(EcContext)
 
   return (
     <>
+      <Helmet>
+        <title>QSIS 3 | {t("tab_name.ec")}</title>
+        <meta name="description" content="QSIS 3 Dashboard Extension Curriculum Tab" />
+      </Helmet>
       <Topbar title={t("tab_name.ec")} rounded />
       <div className="mt-2 md:mt-4 flex flex-col gap-4 md:gap-6 p-2">
-        <Table title={t("ec.attended")} data={attended} defaultExpand />
-        <Table title={t("ec.available")} data={available} />
-        <Form max_opt={3} data={available} />
+        <Table title={t("ec.attended")} data={attended} />
+        <Table title={t("ec.available")} data={list} />
+        <Form max_opt={3} data={list} />
       </div>
     </>
+  )
+}
+
+const ExtensionCurriculum = () => {
+  return (
+    <EcProvider><EcLayout /></EcProvider>
   )
 }
 
