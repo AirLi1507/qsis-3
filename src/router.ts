@@ -13,6 +13,8 @@ import Reading from "./app/dashboard/reading.tsx";
 import SubjectSelection from "./app/dashboard/ss.tsx";
 import Settings from "./app/dashboard/settings.tsx";
 import ILearn from "./app/dashboard/ilearn.tsx";
+import Administration from "./app/dashboard/admin.tsx";
+import Album from "./app/dashboard/album.tsx";
 
 const Router = createBrowserRouter([
   {
@@ -71,6 +73,14 @@ const Router = createBrowserRouter([
           {
             path: "settings",
             Component: Settings
+          },
+          {
+            path: "admin",
+            Component: Administration
+          },
+          {
+            path: "album",
+            Component: Album
           }
         ]
       },

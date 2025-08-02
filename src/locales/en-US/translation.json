@@ -19,7 +19,9 @@
     "ss": "Subject Selection",
     "ilearn": "iLearning",
     "logout": "Logout",
-    "settings": "Settings"
+    "settings": "Settings",
+    "admin": "Administration",
+    "album": "Album"
   },
   "home": {
     "quick_nav": "Quick Navigation",

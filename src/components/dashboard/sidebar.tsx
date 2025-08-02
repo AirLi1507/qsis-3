@@ -1,4 +1,4 @@
-import { IconAddressBook, IconBallBasketball, IconBooks, IconChalkboard, IconCheckbox, IconChevronCompactLeft, IconDoorExit, IconFilePencil, IconHome, IconSettings, IconUser, type Icon } from "@tabler/icons-react"
+import { IconAddressBook, IconBallBasketball, IconBooks, IconChalkboard, IconCheckbox, IconChevronCompactLeft, IconDoorExit, IconFilePencil, IconHome, IconSettings, IconShield, IconUser, type Icon } from "@tabler/icons-react"
 import { Link, useLocation } from "react-router"
 import { useContext, useEffect, useState } from "react"
 import { collapse } from "./layout"
@@ -39,13 +39,13 @@ const Tab = (prop: TabProp) => {
 
 const Sidebar = () => {
   const { t } = useTranslation()
-  const { chi_name, eng_name, form, className, classNo } = useContext(UserContext)
+  const { chi_name, eng_name, form, className, classNo, role } = useContext(UserContext)
   return (
     <nav className="min-w-fit bg-blue-50/25 dark:bg-black/10 shadow-lg shadow-black/15 flex flex-col p-4 overflow-y-scroll box-border duration-500">
       <div className="mx-auto my-8">
         <Logo size={72} />
       </div>
-      <span className="text-sky-700 dark:text-sky-500 text-3xl font-bold mx-auto mb-6 select-none">
+      <span className="text-sky-700 dark:text-sky-500 text-3xl font-bold mx-auto mb-2 xl:mb-4 2xl:mb-6 select-none">
         OpenSIS
       </span>
       <div className="flex flex-col mb-auto">
@@ -58,6 +58,21 @@ const Sidebar = () => {
         <Tab icon={IconChalkboard} name={t("tab_name.ilearn")} href="ilearn" />
       </div>
       <Tab icon={IconDoorExit} name={t("tab_name.logout")} href="/auth/logout" />
+      {
+        role
+          ?
+          (
+            role > 0
+              ?
+              <>
+                <Tab icon={IconShield} name={t("tab_name.admin")} href="admin" />
+              </>
+              :
+              undefined
+          )
+          :
+          undefined
+      }
       <Tab icon={IconSettings} name={t("tab_name.settings")} href="settings" />
       <Tab icon={IconUser} name={`${form}${className}-${classNo} ${chi_name} ${eng_name}`} href="#" />
       <span className="h-8 hover:bg-black/5 rounded-lg flex items-center absolute left-58.5 top-[50%] -translate-y-[50%] duration-100 cursor-pointer" onClick={collapse}>
