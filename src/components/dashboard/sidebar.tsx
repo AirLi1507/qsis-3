@@ -1,4 +1,4 @@
-import { IconAddressBook, IconBallBasketball, IconBooks, IconChalkboard, IconCheckbox, IconChevronCompactLeft, IconDoorExit, IconFilePencil, IconHome, IconSettings, IconShield, IconUser, type Icon } from "@tabler/icons-react"
+import { IconAddressBook, IconBallBasketball, IconBooks, IconChalkboard, IconCheckbox, IconChevronCompactLeft, IconDoorExit, IconFilePencil, IconHome, IconPhoto, IconSettings, IconShield, IconUser, type Icon } from "@tabler/icons-react"
 import { Link, useLocation } from "react-router"
 import { useContext, useEffect, useState } from "react"
 import { collapse } from "./layout"
@@ -65,6 +65,7 @@ const Sidebar = () => {
             role > 0
               ?
               <>
+                <Tab icon={IconPhoto} name={t("tab_name.album")} href="album" />
                 <Tab icon={IconShield} name={t("tab_name.admin")} href="admin" />
               </>
               :

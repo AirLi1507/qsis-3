@@ -7,6 +7,7 @@ const Administration = () => {
   return (
     <AdminHoc>
       <Topbar title={t("tab_name.admin")} rounded />
+      <div>tbh i dont really know what to put here</div>
     </AdminHoc>
   )
 }
